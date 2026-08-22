@@ -1,0 +1,61 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+	const posts = await getCollection('blog');
+	return posts.map((post) => ({
+		params: { slug: post.id },
+		props: { post },
+	}));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<BaseLayout title={`${post.data.title} - yourname`} description={post.data.description}>
+  <style is:raw>
+    .article { max-width: 720px; margin: 0 auto; }
+    .article-header { margin-bottom: 40px; padding-bottom: 24px; border-bottom: 1px solid var(--border); }
+    .article-header h1 { font-size: 2.2rem; font-weight: 800; letter-spacing: -0.03em; line-height: 1.2; margin-bottom: 16px; }
+    .article-meta { display: flex; align-items: center; gap: 16px; color: var(--text-muted); font-size: 0.9rem; }
+    .article-tags { display: flex; gap: 8px; margin-top: 16px; }
+    .article-tag { background: var(--bg-secondary); color: var(--text-muted); font-size: 0.75rem; padding: 4px 12px; border-radius: 20px; border: 1px solid var(--border); }
+    .article-content { font-size: 1.05rem; line-height: 1.8; }
+    .article-content h2 { font-size: 1.5rem; font-weight: 700; margin: 48px 0 16px; letter-spacing: -0.02em; }
+    .article-content h3 { font-size: 1.2rem; font-weight: 600; margin: 32px 0 12px; }
+    .article-content p { margin-bottom: 20px; color: #ccc; }
+    .article-content code { background: var(--bg-secondary); padding: 2px 6px; border-radius: 4px; font-size: 0.9em; font-family: 'SF Mono', Monaco, monospace; }
+    .article-content pre { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 8px; padding: 20px; overflow-x: auto; margin: 24px 0; }
+    .article-content pre code { background: none; padding: 0; }
+    .article-content blockquote { border-left: 3px solid var(--accent); padding-left: 20px; margin: 24px 0; color: var(--text-muted); }
+    .article-content ul, .article-content ol { margin: 16px 0; padding-left: 24px; }
+    .article-content li { margin-bottom: 8px; color: #ccc; }
+    .article-content img { max-width: 100%; border-radius: 8px; margin: 24px 0; }
+    .article-content a { color: var(--accent); text-decoration: underline; text-underline-offset: 4px; }
+    .back-link { display: inline-flex; align-items: center; gap: 6px; color: var(--text-muted); font-size: 0.9rem; margin-bottom: 32px; transition: color 0.2s; }
+    .back-link:hover { color: var(--accent); }
+  </style>
+
+  <article class="article">
+    <a href="/blog" class="back-link">← Back to blog</a>
+    <header class="article-header">
+      <h1>{post.data.title}</h1>
+      <div class="article-meta">
+        <time datetime={post.data.pubDate.toISOString()}>
+          {post.data.pubDate.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}
+        </time>
+        {post.data.updatedDate && (
+          <span>（更新于 {post.data.updatedDate.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}）</span>
+        )}
+      </div>
+      {post.data.tags.length > 0 && (
+        <div class="article-tags">
+          {post.data.tags.map((tag) => (<span class="article-tag">{tag}</span>))}
+        </div>
+      )}
+    </header>
+    <div class="article-content"><Content /></div>
+  </article>
+</BaseLayout>

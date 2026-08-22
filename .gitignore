@@ -1,0 +1,26 @@
+# dependencies
+node_modules/
+.pnpm-store/
+
+# local env files
+.env*.local
+
+# Vercel config
+.vercel
+
+# build output
+dist/
+
+# log files
+*.log
+
+# editor directories
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# astro cache
+.astro/
