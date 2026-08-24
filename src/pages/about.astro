@@ -1,0 +1,93 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const timeline = [
+  {
+    year: '2024',
+    title: '独立开发',
+    desc: '开始全职投入独立开发，专注于为开发者打造小而美的工具型产品。',
+  },
+  {
+    year: '2023',
+    title: 'DevTool CLI 立项',
+    desc: '从日常脚手架搭建的痛点出发，开源了零配置命令行工具 DevTool CLI。',
+  },
+  {
+    year: '2022',
+    title: '前端工程化探索',
+    desc: '深入组件库与构建工具，沉淀出 Pixel UI 等开源项目。',
+  },
+];
+---
+
+<BaseLayout title="About - yuzhiblue" description="关于 yuzhiblue：独立开发者，专注简洁实用的开发者工具">
+  <section class="about-hero">
+    <h1>关于我</h1>
+    <p class="lead">
+      我是 yuzhiblue，一名独立开发者。我相信工具的价值在于「让复杂的事变简单」，
+      所以一直专注于打造简洁、实用、开箱即用的开发者工具与产品。
+    </p>
+  </section>
+
+  <section class="block">
+    <h2 class="section-title">我在做什么</h2>
+    <p class="text">
+      目前主要围绕命令行工具、UI 组件库和轻量 Web 应用展开。我喜欢从自己的真实痛点出发，
+      先做出来自己用，再打磨成别人也能轻松上手的工具。比起「大而全」，我更在意「小而美」——
+      一个能每天帮你省下几分钟的小工具，往往比庞大的系统更有生命力。
+    </p>
+  </section>
+
+  <section class="block">
+    <h2 class="section-title">经历</h2>
+    <ul class="timeline">
+      {timeline.map((item) => (
+        <li class="timeline-item">
+          <span class="timeline-year">{item.year}</span>
+          <div class="timeline-content">
+            <h3>{item.title}</h3>
+            <p>{item.desc}</p>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section class="block">
+    <h2 class="section-title">更多</h2>
+    <p class="text">
+      想了解更多项目细节或最新动态，欢迎前往首页的「关注我」板块，在 GitHub、X 或公众号找到我。
+    </p>
+  </section>
+</BaseLayout>
+
+<style>
+  .about-hero { margin-bottom: 56px; }
+  .about-hero h1 {
+    font-size: 2.4rem; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 16px;
+    background: linear-gradient(135deg, #fff 0%, #888 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .lead { color: var(--text-muted); font-size: 1.1rem; max-width: 640px; line-height: 1.7; }
+  .block { margin-bottom: 48px; }
+  .section-title {
+    font-size: 1.1rem; font-weight: 600; color: var(--text);
+    margin-bottom: 20px; display: flex; align-items: center; gap: 12px;
+  }
+  .section-title::before {
+    content: ''; width: 4px; height: 20px; background: var(--accent); border-radius: 2px;
+  }
+  .text { color: var(--text-muted); font-size: 0.95rem; line-height: 1.8; max-width: 680px; }
+  .timeline { list-style: none; display: flex; flex-direction: column; gap: 24px; }
+  .timeline-item { display: flex; gap: 20px; align-items: flex-start; }
+  .timeline-year {
+    flex: 0 0 64px; color: var(--accent); font-weight: 600; font-size: 0.95rem;
+    padding-top: 2px;
+  }
+  .timeline-content h3 { font-size: 1rem; font-weight: 600; margin-bottom: 6px; }
+  .timeline-content p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; }
+  @media (max-width: 640px) {
+    .about-hero h1 { font-size: 1.8rem; }
+    .timeline-item { flex-direction: column; gap: 4px; }
+  }
+</style>
