@@ -6,6 +6,8 @@ tags: ['Node.js', 'CLI', 'Tooling']
 featured: true
 coverImage: '/projects/devtool-cli/screenshot.png'
 github: 'https://github.com/yuzhiblue/devtool-cli'
+website: 'https://devtool.yuzhiblue.dev'
+download: 'https://www.npmjs.com/package/@yuzhiblue/devtool'
 draft: false
 ---
 

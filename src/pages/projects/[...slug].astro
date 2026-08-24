@@ -21,7 +21,6 @@ const { Content } = await render(project);
 			width: 100%; aspect-ratio: 16 / 9; object-fit: cover;
 			border-radius: 16px; border: 1px solid var(--border);
 			margin: 0 0 32px; background: var(--card-bg);
-			box-shadow: 0 8px 30px -12px rgba(99, 102, 241, 0.25);
 		}
 		.cover-placeholder {
 			width: 100%; aspect-ratio: 16 / 9;
@@ -93,10 +92,19 @@ const { Content } = await render(project);
 					</div>
 				)}
 			</div>
-			{(project.data.github || project.data.website) && (
+			{(project.data.demo || project.data.purchase || project.data.download || project.data.website || project.data.github) && (
 				<div class="article-actions">
+					{project.data.demo && (
+						<a href={project.data.demo} target="_blank" rel="noopener" class="btn btn-primary">在线演示 ↗</a>
+					)}
+					{project.data.purchase && (
+						<a href={project.data.purchase} target="_blank" rel="noopener" class="btn btn-primary">立即购买 ↗</a>
+					)}
+					{project.data.download && (
+						<a href={project.data.download} target="_blank" rel="noopener" class="btn btn-outline">下载 ↗</a>
+					)}
 					{project.data.website && (
-						<a href={project.data.website} target="_blank" rel="noopener" class="btn btn-primary">访问网站 ↗</a>
+						<a href={project.data.website} target="_blank" rel="noopener" class="btn btn-outline">访问官网 ↗</a>
 					)}
 					{project.data.github && (
 						<a href={project.data.github} target="_blank" rel="noopener" class="btn btn-outline">GitHub 源码 ↗</a>

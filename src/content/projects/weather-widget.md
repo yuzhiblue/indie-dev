@@ -6,6 +6,7 @@ tags: ['Vue', 'API', 'Weather']
 featured: false
 coverImage: '/projects/weather-widget/screenshot.png'
 github: 'https://github.com/yuzhiblue/weather-widget'
+demo: 'https://weather-widget.yuzhiblue.dev/demo'
 draft: false
 ---
 

@@ -7,6 +7,7 @@ featured: false
 coverImage: '/projects/pixel-ui/screenshot.png'
 github: 'https://github.com/yuzhiblue/pixel-ui'
 website: 'https://pixel-ui.yuzhiblue.dev'
+demo: 'https://pixel-ui.yuzhiblue.dev/playground'
 draft: false
 ---
 

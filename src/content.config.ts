@@ -26,6 +26,9 @@ const projects = defineCollection({
 		coverImage: z.string().optional(),
 		github: z.string().url().optional(),
 		website: z.string().url().optional(),
+		demo: z.string().url().optional(),
+		download: z.string().url().optional(),
+		purchase: z.string().url().optional(),
 		draft: z.boolean().default(false),
 	}),
 });

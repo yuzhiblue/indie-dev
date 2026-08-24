@@ -7,6 +7,7 @@ featured: true
 coverImage: '/projects/project-alpha/screenshot.png'
 github: 'https://github.com/yuzhiblue/project-alpha'
 website: 'https://project-alpha.yuzhiblue.dev'
+demo: 'https://project-alpha.yuzhiblue.dev/demo'
 draft: false
 ---
 
