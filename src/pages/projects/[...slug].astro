@@ -23,12 +23,13 @@ const { Content } = await render(project);
 			margin: 0 0 32px; background: var(--card-bg);
 			box-shadow: 0 8px 30px -12px rgba(99, 102, 241, 0.25);
 		}
-		.article-header { margin-bottom: 32px; }
+		.article-header { margin-bottom: 32px; display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+		.article-header-left { min-width: 0; flex: 1; }
 		.article-header h1 { font-size: 2.2rem; font-weight: 800; letter-spacing: -0.03em; line-height: 1.2; margin-bottom: 16px; }
 		.article-meta { display: flex; align-items: center; gap: 16px; color: var(--text-muted); font-size: 0.9rem; flex-wrap: wrap; }
 		.article-tags { display: flex; gap: 8px; margin-top: 16px; flex-wrap: wrap; }
 		.article-tag { background: var(--bg-secondary); color: var(--text-muted); font-size: 0.75rem; padding: 4px 12px; border-radius: 20px; border: 1px solid var(--border); }
-		.article-actions { display: flex; gap: 12px; margin-top: 24px; flex-wrap: wrap; }
+		.article-actions { display: flex; flex-direction: column; gap: 12px; flex-shrink: 0; align-items: stretch; }
 		.btn {
 			display: inline-flex; align-items: center; gap: 8px; font-size: 0.9rem; font-weight: 600;
 			padding: 10px 18px; border-radius: 10px; transition: all 0.2s; border: 1px solid transparent;
@@ -64,22 +65,24 @@ const { Content } = await render(project);
 	<article class="article">
 		<a href="/projects" class="back-link">← Back to projects</a>
 		<header class="article-header">
-			<h1>{project.data.title}</h1>
-			<div class="article-meta">
-				{project.data.pubDate && (
-					<time datetime={project.data.pubDate.toISOString()}>
-						{project.data.pubDate.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}
-					</time>
-				)}
-				{project.data.updatedDate && (
-					<span>（更新于 {project.data.updatedDate.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}）</span>
+			<div class="article-header-left">
+				<h1>{project.data.title}</h1>
+				<div class="article-meta">
+					{project.data.pubDate && (
+						<time datetime={project.data.pubDate.toISOString()}>
+							{project.data.pubDate.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}
+						</time>
+					)}
+					{project.data.updatedDate && (
+						<span>（更新于 {project.data.updatedDate.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}）</span>
+					)}
+				</div>
+				{project.data.tags.length > 0 && (
+					<div class="article-tags">
+						{project.data.tags.map((tag) => (<span class="article-tag">{tag}</span>))}
+					</div>
 				)}
 			</div>
-			{project.data.tags.length > 0 && (
-				<div class="article-tags">
-					{project.data.tags.map((tag) => (<span class="article-tag">{tag}</span>))}
-				</div>
-			)}
 			{(project.data.github || project.data.website) && (
 				<div class="article-actions">
 					{project.data.website && (
