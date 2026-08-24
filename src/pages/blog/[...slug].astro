@@ -14,9 +14,19 @@ const { post } = Astro.props;
 const { Content } = await render(post);
 ---
 
-<BaseLayout title={`${post.data.title} - yourname`} description={post.data.description}>
+<BaseLayout title={`${post.data.title} - yuzhiblue`} description={post.data.description}>
   <style is:raw>
-    .article { max-width: 720px; margin: 0 auto; }
+    .article { max-width: 760px; margin: 0 auto; }
+    .cover {
+      width: 100%; aspect-ratio: 16 / 9; object-fit: cover;
+      border-radius: 16px; border: 1px solid var(--border);
+      margin: 0 0 32px; background: var(--card-bg);
+    }
+    .cover-placeholder {
+      width: 100%; aspect-ratio: 16 / 9;
+      border-radius: 16px; border: 1px solid var(--border);
+      margin: 0 0 32px; background: linear-gradient(135deg, #1e1e2e 0%, #2a2a3e 100%);
+    }
     .article-header { margin-bottom: 40px; padding-bottom: 24px; border-bottom: 1px solid var(--border); }
     .article-header h1 { font-size: 2.2rem; font-weight: 800; letter-spacing: -0.03em; line-height: 1.2; margin-bottom: 16px; }
     .article-meta { display: flex; align-items: center; gap: 16px; color: var(--text-muted); font-size: 0.9rem; }
@@ -40,6 +50,11 @@ const { Content } = await render(post);
 
   <article class="article">
     <a href="/blog" class="back-link">← Back to blog</a>
+    {post.data.coverImage ? (
+      <img src={post.data.coverImage} alt={`${post.data.title} 封面`} class="cover" />
+    ) : (
+      <div class="cover-placeholder" role="img" aria-label={`${post.data.title} 封面`}></div>
+    )}
     <header class="article-header">
       <h1>{post.data.title}</h1>
       <div class="article-meta">

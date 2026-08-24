@@ -4,7 +4,6 @@ description: '从零开始搭建一个美观、SEO 友好的独立开发者展�
 pubDate: 2025-01-15
 updatedDate: 2025-01-20
 tags: ['Astro', 'Web Development', 'Tutorial']
-coverImage: ''
 draft: false
 ---
 
