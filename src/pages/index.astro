@@ -2,36 +2,16 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 
-const projects = [
-  {
-    name: 'Project Alpha',
-    description: '一个极简的本地笔记应用，支持 Markdown 和实时预览。',
-    tags: ['React', 'Electron', 'Markdown'],
-    link: 'https://github.com/yourname/project-alpha',
-    featured: true,
-  },
-  {
-    name: 'DevTool CLI',
-    description: '命令行工具，帮助独立开发者快速搭建项目脚手架。',
-    tags: ['Node.js', 'CLI', 'Tooling'],
-    link: 'https://github.com/yourname/devtool-cli',
-    featured: true,
-  },
-  {
-    name: 'Pixel UI',
-    description: '一套轻量级 CSS 组件库，专为管理后台设计。',
-    tags: ['CSS', 'Components', 'Design System'],
-    link: 'https://github.com/yourname/pixel-ui',
-    featured: false,
-  },
-  {
-    name: 'Weather Widget',
-    description: '基于地理位置的动态天气组件，支持多种天气数据源。',
-    tags: ['Vue', 'API', 'Weather'],
-    link: 'https://github.com/yourname/weather-widget',
-    featured: false,
-  },
-];
+const projects = await getCollection('projects', ({ data }) => !data.draft);
+const featuredProjects = projects
+  .sort((a, b) => {
+    const aFeatured = a.data.featured ? 1 : 0;
+    const bFeatured = b.data.featured ? 1 : 0;
+    if (aFeatured !== bFeatured) return bFeatured - aFeatured;
+    const aDate = a.data.pubDate?.valueOf() ?? 0;
+    const bDate = b.data.pubDate?.valueOf() ?? 0;
+    return bDate - aDate;
+  });
 
 const recentPosts = await getCollection('blog', ({ data }) => !data.draft);
 const featuredPosts = recentPosts
@@ -39,7 +19,7 @@ const featuredPosts = recentPosts
   .slice(0, 3);
 ---
 
-<BaseLayout title="Home - yourname" description="独立开发者作品展示">
+<BaseLayout title="Home - yuzhiblue" description="独立开发者作品展示">
   <style is:raw>
     .hero { padding: 80px 0 60px; text-align: center; }
     .hero h1 {
@@ -100,24 +80,24 @@ const featuredPosts = recentPosts
   </style>
 
   <section class="hero">
-    <h1>Hi, I'm yourname</h1>
+    <h1>Hi, I'm yuzhiblue</h1>
     <p>独立开发者，热衷于构建简洁、有用的工具和产品。喜欢把想法变成代码。</p>
   </section>
 
   <section>
     <h2 class="section-title">Projects</h2>
     <div class="projects-grid">
-      {projects.map((project) => (
+      {featuredProjects.map((project) => (
         <article class="project-card">
           <h3>
-            <a href={project.link} target="_blank">
-              {project.name}
-              {project.featured && <span class="featured-badge">Featured</span>}
+            <a href={`/projects/${project.id}`}>
+              {project.data.title}
+              {project.data.featured && <span class="featured-badge">Featured</span>}
             </a>
           </h3>
-          <p>{project.description}</p>
+          <p>{project.data.description}</p>
           <div class="tags">
-            {project.tags.map((tag) => (<span class="tag">{tag}</span>))}
+            {project.data.tags.map((tag) => (<span class="tag">{tag}</span>))}
           </div>
         </article>
       ))}

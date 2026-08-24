@@ -1,0 +1,69 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const projects = await getCollection('projects', ({ data }) => !data.draft);
+const sortedProjects = projects.sort((a, b) => {
+	const aFeatured = a.data.featured ? 1 : 0;
+	const bFeatured = b.data.featured ? 1 : 0;
+	if (aFeatured !== bFeatured) return bFeatured - aFeatured;
+	const aDate = a.data.pubDate?.valueOf() ?? 0;
+	const bDate = b.data.pubDate?.valueOf() ?? 0;
+	return bDate - aDate;
+});
+---
+
+<BaseLayout title="Projects - yourname" description="独立开发者的项目作品集">
+	<style is:raw>
+		.page-header { padding: 40px 0; border-bottom: 1px solid var(--border); margin-bottom: 40px; }
+		.page-header h1 { font-size: 2rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 8px; }
+		.page-header p { color: var(--text-muted); }
+		.project-card {
+			display: block; padding: 24px; background: var(--card-bg);
+			border: 1px solid var(--border); border-radius: 12px; margin-bottom: 16px;
+			transition: border-color 0.2s, transform 0.2s;
+		}
+		.project-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+		.project-card h2 { font-size: 1.15rem; font-weight: 600; margin-bottom: 8px; color: var(--text); }
+		.project-card:hover h2 { color: var(--accent); }
+		.project-card p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 12px; }
+		.project-meta { display: flex; align-items: center; gap: 12px; font-size: 0.8rem; color: var(--text-muted); }
+		.project-tags { display: flex; gap: 6px; margin-left: auto; flex-wrap: wrap; justify-content: flex-end; }
+		.project-tag { background: var(--bg); padding: 2px 8px; border-radius: 12px; border: 1px solid var(--border); }
+		.featured-badge {
+			display: inline-block; background: var(--accent); color: #fff;
+			font-size: 0.7rem; padding: 2px 8px; border-radius: 20px; font-weight: 600;
+		}
+	</style>
+
+	<div class="page-header">
+		<h1>Projects</h1>
+		<p>我独立开发与维护的产品、工具与开源项目</p>
+	</div>
+
+	{sortedProjects.length === 0 ? (
+		<p style={{ color: 'var(--text-muted)' }}>暂无项目，敬请期待。</p>
+	) : (
+		sortedProjects.map((project) => (
+			<a href={`/projects/${project.id}`} class="project-card">
+				<h2>
+					{project.data.title}
+					{project.data.featured && <span class="featured-badge">Featured</span>}
+				</h2>
+				<p>{project.data.description}</p>
+				<div class="project-meta">
+					{project.data.pubDate && (
+						<span>
+							{project.data.pubDate.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}
+						</span>
+					)}
+					{project.data.tags.length > 0 && (
+						<div class="project-tags">
+							{project.data.tags.map((tag) => (<span class="project-tag">{tag}</span>))}
+						</div>
+					)}
+				</div>
+			</a>
+		))
+	)}
+</BaseLayout>

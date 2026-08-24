@@ -18,6 +18,10 @@ dist/
 .vscode/
 .idea/
 
+# trash & local tooling data
+.Trash-0/
+.codebuddy/
+
 # OS files
 .DS_Store
 Thumbs.db

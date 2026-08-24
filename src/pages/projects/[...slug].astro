@@ -1,0 +1,85 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+	const projects = await getCollection('projects');
+	return projects.map((project) => ({
+		params: { slug: project.id },
+		props: { project },
+	}));
+}
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+---
+
+<BaseLayout title={`${project.data.title} - yourname`} description={project.data.description}>
+	<style is:raw>
+		.article { max-width: 720px; margin: 0 auto; }
+		.article-header { margin-bottom: 40px; padding-bottom: 24px; border-bottom: 1px solid var(--border); }
+		.article-header h1 { font-size: 2.2rem; font-weight: 800; letter-spacing: -0.03em; line-height: 1.2; margin-bottom: 16px; }
+		.article-meta { display: flex; align-items: center; gap: 16px; color: var(--text-muted); font-size: 0.9rem; flex-wrap: wrap; }
+		.article-tags { display: flex; gap: 8px; margin-top: 16px; flex-wrap: wrap; }
+		.article-tag { background: var(--bg-secondary); color: var(--text-muted); font-size: 0.75rem; padding: 4px 12px; border-radius: 20px; border: 1px solid var(--border); }
+		.article-actions { display: flex; gap: 12px; margin-top: 24px; flex-wrap: wrap; }
+		.btn {
+			display: inline-flex; align-items: center; gap: 8px; font-size: 0.9rem; font-weight: 600;
+			padding: 10px 18px; border-radius: 10px; transition: all 0.2s; border: 1px solid transparent;
+		}
+		.btn-primary { background: var(--accent); color: #fff; }
+		.btn-primary:hover { background: var(--accent-hover); color: #fff; }
+		.btn-outline { background: transparent; color: var(--text); border-color: var(--border); }
+		.btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+		.article-content { font-size: 1.05rem; line-height: 1.8; }
+		.article-content h2 { font-size: 1.5rem; font-weight: 700; margin: 48px 0 16px; letter-spacing: -0.02em; }
+		.article-content h3 { font-size: 1.2rem; font-weight: 600; margin: 32px 0 12px; }
+		.article-content p { margin-bottom: 20px; color: #ccc; }
+		.article-content code { background: var(--bg-secondary); padding: 2px 6px; border-radius: 4px; font-size: 0.9em; font-family: 'SF Mono', Monaco, monospace; }
+		.article-content pre { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 8px; padding: 20px; overflow-x: auto; margin: 24px 0; }
+		.article-content pre code { background: none; padding: 0; }
+		.article-content blockquote { border-left: 3px solid var(--accent); padding-left: 20px; margin: 24px 0; color: var(--text-muted); }
+		.article-content ul, .article-content ol { margin: 16px 0; padding-left: 24px; }
+		.article-content li { margin-bottom: 8px; color: #ccc; }
+		.article-content img { max-width: 100%; border-radius: 8px; margin: 24px 0; }
+		.article-content a { color: var(--accent); text-decoration: underline; text-underline-offset: 4px; }
+		.article-content table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 0.95rem; }
+		.article-content th, .article-content td { border: 1px solid var(--border); padding: 10px 14px; text-align: left; }
+		.article-content th { background: var(--bg-secondary); color: var(--text); }
+		.back-link { display: inline-flex; align-items: center; gap: 6px; color: var(--text-muted); font-size: 0.9rem; margin-bottom: 32px; transition: color 0.2s; }
+		.back-link:hover { color: var(--accent); }
+	</style>
+
+	<article class="article">
+		<a href="/projects" class="back-link">← Back to projects</a>
+		<header class="article-header">
+			<h1>{project.data.title}</h1>
+			<div class="article-meta">
+				{project.data.pubDate && (
+					<time datetime={project.data.pubDate.toISOString()}>
+						{project.data.pubDate.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}
+					</time>
+				)}
+				{project.data.updatedDate && (
+					<span>（更新于 {project.data.updatedDate.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}）</span>
+				)}
+			</div>
+			{project.data.tags.length > 0 && (
+				<div class="article-tags">
+					{project.data.tags.map((tag) => (<span class="article-tag">{tag}</span>))}
+				</div>
+			)}
+			{(project.data.github || project.data.website) && (
+				<div class="article-actions">
+					{project.data.website && (
+						<a href={project.data.website} target="_blank" rel="noopener" class="btn btn-primary">访问网站 ↗</a>
+					)}
+					{project.data.github && (
+						<a href={project.data.github} target="_blank" rel="noopener" class="btn btn-outline">GitHub 源码 ↗</a>
+					)}
+				</div>
+			)}
+		</header>
+		<div class="article-content"><Content /></div>
+	</article>
+</BaseLayout>
