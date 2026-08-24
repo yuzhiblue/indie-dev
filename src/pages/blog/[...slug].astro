@@ -12,6 +12,14 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const { Content } = await render(post);
+
+const readingTime = (() => {
+  const text = post.body ?? '';
+  const cjk = (text.match(/[一-龥]/g) || []).length;
+  const words = (text.replace(/[一-龥]/g, ' ').match(/\b\w+\b/g) || []).length;
+  const minutes = Math.max(1, Math.round(cjk / 400 + words / 200));
+  return minutes;
+})();
 ---
 
 <BaseLayout title={`${post.data.title} - yuzhiblue`} description={post.data.description}>
@@ -24,7 +32,7 @@ const { Content } = await render(post);
     .author-link:hover { color: var(--accent); }
     .author-avatar { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; border: 1px solid var(--border); background: var(--card-bg); }
     .article-meta { display: flex; align-items: center; gap: 16px; color: var(--text-muted); font-size: 0.9rem; }
-    .article-tags { display: flex; gap: 8px; margin-top: 16px; }
+    .article-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
     .article-tag { background: var(--bg-secondary); color: var(--text-muted); font-size: 0.75rem; padding: 4px 12px; border-radius: 20px; border: 1px solid var(--border); }
     /* Markdown 内容（<Content/> 渲染，无 scoped cid）必须用 :global 完全跳出作用域 */
     :global(.article-content) { font-size: 1.05rem; line-height: 1.8; }
@@ -48,6 +56,10 @@ const { Content } = await render(post);
     :global(.article-content th) { background: var(--bg-secondary); color: var(--text); }
     .back-link { display: inline-flex; align-items: center; gap: 6px; color: var(--text-muted); font-size: 0.9rem; margin-bottom: 32px; transition: color 0.2s; }
     .back-link:hover { color: var(--accent); }
+    @media (max-width: 480px) {
+      .article-author { flex-direction: column; align-items: flex-start; }
+      .article-header h1 { font-size: 1.8rem; }
+    }
   </style>
 
   <article class="article">
@@ -56,13 +68,15 @@ const { Content } = await render(post);
       <h1>{post.data.title}</h1>
       <div class="article-author">
         <a class="author-link" href="/about">
-          <img class="author-avatar" src="/favicon.svg" alt="yuzhiblue" width="32" height="32" />
+          <img class="author-avatar" src="/avatar.svg" alt="yuzhiblue" width="32" height="32" />
           yuzhiblue
         </a>
         <div class="article-meta">
           <time datetime={post.data.pubDate.toISOString()}>
             {post.data.pubDate.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}
           </time>
+          <span>·</span>
+          <span>{readingTime} 分钟阅读</span>
           {post.data.updatedDate && (
             <span>（更新于 {post.data.updatedDate.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}）</span>
           )}
