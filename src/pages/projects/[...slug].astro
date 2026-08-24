@@ -18,10 +18,15 @@ const { Content } = await render(project);
 	<style is:raw>
 		.article { max-width: 760px; margin: 0 auto; }
 		.cover {
-			width: 100%; max-height: 320px; object-fit: cover;
+			width: 100%; aspect-ratio: 16 / 9; object-fit: cover;
 			border-radius: 16px; border: 1px solid var(--border);
 			margin: 0 0 32px; background: var(--card-bg);
 			box-shadow: 0 8px 30px -12px rgba(99, 102, 241, 0.25);
+		}
+		.cover-placeholder {
+			width: 100%; aspect-ratio: 16 / 9;
+			border-radius: 16px; border: 1px solid var(--border);
+			margin: 0 0 32px; background: linear-gradient(135deg, #1e1e2e 0%, #2a2a3e 100%);
 		}
 		.article-header { margin-bottom: 32px; display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
 		.article-header-left { min-width: 0; flex: 1; }
@@ -60,6 +65,11 @@ const { Content } = await render(project);
 		:global(.article-content th) { background: var(--bg-secondary); color: var(--text); }
 		.back-link { display: inline-flex; align-items: center; gap: 6px; color: var(--text-muted); font-size: 0.9rem; margin-bottom: 24px; transition: color 0.2s; }
 		.back-link:hover { color: var(--accent); }
+		@media (max-width: 640px) {
+			.article-header { flex-direction: column; }
+			.article-actions { flex-direction: row; flex-wrap: wrap; align-items: flex-start; }
+			.btn { flex: 0 0 auto; }
+		}
 	</style>
 
 	<article class="article">
@@ -94,8 +104,10 @@ const { Content } = await render(project);
 				</div>
 			)}
 		</header>
-		{project.data.coverImage && (
+		{project.data.coverImage ? (
 			<img src={project.data.coverImage} alt={`${project.data.title} 封面`} class="cover" />
+		) : (
+			<div class="cover-placeholder" role="img" aria-label={`${project.data.title} 封面`}></div>
 		)}
 		<div class="article-content"><Content /></div>
 	</article>
