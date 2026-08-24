@@ -4,7 +4,7 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://yourdomain.com',
+  site: 'https://dev.7tec.cn',
   integrations: [
     mdx(),
     sitemap(),
