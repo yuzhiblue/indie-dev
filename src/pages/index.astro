@@ -17,6 +17,12 @@ const recentPosts = await getCollection('blog', ({ data }) => !data.draft);
 const featuredPosts = recentPosts
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
   .slice(0, 3);
+
+const socialLinks = [
+  { label: 'GitHub', href: 'https://github.com/yuzhiblue', note: '@yuzhiblue' },
+  { label: 'X', href: 'https://x.com/yuzhiblue', note: '@yuzhiblue' },
+  { label: '公众号', href: '#', note: '搜索 7TEC 关注' },
+];
 ---
 
 <BaseLayout title="Home - yuzhiblue" description="独立开发者作品展示">
@@ -73,6 +79,22 @@ const featuredPosts = recentPosts
     .post-date { color: var(--text-muted); font-size: 0.8rem; white-space: nowrap; margin-left: 16px; }
     .view-all { display: inline-block; margin-top: 20px; color: var(--accent); font-size: 0.9rem; font-weight: 500; }
     .view-all:hover { color: var(--accent-hover); }
+    .follow {
+      margin: 40px auto 0; max-width: 560px; text-align: center;
+      background: var(--card-bg); border: 1px solid var(--border);
+      border-radius: 14px; padding: 32px 24px;
+    }
+    .follow h2 { font-size: 1.2rem; font-weight: 600; margin-bottom: 8px; color: var(--text); }
+    .follow > p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 24px; }
+    .follow-links { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+    .follow-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--bg-secondary); border: 1px solid var(--border);
+      color: var(--text); font-size: 0.9rem; font-weight: 500;
+      padding: 10px 18px; border-radius: 10px; transition: border-color 0.2s, transform 0.2s;
+    }
+    .follow-link:hover { border-color: var(--accent); transform: translateY(-2px); color: var(--text); }
+    .follow-link span { color: var(--text-muted); font-weight: 400; }
     @media (max-width: 640px) {
       .hero h1 { font-size: 2rem; }
       .projects-grid { grid-template-columns: 1fr; }
@@ -82,6 +104,24 @@ const featuredPosts = recentPosts
   <section class="hero">
     <h1>Hi, I'm yuzhiblue</h1>
     <p>独立开发者，热衷于构建简洁、有用的工具和产品。喜欢把想法变成代码。</p>
+  </section>
+
+  <section class="follow">
+    <h2>关注我</h2>
+    <p>在以下平台找到我，获取最新项目与分享</p>
+    <div class="follow-links">
+      {socialLinks.map((link) => (
+        <a
+          class="follow-link"
+          href={link.href}
+          target={link.href.startsWith('http') ? '_blank' : undefined}
+          rel="noopener noreferrer"
+        >
+          {link.label}
+          <span>{link.note}</span>
+        </a>
+      ))}
+    </div>
   </section>
 
   <section>
