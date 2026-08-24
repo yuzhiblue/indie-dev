@@ -4,8 +4,8 @@ description: '一套轻量级 CSS 组件库，专为管理后台设计。'
 pubDate: 2025-02-20
 tags: ['CSS', 'Components', 'Design System']
 featured: false
-github: 'https://github.com/yourname/pixel-ui'
-website: 'https://pixel-ui.yourname.dev'
+github: 'https://github.com/yuzhiblue/pixel-ui'
+website: 'https://pixel-ui.yuzhiblue.dev'
 draft: false
 ---
 

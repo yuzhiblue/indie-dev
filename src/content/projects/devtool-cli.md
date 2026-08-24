@@ -4,7 +4,7 @@ description: '命令行工具，帮助独立开发者快速搭建项目脚手架
 pubDate: 2024-11-12
 tags: ['Node.js', 'CLI', 'Tooling']
 featured: true
-github: 'https://github.com/yourname/devtool-cli'
+github: 'https://github.com/yuzhiblue/devtool-cli'
 draft: false
 ---
 
@@ -23,7 +23,7 @@ DevTool CLI 是一个零配置的命令行脚手架工具，一条命令即可�
 ## 快速开始
 
 ```sh
-npm install -g @yourname/devtool
+npm install -g @yuzhiblue/devtool
 devtool new my-app
 cd my-app && npm run dev
 ```
