@@ -20,6 +20,10 @@ Pixel UI 是一套**零运行时**的 CSS 组件库，所有组件仅由原生 C
 2. **无障碍优先**：组件默认符合 WCAG 2.1，含焦点态与 ARIA 标注
 3. **体积tiny**：完整引入 gzip 后小于 12KB
 
+## 界面预览
+
+![Pixel UI 组件截图](/projects/pixel-ui/screenshot.png)
+
 ## 组件清单
 
 - 按钮 / 表单 / 开关

@@ -32,7 +32,7 @@ Project Alpha 是一个极简的本地笔记应用，专注于「写作即预览
 
 ## 截图
 
-> 此处可放置应用截图，将图片放入 `public/` 后使用 `![截图](/your-image.png)` 引用。
+![Project Alpha 应用截图](/projects/project-alpha/screenshot.png)
 
 ## 未来规划
 

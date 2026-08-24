@@ -20,6 +20,10 @@ DevTool CLI 是一个零配置的命令行脚手架工具，一条命令即可�
 - **可组合**：每个功能以插件形式存在，按需安装，避免臃肿
 - **跨平台**：Windows / macOS / Linux 一致体验
 
+## 界面预览
+
+![DevTool CLI 界面截图](/projects/devtool-cli/screenshot.png)
+
 ## 快速开始
 
 ```sh

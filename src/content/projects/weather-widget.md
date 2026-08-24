@@ -20,6 +20,10 @@ Weather Widget 是一个可嵌入任意网页的天气组件，自动根据访�
 - **自适应外观**：随背景明暗自动调整配色，融入宿主页面
 - **轻量**：约 8KB，无第三方 UI 依赖
 
+## 界面预览
+
+![Weather Widget 截图](/projects/weather-widget/screenshot.png)
+
 ## 使用示例
 
 ```vue
