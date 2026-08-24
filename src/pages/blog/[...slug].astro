@@ -19,6 +19,10 @@ const { Content } = await render(post);
     .article { max-width: 760px; margin: 0 auto; }
     .article-header { margin-bottom: 40px; padding-bottom: 24px; border-bottom: 1px solid var(--border); }
     .article-header h1 { font-size: 2.2rem; font-weight: 800; letter-spacing: -0.03em; line-height: 1.2; margin-bottom: 16px; }
+    .article-author { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    .author-link { display: inline-flex; align-items: center; gap: 10px; color: var(--text); font-size: 0.95rem; font-weight: 500; transition: color 0.2s; }
+    .author-link:hover { color: var(--accent); }
+    .author-avatar { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; border: 1px solid var(--border); background: var(--card-bg); }
     .article-meta { display: flex; align-items: center; gap: 16px; color: var(--text-muted); font-size: 0.9rem; }
     .article-tags { display: flex; gap: 8px; margin-top: 16px; }
     .article-tag { background: var(--bg-secondary); color: var(--text-muted); font-size: 0.75rem; padding: 4px 12px; border-radius: 20px; border: 1px solid var(--border); }
@@ -50,13 +54,19 @@ const { Content } = await render(post);
     <a href="/blog" class="back-link">← Back to blog</a>
     <header class="article-header">
       <h1>{post.data.title}</h1>
-      <div class="article-meta">
-        <time datetime={post.data.pubDate.toISOString()}>
-          {post.data.pubDate.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}
-        </time>
-        {post.data.updatedDate && (
-          <span>（更新于 {post.data.updatedDate.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}）</span>
-        )}
+      <div class="article-author">
+        <a class="author-link" href="/about">
+          <img class="author-avatar" src="/favicon.svg" alt="yuzhiblue" width="32" height="32" />
+          yuzhiblue
+        </a>
+        <div class="article-meta">
+          <time datetime={post.data.pubDate.toISOString()}>
+            {post.data.pubDate.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}
+          </time>
+          {post.data.updatedDate && (
+            <span>（更新于 {post.data.updatedDate.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}）</span>
+          )}
+        </div>
       </div>
       {post.data.tags.length > 0 && (
         <div class="article-tags">
