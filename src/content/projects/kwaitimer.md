@@ -1,5 +1,5 @@
 ---
-title: '快手直播定时助手'
+title: '快手直播定时助手（Kwaitimer）'
 description: '直播定时助手的快手版本，调用 Windows 底层 API 实现自动化点击，支持快手直播定时开播与下播。'
 pubDate: 2025-03-28
 updatedDate: 2025-03-28

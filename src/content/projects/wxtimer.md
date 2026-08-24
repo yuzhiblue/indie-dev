@@ -1,5 +1,5 @@
 ---
-title: '视频号直播定时助手'
+title: '视频号直播定时助手（Wxtimer）'
 description: '直播定时助手的视频号版本，调用 Windows 底层 API 实现自动化点击，支持读秒验证自动下播、直播带货、循环直播与多组定时。'
 pubDate: 2025-05-21
 updatedDate: 2025-05-21

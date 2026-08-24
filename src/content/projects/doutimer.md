@@ -1,9 +1,9 @@
 ---
-title: '直播定时助手'
+title: '直播定时助手（Doutimer）'
 description: '通过调用 Windows 底层 API 实现自动化点击，支持抖音、快手双平台的直播定时开播与下播工具。'
 pubDate: 2024-07-16
 updatedDate: 2025-04-15
-tags: ['Windows', '自动化', '直播', 'Rust']
+tags: ['Windows', '自动化', '直播', '抖音']
 featured: true
 coverImage: '/projects/doutimer/cover.png'
 download: 'https://wwbqm.lanzouv.com/iRZlc3k258la'
@@ -18,7 +18,7 @@ draft: false
 或者放在桌面底部，均可以照常运行。
 
 本软件运行环境要求：win10 / win11 64 位，支持本地和云电脑，不支持多开；
-支持抖音和快手双平台，其他平台正在努力适配中，也可以和微信客服 `salesleads` 反馈，以加快适配进度。
+支持抖音和快手双平台.
 
 ## 最新版 0.4.0307（2025-04-15 更新）
 

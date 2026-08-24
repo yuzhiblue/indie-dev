@@ -1,5 +1,5 @@
 ---
-title: 'OBS定时助手'
+title: 'OBS定时助手（OBStimer）'
 description: 'OBS Studio 上的定时脚本插件，通过调用 OBS Studio API 直接控制按钮，支持定时开关推流、录制、摄像机与无限循环。'
 pubDate: 2025-07-27
 updatedDate: 2025-07-27
