@@ -4,6 +4,7 @@ description: '基于地理位置的动态天气组件，支持多种天气数据
 pubDate: 2025-05-08
 tags: ['Vue', 'API', 'Weather']
 featured: false
+coverImage: '/projects/weather-widget/screenshot.png'
 github: 'https://github.com/yuzhiblue/weather-widget'
 draft: false
 ---

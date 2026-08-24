@@ -4,6 +4,7 @@ description: '一个极简的本地笔记应用，支持 Markdown 和实时预�
 pubDate: 2024-09-01
 tags: ['React', 'Electron', 'Markdown']
 featured: true
+coverImage: '/projects/project-alpha/screenshot.png'
 github: 'https://github.com/yuzhiblue/project-alpha'
 website: 'https://project-alpha.yuzhiblue.dev'
 draft: false

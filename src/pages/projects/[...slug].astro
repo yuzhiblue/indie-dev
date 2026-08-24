@@ -14,9 +14,14 @@ const { project } = Astro.props;
 const { Content } = await render(project);
 ---
 
-<BaseLayout title={`${project.data.title} - yourname`} description={project.data.description}>
+<BaseLayout title={`${project.data.title} - yuzhiblue`} description={project.data.description}>
 	<style is:raw>
-		.article { max-width: 720px; margin: 0 auto; }
+		.article { max-width: 760px; margin: 0 auto; }
+		.cover {
+			width: 100%; max-height: 360px; object-fit: cover;
+			border-radius: 16px; border: 1px solid var(--border);
+			margin-bottom: 32px; background: var(--card-bg);
+		}
 		.article-header { margin-bottom: 40px; padding-bottom: 24px; border-bottom: 1px solid var(--border); }
 		.article-header h1 { font-size: 2.2rem; font-weight: 800; letter-spacing: -0.03em; line-height: 1.2; margin-bottom: 16px; }
 		.article-meta { display: flex; align-items: center; gap: 16px; color: var(--text-muted); font-size: 0.9rem; flex-wrap: wrap; }
@@ -41,17 +46,20 @@ const { Content } = await render(project);
 		.article-content blockquote { border-left: 3px solid var(--accent); padding-left: 20px; margin: 24px 0; color: var(--text-muted); }
 		.article-content ul, .article-content ol { margin: 16px 0; padding-left: 24px; }
 		.article-content li { margin-bottom: 8px; color: #ccc; }
-		.article-content img { max-width: 100%; border-radius: 8px; margin: 24px 0; }
+		.article-content img { display: block; max-width: 100%; height: auto; border-radius: 8px; margin: 24px auto; }
 		.article-content a { color: var(--accent); text-decoration: underline; text-underline-offset: 4px; }
 		.article-content table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 0.95rem; }
 		.article-content th, .article-content td { border: 1px solid var(--border); padding: 10px 14px; text-align: left; }
 		.article-content th { background: var(--bg-secondary); color: var(--text); }
-		.back-link { display: inline-flex; align-items: center; gap: 6px; color: var(--text-muted); font-size: 0.9rem; margin-bottom: 32px; transition: color 0.2s; }
+		.back-link { display: inline-flex; align-items: center; gap: 6px; color: var(--text-muted); font-size: 0.9rem; margin-bottom: 24px; transition: color 0.2s; }
 		.back-link:hover { color: var(--accent); }
 	</style>
 
 	<article class="article">
 		<a href="/projects" class="back-link">← Back to projects</a>
+		{project.data.coverImage && (
+			<img src={project.data.coverImage} alt={`${project.data.title} 封面`} class="cover" />
+		)}
 		<header class="article-header">
 			<h1>{project.data.title}</h1>
 			<div class="article-meta">

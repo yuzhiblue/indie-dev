@@ -23,6 +23,7 @@ const projects = defineCollection({
 		updatedDate: z.coerce.date().optional(),
 		tags: z.array(z.string()).default([]),
 		featured: z.boolean().default(false),
+		coverImage: z.string().optional(),
 		github: z.string().url().optional(),
 		website: z.string().url().optional(),
 		draft: z.boolean().default(false),

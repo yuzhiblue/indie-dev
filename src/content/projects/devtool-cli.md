@@ -4,6 +4,7 @@ description: '命令行工具，帮助独立开发者快速搭建项目脚手架
 pubDate: 2024-11-12
 tags: ['Node.js', 'CLI', 'Tooling']
 featured: true
+coverImage: '/projects/devtool-cli/screenshot.png'
 github: 'https://github.com/yuzhiblue/devtool-cli'
 draft: false
 ---
