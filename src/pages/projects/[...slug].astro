@@ -18,11 +18,12 @@ const { Content } = await render(project);
 	<style is:raw>
 		.article { max-width: 760px; margin: 0 auto; }
 		.cover {
-			width: 100%; max-height: 360px; object-fit: cover;
+			width: 100%; max-height: 320px; object-fit: cover;
 			border-radius: 16px; border: 1px solid var(--border);
-			margin-bottom: 32px; background: var(--card-bg);
+			margin: 0 0 32px; background: var(--card-bg);
+			box-shadow: 0 8px 30px -12px rgba(99, 102, 241, 0.25);
 		}
-		.article-header { margin-bottom: 40px; padding-bottom: 24px; border-bottom: 1px solid var(--border); }
+		.article-header { margin-bottom: 32px; }
 		.article-header h1 { font-size: 2.2rem; font-weight: 800; letter-spacing: -0.03em; line-height: 1.2; margin-bottom: 16px; }
 		.article-meta { display: flex; align-items: center; gap: 16px; color: var(--text-muted); font-size: 0.9rem; flex-wrap: wrap; }
 		.article-tags { display: flex; gap: 8px; margin-top: 16px; flex-wrap: wrap; }
@@ -36,30 +37,32 @@ const { Content } = await render(project);
 		.btn-primary:hover { background: var(--accent-hover); color: #fff; }
 		.btn-outline { background: transparent; color: var(--text); border-color: var(--border); }
 		.btn-outline:hover { border-color: var(--accent); color: var(--accent); }
-		.article-content { font-size: 1.05rem; line-height: 1.8; }
-		.article-content h2 { font-size: 1.5rem; font-weight: 700; margin: 48px 0 16px; letter-spacing: -0.02em; }
-		.article-content h3 { font-size: 1.2rem; font-weight: 600; margin: 32px 0 12px; }
-		.article-content p { margin-bottom: 20px; color: #ccc; }
-		.article-content code { background: var(--bg-secondary); padding: 2px 6px; border-radius: 4px; font-size: 0.9em; font-family: 'SF Mono', Monaco, monospace; }
-		.article-content pre { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 8px; padding: 20px; overflow-x: auto; margin: 24px 0; }
-		.article-content pre code { background: none; padding: 0; }
-		.article-content blockquote { border-left: 3px solid var(--accent); padding-left: 20px; margin: 24px 0; color: var(--text-muted); }
-		.article-content ul, .article-content ol { margin: 16px 0; padding-left: 24px; }
-		.article-content li { margin-bottom: 8px; color: #ccc; }
-		.article-content img { display: block; max-width: 100%; height: auto; border-radius: 8px; margin: 24px auto; }
-		.article-content a { color: var(--accent); text-decoration: underline; text-underline-offset: 4px; }
-		.article-content table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 0.95rem; }
-		.article-content th, .article-content td { border: 1px solid var(--border); padding: 10px 14px; text-align: left; }
-		.article-content th { background: var(--bg-secondary); color: var(--text); }
+		/* Markdown 内容（<Content/> 渲染，无 scoped cid）必须用 :global 完全跳出作用域 */
+		:global(.article-content) { font-size: 1.05rem; line-height: 1.8; }
+		:global(.article-content h2) { font-size: 1.5rem; font-weight: 700; margin: 48px 0 16px; letter-spacing: -0.02em; }
+		:global(.article-content h3) { font-size: 1.2rem; font-weight: 600; margin: 32px 0 12px; }
+		:global(.article-content p) { margin-bottom: 20px; color: #ccc; }
+		:global(.article-content code) { background: var(--bg-secondary); padding: 2px 6px; border-radius: 4px; font-size: 0.9em; font-family: 'SF Mono', Monaco, monospace; }
+		:global(.article-content pre) { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 8px; padding: 20px; overflow-x: auto; margin: 24px 0; }
+		:global(.article-content pre code) { background: none; padding: 0; }
+		:global(.article-content blockquote) { border-left: 3px solid var(--accent); padding-left: 20px; margin: 24px 0; color: var(--text-muted); }
+		:global(.article-content ul), :global(.article-content ol) { margin: 16px 0; padding-left: 24px; }
+		:global(.article-content li) { margin-bottom: 8px; color: #ccc; }
+		:global(.article-content img) {
+			display: block; max-width: 100%; height: auto;
+			border-radius: 12px; border: 1px solid var(--border);
+			margin: 28px auto; background: var(--card-bg);
+		}
+		:global(.article-content a) { color: var(--accent); text-decoration: underline; text-underline-offset: 4px; }
+		:global(.article-content table) { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 0.95rem; }
+		:global(.article-content th), :global(.article-content td) { border: 1px solid var(--border); padding: 10px 14px; text-align: left; }
+		:global(.article-content th) { background: var(--bg-secondary); color: var(--text); }
 		.back-link { display: inline-flex; align-items: center; gap: 6px; color: var(--text-muted); font-size: 0.9rem; margin-bottom: 24px; transition: color 0.2s; }
 		.back-link:hover { color: var(--accent); }
 	</style>
 
 	<article class="article">
 		<a href="/projects" class="back-link">← Back to projects</a>
-		{project.data.coverImage && (
-			<img src={project.data.coverImage} alt={`${project.data.title} 封面`} class="cover" />
-		)}
 		<header class="article-header">
 			<h1>{project.data.title}</h1>
 			<div class="article-meta">
@@ -88,6 +91,9 @@ const { Content } = await render(project);
 				</div>
 			)}
 		</header>
+		{project.data.coverImage && (
+			<img src={project.data.coverImage} alt={`${project.data.title} 封面`} class="cover" />
+		)}
 		<div class="article-content"><Content /></div>
 	</article>
 </BaseLayout>
