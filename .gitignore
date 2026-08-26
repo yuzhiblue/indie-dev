@@ -28,3 +28,6 @@ Thumbs.db
 
 # astro cache
 .astro/
+
+# 一次性迁移脚本的临时 Python 虚拟环境
+.venv-migrate/

@@ -1,0 +1,86 @@
+---
+title: "35dir伪静态规则：目录和文件型模式"
+description: "目录和文件型模式是35dir伪静态的主要方式。昨天转移空间结果伪静态全部失效了，于是怎么都没有修改成功。于是果断在网上参考了以下并对原代码加以修改： 这里你只需要用以上代码重新建立一个.htaccess文件覆盖根目录的该文件即可。"
+pubDate: 2015-03-25
+tags: ['技术']
+draft: false
+---
+目录和文件型模式是35dir伪静态的主要方式。昨天转移空间结果伪静态全部失效了，于是怎么都没有修改成功。于是果断在网上参考了以下并对原代码加以修改：
+
+
+
+```
+    # BEGIN
+RewriteEngine On
+# 首页、分类浏览、数据归档、最近更新、排行榜、意见反馈
+RewriteRule ^(index|webdir|weblink|article|category|update|archives|top|feedback|link|rssfeed|sitemap)(\.html)$ index.php\?mod=$1&%1
+RewriteRule ^(index|webdir|weblink|article|category|update|archives|top|feedback|link|rssfeed|sitemap)(\/?)$ index.php\?mod=$1
+# 最近更新
+RewriteRule ^update-(\d+)-(\d+)\.html$ index.php\?mod=update&days=$1&page=$2
+RewriteRule ^update\/(\d+)-(\d+)\.html$ index.php\?mod=update&days=$1&page=$2
+RewriteRule ^update\/(\d+)/(\d+)$ index.php\?mod=update&days=$1&page=$2
+
+# 数据归档
+RewriteRule ^archives-(\d+)-(\d+)\.html$ index.php\?mod=archives&date=$1&page=$2
+RewriteRule ^archives\/(\d+)-(\d+)\.html$ index.php\?mod=archives&date=$1&page=$2
+RewriteRule ^archives\/(\d+)/(\d+)$ index.php\?mod=archives&date=$1&page=$2
+
+# 站内搜索
+RewriteRule ^search-(name|url|tags|intro)-(.*)-(\d+)\.html$  index.php\?mod=search&type=$1&query=$2&page=$3
+RewriteRule ^search-(name|url|tags|intro)-(.*)\.html$  index.php\?mod=search&type=$1&query=$2
+
+RewriteRule ^search\/(name|url|tags|intro)\/(.*)-(\d+)\.html$  index.php\?mod=search&type=$1&query=$2&page=$3
+RewriteRule ^search\/(name|url|tags|intro)\/(.*)\.html$  index.php\?mod=search&type=$1&query=$2
+
+RewriteRule ^search\/(name|url|tags|intro)\/(.+)/(\d+)$ index.php\?mod=search&type=$1&query=$2&page=$3
+RewriteRule ^search\/(name|url|tags|intro)\/(.+)$ index.php\?mod=search&type=$1&query=$2
+
+# 站点详细
+RewriteRule ^siteinfo-(\d+)\.html$ index.php\?mod=siteinfo&wid=$1
+RewriteRule ^siteinfo\/(\d+)\.html$ index.php\?mod=siteinfo&wid=$1
+RewriteRule ^siteinfo\/(\d+)$ index.php\?mod=siteinfo&wid=$1
+
+# 文章详细
+RewriteRule ^artinfo-(\d+)\.html$ index.php\?mod=artinfo&aid=$1
+RewriteRule ^artinfo\/(\d+)\.html$ index.php\?mod=artinfo&aid=$1
+RewriteRule ^artinfo\/(\d+)$ index.php\?mod=artinfo&aid=$1
+
+# 链接详细
+RewriteRule ^linkinfo-(\d+)\.html$ index.php\?mod=linkinfo&lid=$1
+RewriteRule ^linkinfo\/(\d+)\.html$ index.php\?mod=linkinfo&lid=$1
+RewriteRule ^linkinfo\/(\d+)$ index.php\?mod=linkinfo&lid=$1
+
+# 单页
+RewriteRule ^diypage-(\d+)\.html$ index.php\?mod=diypage&pid=$1
+RewriteRule ^diypage\/(\d+)\.html$ index.php\?mod=diypage&pid=$1
+RewriteRule ^diypage\/(\d+)$ index.php\?mod=diypage&pid=$1
+
+# RSS
+RewriteRule ^rssfeed-(.+)-(\d+)\.html$ index.php\?mod=rssfeed&type=$1&cid=$2
+RewriteRule ^rssfeed-(.+)\.html$ index.php\?mod=rssfeed&type=$1&cid=$2
+
+RewriteRule ^rssfeed\/(.+)/$ index.php\?mod=rssfeed&type=$1
+RewriteRule ^rssfeed\/(.+)/(\d+)\.html$ index.php\?mod=rssfeed&type=$1&cid=$2
+
+RewriteRule ^rssfeed\/(.+)$ index.php\?mod=rssfeed&type=$1
+RewriteRule ^rssfeed\/(.+)/(\d+)$ index.php\?mod=rssfeed&type=$1&cid=$2
+
+# SiteMap
+RewriteRule ^sitemap-(.+)\.html$ index.php\?mod=sitemap&cid=$1
+RewriteRule ^sitemap\/(\d+)\/$ index.php\?mod=sitemap&cid=$1
+RewriteRule ^sitemap\/(\d+)$ index.php\?mod=sitemap&cid=$1
+
+# 分类目录
+RewriteRule ^webdir-(.+)-(\d+)-(\d+)\.html$ index.php\?mod=webdir&cid=$2&page=$3
+RewriteRule ^webdir\/(.+)\/(\d+)-(\d+)\.html$ index.php\?mod=webdir&cid=$2&page=$3
+RewriteRule ^webdir\/(.+)\/(\d+)/(\d+)$ index.php\?mod=webdir&cid=$2&page=$3
+
+RewriteRule ^article-(.+)-(\d+)-(\d+)\.html$ index.php\?mod=article&cid=$2&page=$3
+RewriteRule ^article\/(.+)\/(\d+)-(\d+)\.html$ index.php\?mod=article&cid=$2&page=$3
+RewriteRule ^article\/(.+)\/(\d+)/(\d+)$ index.php\?mod=article&cid=$2&page=$3
+
+# END
+```
+
+
+这里你只需要用以上代码重新建立一个.htaccess文件覆盖根目录的该文件即可。
