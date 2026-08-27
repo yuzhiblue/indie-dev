@@ -40,7 +40,8 @@ const socialLinks = [
       }
       body {
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh;
+        background: var(--bg); color: var(--text); line-height: 1.6;
+        min-height: 100vh; display: flex; flex-direction: column;
       }
       a { color: var(--accent); text-decoration: none; }
       a:hover { color: var(--accent-hover); }
@@ -51,7 +52,7 @@ const socialLinks = [
       nav { display: flex; gap: 24px; }
       nav a { color: var(--text-muted); font-size: 0.9rem; transition: color 0.2s; }
       nav a:hover { color: var(--text); }
-      main { padding: 60px 0; }
+      main { padding: 60px 0; flex: 1; }
       footer { border-top: 1px solid var(--border); padding: 40px 0 30px; text-align: center; color: var(--text-muted); font-size: 0.85rem; }
       .footer-follow { margin-bottom: 28px; }
       .footer-follow h2 { font-size: 1.2rem; font-weight: 600; margin-bottom: 8px; color: var(--text); }
