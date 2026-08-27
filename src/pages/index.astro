@@ -80,32 +80,15 @@ const socialLinks = [
       .posts-section { padding-top: 40px; border-top: 1px solid var(--border); }
     .post-list { display: flex; flex-direction: column; gap: 12px; }
     .post-item {
-      display: flex; justify-content: space-between; align-items: center; gap: 16px;
-      padding: 14px 20px; background: var(--card-bg); border: 1px solid var(--border);
-      border-radius: 10px; transition: border-color 0.2s, transform 0.2s;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 16px 20px; background: var(--card-bg); border: 1px solid var(--border);
+      border-radius: 10px; transition: border-color 0.2s;
     }
     .post-item:hover { border-color: var(--accent); transform: translateY(-2px); }
     .post-main { min-width: 0; }
     .post-item a { color: var(--text); font-weight: 500; font-size: 0.95rem; }
     .post-item a:hover { color: var(--accent); }
-    .post-date { color: var(--text-muted); font-size: 0.8rem; white-space: nowrap; flex-shrink: 0; }
-    .post-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
-    .post-tag {
-      background: color-mix(in srgb, var(--accent) 12%, transparent);
-      color: var(--accent); font-size: 0.72rem; padding: 2px 8px;
-      border-radius: 20px; border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
-    }
-    /* 首条稍大，强调最新 */
-    .post-item:first-child {
-      padding: 20px 22px; margin-bottom: 4px; position: relative;
-      border-color: color-mix(in srgb, var(--accent) 40%, var(--border));
-    }
-    .post-item:first-child::before {
-      content: ""; position: absolute; left: 0; top: 14px; bottom: 14px;
-      width: 4px; border-radius: 4px; background: var(--accent);
-    }
-    .post-item:first-child a { font-size: 1.08rem; font-weight: 600; }
-    .post-item:first-child .post-tag { font-size: 0.74rem; }
+    .post-date { color: var(--text-muted); font-size: 0.8rem; white-space: nowrap; margin-left: 16px; }
     .post-badge {
       display: inline-block; margin-left: 10px; vertical-align: middle;
       background: var(--accent); color: #fff; font-size: 0.68rem; font-weight: 600;
@@ -174,15 +157,8 @@ const socialLinks = [
     <div class="post-list">
       {featuredPosts.map((post, i) => (
         <div class="post-item">
-          <div class="post-main">
-            <a href={`/blog/${post.id}`}>{post.data.title}</a>
-            {i === 0 && <span class="post-badge">Latest</span>}
-            {post.data.tags?.length > 0 && (
-              <div class="post-tags">
-                {post.data.tags.slice(0, 3).map((tag) => (<span class="post-tag">{tag}</span>))}
-              </div>
-            )}
-          </div>
+          <a href={`/blog/${post.id}`}>{post.data.title}</a>
+          {i === 0 && <span class="post-badge">Latest</span>}
           <span class="post-date">
             {post.data.pubDate.toLocaleDateString('zh-CN', { year: 'numeric', month: 'short', day: 'numeric' })}
           </span>
