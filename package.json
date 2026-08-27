@@ -19,5 +19,8 @@
   },
   "allowScripts": {
     "esbuild": true
+  },
+  "overrides": {
+    "nanoid": "5.1.16"
   }
 }
