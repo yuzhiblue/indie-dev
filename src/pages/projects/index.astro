@@ -43,5 +43,6 @@ const lastPage = Math.max(1, Math.ceil(sortedProjects.length / PAGE_SIZE));
 		last={lastPage}
 		prevUrl={null}
 		nextUrl={lastPage > 1 ? '/projects/page/2' : null}
+		baseUrl="/projects"
 	/>
 </BaseLayout>

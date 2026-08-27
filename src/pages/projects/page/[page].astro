@@ -56,5 +56,5 @@ const { projects, current, last, prevUrl, nextUrl } = Astro.props;
 		projects.map((project) => <ProjectCard project={project} />)
 	)}
 
-	<Pagination current={current} last={last} prevUrl={prevUrl} nextUrl={nextUrl} />
+	<Pagination current={current} last={last} prevUrl={prevUrl} nextUrl={nextUrl} baseUrl="/projects" />
 </BaseLayout>

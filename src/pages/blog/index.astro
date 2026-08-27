@@ -38,5 +38,6 @@ const lastPage = Math.max(1, Math.ceil(sortedPosts.length / PAGE_SIZE));
 		last={lastPage}
 		prevUrl={null}
 		nextUrl={lastPage > 1 ? '/blog/page/2' : null}
+		baseUrl="/blog"
 	/>
 </BaseLayout>

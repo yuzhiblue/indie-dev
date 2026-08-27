@@ -4,9 +4,28 @@ interface Props {
 	last: number;
 	prevUrl?: string | null;
 	nextUrl?: string | null;
+	baseUrl?: string;
 }
 
-const { current, last, prevUrl = null, nextUrl = null } = Astro.props;
+const { current, last, prevUrl = null, nextUrl = null, baseUrl = '' } = Astro.props;
+
+// 生成带省略号的页码序列：始终含首尾，当前页 ±2
+const pages: (number | 'ellipsis')[] = [];
+const push = (p: number) => { if (!pages.includes(p)) pages.push(p); };
+const span = 2;
+const start = Math.max(1, current - span);
+const end = Math.min(last, current + span);
+for (let p = 1; p <= last; p++) {
+	if (p === 1 || p === last || (p >= start && p <= end)) push(p);
+}
+const withEllipsis: (number | 'ellipsis')[] = [];
+let prev = 0;
+for (const p of pages) {
+	if (typeof p === 'number' && prev && p - prev > 1) withEllipsis.push('ellipsis');
+	withEllipsis.push(p);
+	prev = typeof p === 'number' ? p : prev;
+}
+const pageUrl = (p: number) => (p <= 1 ? baseUrl || '/blog' : `${baseUrl}/page/${p}`);
 ---
 
 {last > 1 && (
@@ -16,7 +35,19 @@ const { current, last, prevUrl = null, nextUrl = null } = Astro.props;
 		) : (
 			<span class="page-nav disabled">&larr; 上一页</span>
 		)}
-		<span class="page-info">第 {current} / {last} 页</span>
+		<div class="page-numbers">
+			{withEllipsis.map((p) => (
+				p === 'ellipsis' ? (
+					<span class="page-ellipsis" aria-hidden="true">…</span>
+				) : (
+					<a
+						href={pageUrl(p)}
+						class={`page-number${p === current ? ' current' : ''}`}
+						aria-current={p === current ? 'page' : undefined}
+					>{p}</a>
+				)
+			))}
+		</div>
 		{nextUrl ? (
 			<a href={nextUrl} class="page-nav">下一页 &rarr;</a>
 		) : (
@@ -32,6 +63,43 @@ const { current, last, prevUrl = null, nextUrl = null } = Astro.props;
 		justify-content: center;
 		gap: 16px;
 		margin: 40px 0 8px;
+		flex-wrap: wrap;
+	}
+	.page-numbers {
+		display: flex;
+		align-items: center;
+		gap: 6px;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+	.page-number {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-width: 36px;
+		height: 36px;
+		padding: 0 8px;
+		border-radius: 8px;
+		border: 1px solid var(--border);
+		background: var(--card-bg);
+		color: var(--text);
+		text-decoration: none;
+		font-size: 0.9rem;
+		transition: border-color 0.2s, color 0.2s;
+	}
+	.page-number:hover {
+		border-color: var(--accent);
+		color: var(--accent);
+	}
+	.page-number.current {
+		border-color: var(--accent);
+		background: var(--accent);
+		color: #fff;
+		font-weight: 600;
+	}
+	.page-ellipsis {
+		color: var(--text-muted);
+		padding: 0 2px;
 	}
 	.page-nav {
 		display: inline-flex;
@@ -53,9 +121,5 @@ const { current, last, prevUrl = null, nextUrl = null } = Astro.props;
 	.page-nav.disabled {
 		opacity: 0.4;
 		pointer-events: none;
-	}
-	.page-info {
-		color: var(--text-muted);
-		font-size: 0.9rem;
 	}
 </style>
