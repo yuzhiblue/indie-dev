@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostCard from '../../components/PostCard.astro';
 import { getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
@@ -20,6 +21,25 @@ const readingTime = (() => {
   const minutes = Math.max(1, Math.round(cjk / 400 + words / 200));
   return minutes;
 })();
+
+// 全部文章按 pubDate 降序，确定上一篇/下一篇
+const allPosts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const idx = allPosts.findIndex((p) => p.id === post.id);
+const prevPost = idx >= 0 && idx < allPosts.length - 1 ? allPosts[idx + 1] : null; // 时间更早
+const nextPost = idx > 0 ? allPosts[idx - 1] : null; // 时间更晚
+
+// 相关推荐：同标签 top 3，不足补最新
+const currentTags = new Set(post.data.tags);
+const related = allPosts
+  .filter((p) => p.id !== post.id)
+  .map((p) => ({
+    post: p,
+    score: p.data.tags.filter((t) => currentTags.has(t)).length,
+  }))
+  .sort((a, b) => b.score - a.score || b.post.data.pubDate.valueOf() - a.post.data.pubDate.valueOf())
+  .slice(0, 3)
+  .map((r) => r.post);
 ---
 
 <BaseLayout title={`${post.data.title} - yuzhiblue`} description={post.data.description}>
@@ -56,6 +76,26 @@ const readingTime = (() => {
     :global(.article-content th) { background: var(--bg-secondary); color: var(--text); }
     .back-link { display: inline-flex; align-items: center; gap: 6px; color: var(--text-muted); font-size: 0.9rem; margin-bottom: 32px; transition: color 0.2s; }
     .back-link:hover { color: var(--accent); }
+    .post-nav { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); }
+    .post-nav-link {
+      display: flex; flex-direction: column; gap: 6px; padding: 16px 20px;
+      background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px;
+      text-decoration: none; transition: border-color 0.2s, transform 0.2s;
+    }
+    .post-nav-link:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .post-nav-link.next { text-align: right; }
+    .post-nav-link.empty { visibility: hidden; }
+    .post-nav-label { color: var(--text-muted); font-size: 0.8rem; }
+    .post-nav-title { color: var(--text); font-size: 0.95rem; font-weight: 500; }
+    .post-nav-link:hover .post-nav-title { color: var(--accent); }
+    .related { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); }
+    .related-title { font-size: 1.3rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 20px; color: var(--text); }
+    .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    @media (max-width: 720px) {
+      .post-nav { grid-template-columns: 1fr; }
+      .post-nav-link.next { text-align: left; }
+      .related-grid { grid-template-columns: 1fr; }
+    }
     @media (max-width: 480px) {
       .article-author { flex-direction: column; align-items: flex-start; }
       .article-header h1 { font-size: 1.8rem; }
@@ -89,5 +129,37 @@ const readingTime = (() => {
       )}
     </header>
     <div class="article-content"><Content /></div>
+
+    {(prevPost || nextPost) && (
+      <nav class="post-nav" aria-label="上一篇/下一篇">
+        {prevPost ? (
+          <a class="post-nav-link prev" href={`/blog/${prevPost.id}`}>
+            <span class="post-nav-label">← 上一篇</span>
+            <span class="post-nav-title">{prevPost.data.title}</span>
+          </a>
+        ) : (
+          <span class="post-nav-link empty" aria-hidden="true"></span>
+        )}
+        {nextPost ? (
+          <a class="post-nav-link next" href={`/blog/${nextPost.id}`}>
+            <span class="post-nav-label">下一篇 →</span>
+            <span class="post-nav-title">{nextPost.data.title}</span>
+          </a>
+        ) : (
+          <span class="post-nav-link empty" aria-hidden="true"></span>
+        )}
+      </nav>
+    )}
+
+    {related.length > 0 && (
+      <section class="related" aria-label="相关推荐">
+        <h2 class="related-title">相关推荐</h2>
+        <div class="related-grid">
+          {related.map((p) => (
+            <PostCard post={p} />
+          ))}
+        </div>
+      </section>
+    )}
   </article>
 </BaseLayout>
