@@ -55,21 +55,21 @@ const socialLinks = [
       main { padding: 60px 0; flex: 1; }
       footer { border-top: 1px solid var(--border); padding: 30px 0; text-align: center; color: var(--text-muted); font-size: 0.85rem; }
       .site-follow {
-        border-top: 1px solid var(--border); padding: 40px 0 36px; flex-shrink: 0;
+        padding: 64px 0 56px; flex-shrink: 0;
         text-align: center; background: var(--bg);
       }
-      .footer-follow-title { font-size: 1.2rem; font-weight: 600; margin-bottom: 8px; color: var(--text); }
-      .footer-follow-desc { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px; }
-      .follow-links { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+      .footer-follow-title { font-size: 1.6rem; font-weight: 700; margin-bottom: 12px; color: var(--text); letter-spacing: -0.02em; }
+      .footer-follow-desc { color: var(--text-muted); font-size: 1.05rem; margin-bottom: 32px; }
+      .follow-links { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; }
       .follow-link {
         display: inline-flex; align-items: center; justify-content: center;
         background: transparent; border: 1px solid var(--border);
-        color: var(--text); padding: 12px; border-radius: 10px;
+        color: var(--text); padding: 16px; border-radius: 12px;
         transition: border-color 0.2s, transform 0.2s, color 0.2s;
       }
       .follow-link:hover { border-color: var(--accent); transform: translateY(-2px); color: var(--accent); }
       .follow-icon { display: inline-flex; line-height: 0; }
-      .follow-icon svg { display: block; }
+      .follow-icon svg { display: block; width: 24px; height: 24px; }
       @media (max-width: 640px) { nav { gap: 16px; } }
     </style>
   </head>
