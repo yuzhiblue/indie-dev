@@ -157,8 +157,7 @@ const socialLinks = [
     <div class="post-list">
       {featuredPosts.map((post, i) => (
         <div class="post-item">
-          <a href={`/blog/${post.id}`}>{post.data.title}</a>
-          {i === 0 && <span class="post-badge">Latest</span>}
+          <a href={`/blog/${post.id}`}>{post.data.title}{i === 0 && <span class="post-badge">Latest</span>}</a>
           <span class="post-date">
             {post.data.pubDate.toLocaleDateString('zh-CN', { year: 'numeric', month: 'short', day: 'numeric' })}
           </span>
