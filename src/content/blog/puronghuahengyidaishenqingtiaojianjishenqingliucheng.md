@@ -55,31 +55,31 @@ B类C类用户如果没有接电话，会导致拒贷
 
 （1）点击申请恒易贷
 
-![](https://7tec.cn/images/blog/166/image_20230622213803835064.png)
+![](/images/blog/166/image_20230622213803835064.png)
 
 （2）输入手机号，验证码登录恒易贷
 
-![](https://7tec.cn/images/blog/166/image1_20230622213844593475.png)
+![](/images/blog/166/image1_20230622213844593475.png)
 
 （3）填写借款金额，申请期数
 
-![](https://7tec.cn/images/blog/166/image2_20230622213912931840.png)
+![](/images/blog/166/image2_20230622213912931840.png)
 
 （4）身份证认证
 
-![](https://7tec.cn/images/blog/166/image3_20230622213947504278.png)
+![](/images/blog/166/image3_20230622213947504278.png)
 
 （5）填写基本信息
 
-![](https://7tec.cn/images/blog/166/image4_20230622214020687593.png)
+![](/images/blog/166/image4_20230622214020687593.png)
 
 （6）填写联系人信息
 
-![](https://7tec.cn/images/blog/166/image5_20230622214052906584.png)
+![](/images/blog/166/image5_20230622214052906584.png)
 
 （7）等待审核结果，下载APP
 
-![](https://7tec.cn/images/blog/166/image6_20230622214121952985.png)
+![](/images/blog/166/image6_20230622214121952985.png)
 
 **5、额度有效期**
 
@@ -89,21 +89,21 @@ B类C类用户如果没有接电话，会导致拒贷
 
 （1）用户登入APP，点击【还款】，进入还款页面
 
-![](https://7tec.cn/images/blog/166/image7_20230622214156801417.png)
+![](/images/blog/166/image7_20230622214156801417.png)
 
 （2）用户无逾期期供时，页面只显示当期期供，默认勾选，不可取消 用户有逾期期供时，页面显示当期期供和逾期期供，默认勾选最早一期逾期期供，不可取消；仅逾期期供还清后才可以继续还当期正常还款的期供 暂不支持同时勾选多期还款
 
-![](https://7tec.cn/images/blog/166/image8_20230622214234004429.png)
+![](/images/blog/166/image8_20230622214234004429.png)
 
 （3）期供费用明细
 
-![](https://7tec.cn/images/blog/166/image9_20230622214311457486.png)
+![](/images/blog/166/image9_20230622214311457486.png)
 
 （4）查看还款计划，借款详情，点击确认还款
 
-![](https://7tec.cn/images/blog/166/image10_20230622214341470214.png)
+![](/images/blog/166/image10_20230622214341470214.png)
 
-![](https://7tec.cn/images/blog/166/image11_20230622214429081436.png)
+![](/images/blog/166/image11_20230622214429081436.png)
 
 **六、常见问题**
 

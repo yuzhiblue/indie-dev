@@ -62,16 +62,16 @@ draft: false
 
 我的贷款⻚⾯或信秒贷⾸⻚，查询该笔协议后点击“还款”。
 
-![](https://7tec.cn/images/blog/180/image \(35\)_20231024104008793948.png) ![](https://7tec.cn/images/blog/180/image \(36\)_20231024104023615020.png)
+![](/images/blog/180/image \(35\)_20231024104008793948.png) ![](/images/blog/180/image \(36\)_20231024104023615020.png)
 
 在还款⻚⾯，客户可选择按协议汇总还款和指定借据还款，默认展示按协议汇总还款⻚⾯。客户输⼊还款⾦额，核对还款信息，输⼊短信验证码提交后完成还款操作。
 
 ① 协议汇总还款
 
-![](https://7tec.cn/images/blog/180/image \(37\)_20231024104108841794.png) ![](https://7tec.cn/images/blog/180/image \(38\)_20231024104124720952.png) ![](https://7tec.cn/images/blog/180/image \(39\)_20231024104139018758.png)
+![](/images/blog/180/image \(37\)_20231024104108841794.png) ![](/images/blog/180/image \(38\)_20231024104124720952.png) ![](/images/blog/180/image \(39\)_20231024104139018758.png)
 
 ② 指定借据还款
 
-![](https://7tec.cn/images/blog/180/image \(40\)_20231024104207861389.png) ![](https://7tec.cn/images/blog/180/image \(41\)_20231024104225455686.png) ![](https://7tec.cn/images/blog/180/image \(42\)_20231024104240605735.png)
+![](/images/blog/180/image \(40\)_20231024104207861389.png) ![](/images/blog/180/image \(41\)_20231024104225455686.png) ![](/images/blog/180/image \(42\)_20231024104240605735.png)
 
 > **本站专业提供中信银行信秒贷的申请服务，如您有资金需求请联系微信salesleads**

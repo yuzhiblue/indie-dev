@@ -1,73 +1,42 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
+import PostCard from '../../components/PostCard.astro';
+import Pagination from '../../components/Pagination.astro';
+
+const PAGE_SIZE = 12;
 
 const posts = await getCollection('blog', ({ data }) => !data.draft);
 const sortedPosts = posts.sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
-
-const readingTime = (body: string) => {
-  const cjk = (body.match(/[一-龥]/g) || []).length;
-  const words = (body.replace(/[一-龥]/g, ' ').match(/\b\w+\b/g) || []).length;
-  return Math.max(1, Math.round(cjk / 400 + words / 200));
-};
+const pagePosts = sortedPosts.slice(0, PAGE_SIZE);
+const lastPage = Math.max(1, Math.ceil(sortedPosts.length / PAGE_SIZE));
 ---
 
 <BaseLayout title="Blog - yuzhiblue" description="开发笔记与技术思考">
-  <style>
-    .page-header { padding: 40px 0; border-bottom: 1px solid var(--border); margin-bottom: 40px; }
-    .page-header h1 { font-size: 2rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 8px; }
-    .page-header p { color: var(--text-muted); }
-    .post-card {
-      display: block; padding: 24px; background: var(--card-bg);
-      border: 1px solid var(--border); border-radius: 12px; margin-bottom: 16px;
-      text-decoration: none;
-      transition: border-color 0.2s, transform 0.2s;
-    }
-    .post-card:hover { border-color: var(--accent); transform: translateY(-2px); }
-    .post-card h2 { font-size: 1.15rem; font-weight: 600; margin-bottom: 8px; }
-    .post-card h2 a { color: var(--text); }
-    .post-card h2 a:hover { color: var(--accent); }
-    .post-card p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 12px; }
-    .post-meta { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 12px; font-size: 0.8rem; color: var(--text-muted); }
-    .post-meta .dot { opacity: 0.5; }
-    .post-tags { display: flex; flex-wrap: wrap; gap: 6px; }
-    .post-tag { background: var(--bg-secondary); padding: 2px 8px; border-radius: 12px; border: 1px solid var(--border); }
-    .empty { color: var(--text-muted); padding: 40px 0; text-align: center; }
-    .post-card::after {
-      content: '→'; color: var(--text-muted); font-size: 1.1rem;
-      position: absolute; top: 24px; right: 24px; transition: color 0.2s, transform 0.2s;
-    }
-    .post-card { position: relative; padding-right: 56px; }
-    .post-card:hover::after { color: var(--accent); transform: translateX(4px); }
-  </style>
+	<style>
+		.page-header { padding: 40px 0; border-bottom: 1px solid var(--border); margin-bottom: 40px; }
+		.page-header h1 { font-size: 2rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 8px; }
+		.page-header p { color: var(--text-muted); }
+		.empty { color: var(--text-muted); padding: 40px 0; text-align: center; }
+	</style>
 
-  <div class="page-header">
-    <h1>Blog</h1>
-    <p>开发笔记、技术分享和产品思考</p>
-  </div>
+	<div class="page-header">
+		<h1>Blog</h1>
+		<p>开发笔记、技术分享和产品思考</p>
+	</div>
 
-  {sortedPosts.length === 0 ? (
-    <p class="empty">暂无文章，敬请期待。</p>
-  ) : (
-    sortedPosts.map((post) => (
-      <a href={`/blog/${post.id}`} class="post-card">
-        <h2>{post.data.title}</h2>
-        <p>{post.data.description}</p>
-        <div class="post-meta">
-          <span>
-            {post.data.pubDate.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}
-          </span>
-          <span class="dot">·</span>
-          <span>{readingTime(post.body)} 分钟阅读</span>
-          {post.data.tags.length > 0 && (
-            <div class="post-tags">
-              {post.data.tags.map((tag) => (<span class="post-tag">{tag}</span>))}
-            </div>
-          )}
-        </div>
-      </a>
-    ))
-  )}
+	{pagePosts.length === 0 ? (
+		<p class="empty">暂无文章，敬请期待。</p>
+	) : (
+		pagePosts.map((post) => <PostCard post={post} />)
+	)}
+
+	<Pagination
+		current={1}
+		last={lastPage}
+		prevUrl={null}
+		nextUrl={lastPage > 1 ? '/blog/page/2' : null}
+	/>
 </BaseLayout>

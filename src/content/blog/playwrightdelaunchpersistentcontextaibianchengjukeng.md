@@ -13,7 +13,7 @@ draft: false
 
 尤其是在AI编程的大环境下。如果你对于playwright不熟悉，贸然用playright很容易掉进这个大坑里面。
 
-![](https://7tec.cn/images/blog/144/bdd9bfde62594086b25a04605a40c478_20260327085734679893.png)
+![](/images/blog/144/bdd9bfde62594086b25a04605a40c478_20260327085734679893.png)
 
 与其说是playwright挖的大坑，倒不如说是AI编程的大坑。
 

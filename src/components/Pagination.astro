@@ -1,0 +1,61 @@
+---
+interface Props {
+	current: number;
+	last: number;
+	prevUrl?: string | null;
+	nextUrl?: string | null;
+}
+
+const { current, last, prevUrl = null, nextUrl = null } = Astro.props;
+---
+
+{last > 1 && (
+	<nav class="pagination" aria-label="分页导航">
+		{prevUrl ? (
+			<a href={prevUrl} class="page-nav">&larr; 上一页</a>
+		) : (
+			<span class="page-nav disabled">&larr; 上一页</span>
+		)}
+		<span class="page-info">第 {current} / {last} 页</span>
+		{nextUrl ? (
+			<a href={nextUrl} class="page-nav">下一页 &rarr;</a>
+		) : (
+			<span class="page-nav disabled">下一页 &rarr;</span>
+		)}
+	</nav>
+)}
+
+<style>
+	.pagination {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 16px;
+		margin: 40px 0 8px;
+	}
+	.page-nav {
+		display: inline-flex;
+		align-items: center;
+		gap: 6px;
+		padding: 8px 16px;
+		border-radius: 10px;
+		border: 1px solid var(--border);
+		background: var(--card-bg);
+		color: var(--text);
+		text-decoration: none;
+		font-size: 0.9rem;
+		transition: border-color 0.2s, color 0.2s;
+	}
+	.page-nav:hover {
+		border-color: var(--accent);
+		color: var(--accent);
+	}
+	.page-nav.disabled {
+		opacity: 0.4;
+		pointer-events: none;
+	}
+	.page-info {
+		color: var(--text-muted);
+		font-size: 0.9rem;
+	}
+</style>

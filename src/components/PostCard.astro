@@ -1,0 +1,102 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+	post: CollectionEntry<'blog'>;
+}
+
+const { post } = Astro.props;
+
+const readingTime = (body: string) => {
+	const cjk = (body.match(/[一-龥]/g) || []).length;
+	const words = (body.replace(/[一-龥]/g, ' ').match(/\b\w+\b/g) || []).length;
+	return Math.max(1, Math.round(cjk / 400 + words / 200));
+};
+---
+
+<a href={`/blog/${post.id}`} class="post-card">
+	<h2>{post.data.title}</h2>
+	<p>{post.data.description}</p>
+	<div class="post-meta">
+		<span>
+			{post.data.pubDate.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}
+		</span>
+		<span class="dot">·</span>
+		<span>{readingTime(post.body ?? '')} 分钟阅读</span>
+		{post.data.tags.length > 0 && (
+			<div class="post-tags">
+				{post.data.tags.map((tag) => (<span class="post-tag">{tag}</span>))}
+			</div>
+		)}
+	</div>
+</a>
+
+<style>
+	.post-card {
+		display: block;
+		padding: 24px;
+		background: var(--card-bg);
+		border: 1px solid var(--border);
+		border-radius: 12px;
+		margin-bottom: 16px;
+		text-decoration: none;
+		transition: border-color 0.2s, transform 0.2s;
+		position: relative;
+		padding-right: 56px;
+	}
+	.post-card:hover {
+		border-color: var(--accent);
+		transform: translateY(-2px);
+	}
+	.post-card h2 {
+		font-size: 1.15rem;
+		font-weight: 600;
+		margin-bottom: 8px;
+	}
+	.post-card h2 a {
+		color: var(--text);
+	}
+	.post-card h2 a:hover {
+		color: var(--accent);
+	}
+	.post-card p {
+		color: var(--text-muted);
+		font-size: 0.9rem;
+		margin-bottom: 12px;
+	}
+	.post-meta {
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: 8px 12px;
+		font-size: 0.8rem;
+		color: var(--text-muted);
+	}
+	.post-meta .dot {
+		opacity: 0.5;
+	}
+	.post-tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 6px;
+	}
+	.post-tag {
+		background: var(--bg-secondary);
+		padding: 2px 8px;
+		border-radius: 12px;
+		border: 1px solid var(--border);
+	}
+	.post-card::after {
+		content: '→';
+		color: var(--text-muted);
+		font-size: 1.1rem;
+		position: absolute;
+		top: 24px;
+		right: 24px;
+		transition: color 0.2s, transform 0.2s;
+	}
+	.post-card:hover::after {
+		color: var(--accent);
+		transform: translateX(4px);
+	}
+</style>

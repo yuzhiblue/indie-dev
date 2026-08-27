@@ -43,4 +43,4 @@ draft: false
 
 请注意，本软件为收费软件。如需获取试用版本，请微信关注公众号：7TEC，回复数字8888即可。
 
-![](https://7tec.cn/images/blog/641/gongzhonghao.jpg)
+![](/images/blog/641/gongzhonghao.jpg)

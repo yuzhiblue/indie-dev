@@ -33,4 +33,4 @@ draft: false
 
 直接加小编微信salesleads即可，押金有108元和68元两种，连续六个月，每个月刷满1万即可全额返还。费率是银联标准费率0.6，扫码是0.38，流量费48元一年。机器稳定，不涨价不乱扣费，请放心使用。后续有任何问题都可以免费更换新机。
 
-![](https://7tec.cn/images/blog/151/_cgi-bin_mmwebwx-bin_webwxgetmsgimg__&MsgID=4053998193302356612&skey=@crypt_d873b51a_0130bb10398738c9690a9f13da729a7c&mmweb_appid=wx_webfilehelper_20230529211514276202.jpg)
+![](/images/blog/151/_cgi-bin_mmwebwx-bin_webwxgetmsgimg__&MsgID=4053998193302356612&skey=@crypt_d873b51a_0130bb10398738c9690a9f13da729a7c&mmweb_appid=wx_webfilehelper_20230529211514276202.jpg)

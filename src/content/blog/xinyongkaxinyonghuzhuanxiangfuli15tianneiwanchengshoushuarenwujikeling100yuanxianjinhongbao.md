@@ -25,27 +25,27 @@ draft: false
 
 **1.中信银行**
 
-![](https://7tec.cn/images/blog/235/zhongxinmstk15ss370_20231229153717140684.jpg)
+![](/images/blog/235/zhongxinmstk15ss370_20231229153717140684.jpg)
 
 **2.广发银行**
 
-![](https://7tec.cn/images/blog/235/guangfamstk30jh265_20231229153731890340.jpg)
+![](/images/blog/235/guangfamstk30jh265_20231229153731890340.jpg)
 
 **3.民生银行** （武汉无法申请）
 
-![](https://7tec.cn/images/blog/235/minshengxxt30ss310_20231229153742532348.jpg)
+![](/images/blog/235/minshengxxt30ss310_20231229153742532348.jpg)
 
 **4.华夏银行**
 
-![](https://7tec.cn/images/blog/235/huaxiazyhhr15ss300_20231229153753308771.jpg)
+![](/images/blog/235/huaxiazyhhr15ss300_20231229153753308771.jpg)
 
 **5.光大银行**
 
-![](https://7tec.cn/images/blog/235/guangdahttk30ss270_20231229153803828164.jpg)
+![](/images/blog/235/guangdahttk30ss270_20231229153803828164.jpg)
 
 **6.浦发银行**
 
-![](https://7tec.cn/images/blog/235/pufazyhhr30ss280_20231229153813833392.jpg)
+![](/images/blog/235/pufazyhhr30ss280_20231229153813833392.jpg)
 
 **如何提高通过率？**
 

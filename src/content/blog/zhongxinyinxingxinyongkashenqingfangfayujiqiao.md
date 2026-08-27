@@ -29,7 +29,7 @@ draft: false
 
 中信信用卡本来下卡率还是不错的，有些白金卡还是免年费的。例如:i白金卡，还有大众点评白金卡，都首年面免费，次年刷卡次数，或者积分抵扣年费的政策。如果有兴趣大家可以尝试去申请下吧！
 
-![](https://7tec.cn/images/blog/141/_cgi-bin_mmwebwx-bin_webwxgetmsgimg__&MsgID=6149147927491105972&skey=@crypt_d873b51a_5c17c895a36255a01045742fca77b684&mmweb_appid=wx_webfilehelper_20230510230123669298.jpg)
+![](/images/blog/141/_cgi-bin_mmwebwx-bin_webwxgetmsgimg__&MsgID=6149147927491105972&skey=@crypt_d873b51a_5c17c895a36255a01045742fca77b684&mmweb_appid=wx_webfilehelper_20230510230123669298.jpg)
 
 我以中信银联标准IC信用卡金卡为例，为大家做一个申请表填写的说明，希望能够帮助大家顺利拿到卡片。
 

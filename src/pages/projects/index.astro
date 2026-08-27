@@ -1,6 +1,10 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
+import ProjectCard from '../../components/ProjectCard.astro';
+import Pagination from '../../components/Pagination.astro';
+
+const PAGE_SIZE = 12;
 
 const projects = await getCollection('projects', ({ data }) => !data.draft);
 const sortedProjects = projects.sort((a, b) => {
@@ -11,6 +15,8 @@ const sortedProjects = projects.sort((a, b) => {
 	const bDate = b.data.pubDate?.valueOf() ?? 0;
 	return bDate - aDate;
 });
+const pageProjects = sortedProjects.slice(0, PAGE_SIZE);
+const lastPage = Math.max(1, Math.ceil(sortedProjects.length / PAGE_SIZE));
 ---
 
 <BaseLayout title="Projects - yuzhiblue" description="独立开发者的项目作品集">
@@ -18,32 +24,7 @@ const sortedProjects = projects.sort((a, b) => {
 		.page-header { padding: 40px 0; border-bottom: 1px solid var(--border); margin-bottom: 40px; }
 		.page-header h1 { font-size: 2rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 8px; }
 		.page-header p { color: var(--text-muted); }
-		.project-card {
-			display: flex; gap: 20px; align-items: stretch; padding: 20px;
-			background: var(--card-bg); border: 1px solid var(--border);
-			border-radius: 12px; margin-bottom: 16px; text-decoration: none;
-			transition: border-color 0.2s, transform 0.2s;
-		}
-		.project-card:hover { border-color: var(--accent); transform: translateY(-2px); }
-		.project-card-body { flex: 1; min-width: 0; display: flex; flex-direction: column; }
-		.project-card h2 { font-size: 1.15rem; font-weight: 600; margin-bottom: 8px; color: var(--text); display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-		.project-card:hover h2 { color: var(--accent); }
-		.project-card p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 12px; }
-		.project-thumb {
-			width: 200px; height: 130px; object-fit: cover; flex-shrink: 0;
-			border-radius: 10px; border: 1px solid var(--border); background: var(--bg-secondary);
-		}
-		.project-meta { display: flex; align-items: center; gap: 12px; font-size: 0.8rem; color: var(--text-muted); margin-top: auto; }
-		.project-tags { display: flex; gap: 6px; margin-left: auto; flex-wrap: wrap; justify-content: flex-end; }
-		.project-tag { background: var(--bg-secondary); padding: 2px 8px; border-radius: 12px; border: 1px solid var(--border); }
-		.featured-badge {
-			display: inline-block; background: var(--accent); color: #fff;
-			font-size: 0.7rem; padding: 2px 8px; border-radius: 20px; font-weight: 600;
-		}
-		@media (max-width: 640px) {
-			.project-card { flex-direction: column; }
-			.project-thumb { width: 100%; height: 180px; }
-		}
+		.empty { color: var(--text-muted); padding: 40px 0; text-align: center; }
 	</style>
 
 	<div class="page-header">
@@ -51,34 +32,16 @@ const sortedProjects = projects.sort((a, b) => {
 		<p>我独立开发与维护的产品、工具与开源项目</p>
 	</div>
 
-	{sortedProjects.length === 0 ? (
-		<p style={{ color: 'var(--text-muted)' }}>暂无项目，敬请期待。</p>
+	{pageProjects.length === 0 ? (
+		<p class="empty">暂无项目，敬请期待。</p>
 	) : (
-		sortedProjects.map((project) => (
-			<a href={`/projects/${project.id}`} class="project-card">
-				{project.data.coverImage && (
-					<img src={project.data.coverImage} alt={`${project.data.title} 封面`} class="project-thumb" loading="lazy" />
-				)}
-				<div class="project-card-body">
-					<h2>
-						{project.data.title}
-						{project.data.featured && <span class="featured-badge">Featured</span>}
-					</h2>
-					<p>{project.data.description}</p>
-					<div class="project-meta">
-						{project.data.pubDate && (
-							<span>
-								{project.data.pubDate.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}
-							</span>
-						)}
-						{project.data.tags.length > 0 && (
-							<div class="project-tags">
-								{project.data.tags.map((tag) => (<span class="project-tag">{tag}</span>))}
-							</div>
-						)}
-					</div>
-				</div>
-			</a>
-		))
+		pageProjects.map((project) => <ProjectCard project={project} />)
 	)}
+
+	<Pagination
+		current={1}
+		last={lastPage}
+		prevUrl={null}
+		nextUrl={lastPage > 1 ? '/projects/page/2' : null}
+	/>
 </BaseLayout>

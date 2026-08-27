@@ -61,4 +61,4 @@ draft: false
 
 2023年已经过半，你有没有做好翻身的具体打算呢？如果还没有，那么请加小编微信salesleads，一起交流交流，说不定小编能帮到你。
 
-![](https://7tec.cn/images/blog/154/_cgi-bin_mmwebwx-bin_webwxgetmsgimg__&MsgID=4053998193302356612&skey=@crypt_d873b51a_0130bb10398738c9690a9f13da729a7c&mmweb_appid=wx_webfilehelper_20230529211514276202.jpg)
+![](/images/blog/154/_cgi-bin_mmwebwx-bin_webwxgetmsgimg__&MsgID=4053998193302356612&skey=@crypt_d873b51a_0130bb10398738c9690a9f13da729a7c&mmweb_appid=wx_webfilehelper_20230529211514276202.jpg)

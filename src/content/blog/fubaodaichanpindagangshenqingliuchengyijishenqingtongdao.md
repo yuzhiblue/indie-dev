@@ -41,34 +41,34 @@ draft: false
 
 1、扫码进入注册页面，注册后下载富宝袋APP
 
-![](https://7tec.cn/images/blog/164/Nr7CY2jGjpkq-1DtM0P71w_20230620193832560396.png)
+![](/images/blog/164/Nr7CY2jGjpkq-1DtM0P71w_20230620193832560396.png)
 
-![](https://7tec.cn/images/blog/164/image_20230620193923920552.png)
+![](/images/blog/164/image_20230620193923920552.png)
 
 2、实名完成，会经过预审环节：
 
   * 若预审环节审批通过，客户不继续提交申请资料到终审，则有效期24小时。超过有效期，下次进件需要重新预审。
   * 若预审环节审批拒绝，则提示：您预审不通过，请90天（倒计时）后再来（这个与现在申请富宝袋被拒绝后90天再来申请的一致）。- 
 
-![](https://7tec.cn/images/blog/164/image1_20230620194106468077.png)
+![](/images/blog/164/image1_20230620194106468077.png)
 
 3、上传银行卡
 
-![](https://7tec.cn/images/blog/164/image2_20230620194145450421.png)
+![](/images/blog/164/image2_20230620194145450421.png)
 
 4、填写资料，等待审核
 
-![](https://7tec.cn/images/blog/164/image3_20230620194229171217.png)
+![](/images/blog/164/image3_20230620194229171217.png)
 
 **提款流程**
 
 富宝袋首页进入
 
-![](https://7tec.cn/images/blog/164/image4_20230620194309366194.png)
+![](/images/blog/164/image4_20230620194309366194.png)
 
 页面显示
 
-![](https://7tec.cn/images/blog/164/image5_20230620194353801422.png)
+![](/images/blog/164/image5_20230620194353801422.png)
 
 还款流程
 
@@ -82,13 +82,13 @@ draft: false
 
 分期还款
 
-![](https://7tec.cn/images/blog/164/image6_20230620194548703680.png)
+![](/images/blog/164/image6_20230620194548703680.png)
 
 提现还款
 
 “我的”—“我的借款”—查询借款明细，如需提前还款，点击“立即还款”，跳转提示银行卡进行还款，还款成功后自动显示状态。
 
-![](https://7tec.cn/images/blog/164/imag7_20230620194641402807.png)
+![](/images/blog/164/imag7_20230620194641402807.png)
 
 部分还款
 
@@ -96,13 +96,13 @@ draft: false
 
 还款顺序：逾期>代扣失败费>服务费>利息>本金
 
-![](https://7tec.cn/images/blog/164/image7_20230620194714272418.png)
+![](/images/blog/164/image7_20230620194714272418.png)
 
 多账单还款
 
-![](https://7tec.cn/images/blog/164/image8_20230620194754758621.png)
+![](/images/blog/164/image8_20230620194754758621.png)
 
-提前结清 ![](https://7tec.cn/images/blog/164/image9_20230620194837356646.png)
+提前结清 ![](/images/blog/164/image9_20230620194837356646.png)
 
 变更还款日
 
@@ -110,7 +110,7 @@ draft: false
   2. 修改成功后，新产生的借款按照新的还款日还款，已产生且待还款保持原还款日
   3. 变更还款日针对白名单用户（还款良好）
 
-![](https://7tec.cn/images/blog/164/image10_20230620194918328800.png)
+![](/images/blog/164/image10_20230620194918328800.png)
 
 **五、常见问题**
 

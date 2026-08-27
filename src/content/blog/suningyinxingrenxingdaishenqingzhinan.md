@@ -47,17 +47,17 @@ draft: false
 
 扫码进入申请页面，点击立即开通，完成人脸识别认证、银行卡认证、身份认证、个人信息认证及征信授权认证后，等待审核。
 
-![](https://7tec.cn/images/blog/160/sq_20230612232421001033.png)
+![](/images/blog/160/sq_20230612232421001033.png)
 
 **提款流程**
 
 点击我要借钱，选择金额、借款期限、银行卡等信息进行借款
 
-![](https://7tec.cn/images/blog/160/tk_20230612232438663607.png)
+![](/images/blog/160/tk_20230612232438663607.png)
 
 **还款流程**
 
-![](https://7tec.cn/images/blog/160/hk_20230612232453008111.png)
+![](/images/blog/160/hk_20230612232453008111.png)
 
 > ### 本站专属申请渠道:[点击此处](http://mopai.mobayfin.com/index.php/Wap/Loan/detail/type/loan/id/1/user_code/x9vj6rm1/recommender_id/5339.html "点击此处")
 

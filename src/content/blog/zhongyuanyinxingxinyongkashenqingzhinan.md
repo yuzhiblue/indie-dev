@@ -39,7 +39,7 @@ draft: false
 
 请注意：青春无界卡只能用本人实名认证手机号申请，他人手机号申请无效。如没有实名认证手机号，可以申请中原银行其他卡种。
 
-![](https://7tec.cn/images/blog/140/_cgi-bin_mmwebwx-bin_webwxgetmsgimg__&MsgID=832619381932398224&skey=@crypt_d873b51a_5c17c895a36255a01045742fca77b684&mmweb_appid=wx_webfilehelper_20230510223428545087.jpg)
+![](/images/blog/140/_cgi-bin_mmwebwx-bin_webwxgetmsgimg__&MsgID=832619381932398224&skey=@crypt_d873b51a_5c17c895a36255a01045742fca77b684&mmweb_appid=wx_webfilehelper_20230510223428545087.jpg)
 
 **申请中原信用卡资料填写方法如下**
 

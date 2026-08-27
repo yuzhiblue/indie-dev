@@ -143,7 +143,10 @@ def convert_body(art_id: int, body_html: str) -> str:
 
     h = html2text.HTML2Text()
     h.body_width = 0
-    h.baseurl = BASE
+    # 注意：不要把 baseurl 设为 BASE。下载图片后 <img src> 已被改写为本地相对路径
+    # （如 /images/blog/161/x.jpg），若设置 baseurl，html2text 会把相对路径重新
+    # 绝对化为 https://7tec.cn/images/blog/161/x.jpg，导致文章图片仍指向旧站。
+    h.baseurl = ""
     h.ignore_images = False
     h.ignore_links = False
     md = h.handle(str(soup))

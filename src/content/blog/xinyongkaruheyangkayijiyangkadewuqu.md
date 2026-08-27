@@ -13,7 +13,7 @@ draft: false
 
 这个是最基础的，下面我所讲到的内容也是全部建立在这三个字的基础上。只有你刷卡量达到了，才有提额的机会。如果你信用卡平时都不怎么使用，突然就想提额，那几乎是不可能的，没有给你降额就不错了。
 
-![](https://7tec.cn/images/blog/142/33dfac3f0e2ad4d4032d397ea7d0d2ea_20230521152853894709.jpeg)
+![](/images/blog/142/33dfac3f0e2ad4d4032d397ea7d0d2ea_20230521152853894709.jpeg)
 
 有人会说，真的只是多刷卡这么简单吗？我平时也在刷呀，为什么没有涨额度呢？
 
@@ -59,7 +59,7 @@ draft: false
 
 不跳码不涨价，承诺永久银联标准费率，落地真实商户，具备GPS定位功能，可以模拟真实消费。
 
-![](https://7tec.cn/images/blog/142/_cgi-bin_mmwebwx-bin_webwxgetmsgimg__&MsgID=3265034691636780255&skey=@crypt_d873b51a_664c7b17c16dd66fe509aee60d266971&mmweb_appid=wx_webfilehelper_20230521153322745158.jpeg)
+![](/images/blog/142/_cgi-bin_mmwebwx-bin_webwxgetmsgimg__&MsgID=3265034691636780255&skey=@crypt_d873b51a_664c7b17c16dd66fe509aee60d266971&mmweb_appid=wx_webfilehelper_20230521153322745158.jpeg)
 
 有很多小伙伴可能会问**这个机器和其他pos机有什么区别？**
 
@@ -67,7 +67,7 @@ draft: false
   * 五单一致，保证真实商户不跳码
   * 可以根据消费时间金额，智能匹配商户，从而模拟真实消费。
 
-![](https://7tec.cn/images/blog/142/_cgi-bin_mmwebwx-bin_webwxgetmsgimg__&MsgID=3511905807772885153&skey=@crypt_d873b51a_93196a16ca9678ecc681b59b123b3273&mmweb_appid=wx_webfilehelper_20230521153432742591.jpeg)
+![](/images/blog/142/_cgi-bin_mmwebwx-bin_webwxgetmsgimg__&MsgID=3511905807772885153&skey=@crypt_d873b51a_93196a16ca9678ecc681b59b123b3273&mmweb_appid=wx_webfilehelper_20230521153432742591.jpeg)
 
 **是什么品牌的？**
 
