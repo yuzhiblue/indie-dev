@@ -90,7 +90,7 @@ const related = allPosts
     .post-nav-link:hover .post-nav-title { color: var(--accent); }
     .related { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); }
     .related-title { font-size: 1.3rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 20px; color: var(--text); }
-    .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; align-items: stretch; }
     @media (max-width: 720px) {
       .post-nav { grid-template-columns: 1fr; }
       .post-nav-link.next { text-align: left; }
@@ -156,7 +156,7 @@ const related = allPosts
         <h2 class="related-title">相关推荐</h2>
         <div class="related-grid">
           {related.map((p) => (
-            <PostCard post={p} />
+            <PostCard post={p} compact />
           ))}
         </div>
       </section>

@@ -3,9 +3,10 @@ import type { CollectionEntry } from 'astro:content';
 
 interface Props {
 	post: CollectionEntry<'blog'>;
+	compact?: boolean;
 }
 
-const { post } = Astro.props;
+const { post, compact = false } = Astro.props;
 
 const readingTime = (body: string) => {
 	const cjk = (body.match(/[一-龥]/g) || []).length;
@@ -14,9 +15,9 @@ const readingTime = (body: string) => {
 };
 ---
 
-<a href={`/blog/${post.id}`} class="post-card">
+<a href={`/blog/${post.id}`} class:list={['post-card', { compact }]}>
 	<h2>{post.data.title}</h2>
-	<p>{post.data.description}</p>
+	{!compact && <p>{post.data.description}</p>}
 	<div class="post-meta">
 		<span>
 			{post.data.pubDate.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}
@@ -52,12 +53,7 @@ const readingTime = (body: string) => {
 		font-size: 1.15rem;
 		font-weight: 600;
 		margin-bottom: 8px;
-	}
-	.post-card h2 a {
 		color: var(--text);
-	}
-	.post-card h2 a:hover {
-		color: var(--accent);
 	}
 	.post-card p {
 		color: var(--text-muted);
@@ -98,5 +94,33 @@ const readingTime = (body: string) => {
 	.post-card:hover::after {
 		color: var(--accent);
 		transform: translateX(4px);
+	}
+
+	/* 紧凑模式：用于相关推荐等网格场景 */
+	.post-card.compact {
+		padding: 16px 18px;
+		padding-right: 18px;
+		margin-bottom: 0;
+		height: 100%;
+	}
+	.post-card.compact h2 {
+		font-size: 0.95rem;
+		line-height: 1.4;
+		margin-bottom: 12px;
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+		transition: color 0.2s;
+	}
+	.post-card.compact:hover h2 {
+		color: var(--accent);
+	}
+	.post-card.compact .post-meta {
+		font-size: 0.75rem;
+		gap: 6px 8px;
+	}
+	.post-card.compact::after {
+		content: none;
 	}
 </style>
