@@ -4,6 +4,7 @@ description: "目录和文件型模式是35dir伪静态的主要方式。昨天�
 pubDate: 2015-03-25
 tags: ['技术']
 draft: false
+slug: 35dir-pseudo-static-rules
 ---
 目录和文件型模式是35dir伪静态的主要方式。昨天转移空间结果伪静态全部失效了，于是怎么都没有修改成功。于是果断在网上参考了以下并对原代码加以修改：
 

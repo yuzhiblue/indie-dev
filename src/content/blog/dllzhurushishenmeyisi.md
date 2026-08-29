@@ -2,8 +2,9 @@
 title: "dll注入是什么意思？"
 description: "DLL注入（Dynamic Link Library Injection）是一种技术，它允许在一个正在运行的进程中插入一个动态链接库（DLL）。通过这种方式，注入的DLL可以访问和修改该进程的内存、函数、变量等资源。这种技术通常被用于调试、"
 pubDate: 2025-07-28
-tags: ['技术']
+tags: ['并发编程']
 draft: false
+slug: what-is-dll-injection
 ---
 DLL注入（Dynamic Link Library Injection）是一种技术，它允许在一个正在运行的进程中插入一个动态链接库（DLL）。通过这种方式，注入的DLL可以访问和修改该进程的内存、函数、变量等资源。这种技术通常被用于调试、性能监控或者是恶意软件攻击。
 

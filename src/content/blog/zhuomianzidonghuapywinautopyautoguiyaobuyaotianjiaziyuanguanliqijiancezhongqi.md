@@ -2,8 +2,9 @@
 title: "桌面自动化pywinauto/pyautogui要不要添加资源管理器检测+重启？"
 description: "结论先说：非常有必要把「资源管理器卡死」纳入你的桌面自动化程序的异常处理逻辑 ，而且是「必做项」，不是可选项 你的程序基于 pywinauto + pyautogui 做桌面自动化，资源管理器（explorer.exe）卡死，对你的程序是「"
 pubDate: 2026-01-09
-tags: ['技术']
+tags: ['Windows', '开发工具', 'PySide6']
 draft: false
+slug: pywinauto-explorer-restart-watchdog
 ---
 # 结论先说：**非常有必要把「资源管理器卡死」纳入你的桌面自动化程序的异常处理逻辑** ，而且是「必做项」，不是可选项
 

@@ -2,8 +2,9 @@
 title: "因网络节点调整，若遇激活异常请及时反馈，以便做出调整"
 description: "大家好！ 因为这两天在调整网络节点，如遇到无法激活、网络异常等情况，请及时反馈，以便我们及时做出调整！ 感谢您的支持！ 微信：salesleads 在线时间8:0022:00"
 pubDate: 2026-05-28
-tags: ['杂记']
+tags: ['技术']
 draft: false
+slug: activation-error-network-node-notice
 ---
 大家好！
 

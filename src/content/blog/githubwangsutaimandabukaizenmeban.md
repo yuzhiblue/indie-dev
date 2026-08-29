@@ -2,8 +2,9 @@
 title: "Github网速太慢打不开怎么办？"
 description: "使用GitHub有一段时间了，我发现这几天老是打不开。我以为是被和谐了。然后网上搜索了一下解决方案。 其中csdn上面有一个方案是把一段代码复制到hosts里面去。这个我试了，效果有但是不太好。 于是我在segmentfault找到了另外一"
 pubDate: 2020-02-09
-tags: ['技术']
+tags: ['开发工具']
 draft: false
+slug: github-slow-connection-fix
 ---
 使用GitHub有一段时间了，我发现这几天老是打不开。我以为是被和谐了。然后网上搜索了一下解决方案。
 

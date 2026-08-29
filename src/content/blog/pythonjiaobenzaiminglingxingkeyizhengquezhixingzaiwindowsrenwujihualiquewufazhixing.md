@@ -2,8 +2,9 @@
 title: "python脚本在命令行可以正确执行，在windows任务计划里却无法执行"
 description: "真没想到会在定时任务这里掉坑里面。折腾windows计划程序折腾了快一天时间。明明是可以正常执行的python脚本，可是放到windows计划程序任务里面却死活不生效。 网上也搜了很多大神的方法，没有一个有用的。 这里帮大家填两个坑。 一个"
 pubDate: 2024-05-22
-tags: ['技术']
+tags: ['Python', 'Windows', '开发工具']
 draft: false
+slug: python-script-fails-in-task-scheduler
 ---
 真没想到会在定时任务这里掉坑里面。折腾windows计划程序折腾了快一天时间。明明是可以正常执行的python脚本，可是放到windows计划程序任务里面却死活不生效。
 

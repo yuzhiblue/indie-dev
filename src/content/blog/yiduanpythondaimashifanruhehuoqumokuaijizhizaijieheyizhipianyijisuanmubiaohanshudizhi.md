@@ -2,8 +2,9 @@
 title: "一段Python代码示范如何获取模块基址，再结合已知偏移计算目标函数地址"
 description: "下面是一个示范代码，展示了如何使用Python结合psutil和ctypes来获取目标进程的模块基址，并且计算目标函数的地址。代码主要利用了Windows API。 步骤： 1. 获取目标进程的ID（psutil） 2. 列出目标进程的模块"
 pubDate: 2025-07-28
-tags: ['技术']
+tags: ['Python']
 draft: false
+slug: python-module-base-address-offset
 ---
 下面是一个示范代码，展示了如何使用Python结合psutil和ctypes来获取目标进程的模块基址，并且计算目标函数的地址。代码主要利用了Windows API。
 

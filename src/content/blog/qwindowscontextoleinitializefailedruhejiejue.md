@@ -2,8 +2,9 @@
 title: "QWindowsContext: OleInitialize() failed如何解决？"
 description: "在使用pyside6进行桌面开发的时候，可能会碰到以下提示信息： 这个提示信息并不会影响程序的运行，但是总给人一种代码有BUG的感觉。尝试网上提供的各种方法，仍然无法解决这个问题。 这算是一个BUG，当你同时调用pyside6或者其它qt库"
 pubDate: 2025-01-17
-tags: ['技术']
+tags: ['Windows', 'PySide6', 'Python']
 draft: false
+slug: qt-oleinitialize-failed-fix
 ---
 在使用pyside6进行桌面开发的时候，可能会碰到以下提示信息：
 

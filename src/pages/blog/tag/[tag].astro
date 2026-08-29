@@ -1,0 +1,48 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import PostCard from '../../../components/PostCard.astro';
+
+export async function getStaticPaths() {
+	// 仅对可见（非 draft）文章出现的标签生成页面
+	const posts = await getCollection('blog', ({ data }) => !data.draft);
+	const byTag = new Map<string, typeof posts>();
+	for (const post of posts) {
+		for (const tag of post.data.tags) {
+			if (!byTag.has(tag)) byTag.set(tag, []);
+			byTag.get(tag)!.push(post);
+		}
+	}
+	return [...byTag.entries()].map(([tag, tagPosts]) => ({
+		params: { tag },
+		props: { tag, posts: tagPosts },
+	}));
+}
+
+const { tag, posts } = Astro.props;
+const sorted = posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<BaseLayout title={`#${tag} - yuzhiblue`} description={`标签「${tag}」下的全部文章`}>
+	<style>
+		.back { display: inline-block; margin-bottom: 16px; color: var(--text-muted); font-size: 0.9rem; transition: color 0.2s; }
+		.back:hover { color: var(--accent); }
+		.page-header { padding: 40px 0; border-bottom: 1px solid var(--border); margin-bottom: 40px; }
+		.page-header h1 { font-size: 2rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 8px; }
+		.page-header h1 .hash { color: var(--accent); }
+		.page-header p { color: var(--text-muted); }
+		.empty { color: var(--text-muted); padding: 40px 0; text-align: center; }
+	</style>
+
+	<a href="/blog" class="back">← 返回 Blog</a>
+	<div class="page-header">
+		<h1><span class="hash">#</span> {tag}</h1>
+		<p>共 {sorted.length} 篇文章</p>
+	</div>
+
+	{sorted.length === 0 ? (
+		<p class="empty">该标签下暂无文章。</p>
+	) : (
+		sorted.map((post) => <PostCard post={post} />)
+	)}
+</BaseLayout>

@@ -2,8 +2,9 @@
 title: "python实现dll注入的技术示例"
 description: "使用Python实现DLL注入是一项比较复杂的任务，通常涉及到调用操作系统底层的API。因此，我们通常使用Python的ctypes库或pywin32库来进行此类操作。以下是一个简单的示例，展示如何在Windows系统上使用Python通过"
 pubDate: 2025-07-28
-tags: ['技术']
+tags: ['Python', '并发编程', '开发工具']
 draft: false
+slug: python-dll-injection-example
 ---
 使用Python实现DLL注入是一项比较复杂的任务，通常涉及到调用操作系统底层的API。因此，我们通常使用Python的ctypes库或pywin32库来进行此类操作。以下是一个简单的示例，展示如何在Windows系统上使用Python通过pywin32库进行DLL注入。需要注意的是，这种操作具有很高的风险，可能会触犯法律或破坏目标程序。
 

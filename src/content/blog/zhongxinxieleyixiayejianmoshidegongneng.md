@@ -4,6 +4,7 @@ description: "之前写过一篇添加网页夜间模式的文章。借用了国
 pubDate: 2019-12-22
 tags: ['技术']
 draft: false
+slug: dark-mode-rewrite
 ---
 之前写过一篇添加网页夜间模式的文章。借用了国外的一个darkmode.js插件。
 

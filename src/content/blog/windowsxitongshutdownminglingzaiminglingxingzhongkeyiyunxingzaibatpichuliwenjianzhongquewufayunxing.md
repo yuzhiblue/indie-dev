@@ -2,8 +2,9 @@
 title: "windows系统shutdown命令在命令行中可以运行在bat批处理文件中却无法运行"
 description: "Windows系统的shutdown命令主要是用来关闭电脑用的，最近因为项目需要需要设置一个定时关闭电脑的脚本。于是就想到了这个shutdown命令。 中间处理bat批处理文件碰到两个坑。一个是乱码，一个是shutdown命令在命令行中可以"
 pubDate: 2024-05-16
-tags: ['技术']
+tags: ['Windows', '开发工具']
 draft: false
+slug: windows-shutdown-fails-in-bat
 ---
 Windows系统的shutdown命令主要是用来关闭电脑用的，最近因为项目需要需要设置一个定时关闭电脑的脚本。于是就想到了这个shutdown命令。
 
