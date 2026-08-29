@@ -4,6 +4,7 @@ description: "宽带的理论下载速度可以通过以下公式计算： \\tex
 pubDate: 2025-01-20
 tags: ['技术']
 draft: false
+slug: 300mbps-vs-1000mbps-speed
 ---
 宽带的理论下载速度可以通过以下公式计算：
 

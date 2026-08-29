@@ -2,8 +2,9 @@
 title: "Python GUI应该怎么选？为什么要选择pyside6？"
 description: "如果只是编个脚本自己用的话直接裸奔就可以了，但是如果要交付给客户，那必须要整一个gui上去了。 Python上面有很多不错的gui工具。但是我告诉你，选择pyside6就对了。网上有好多推荐tkinter，pysimplegui，wx，qt"
 pubDate: 2024-07-30
-tags: ['技术']
+tags: ['PySide6', 'Python']
 draft: false
+slug: why-pyside6-for-python-gui
 ---
 如果只是编个脚本自己用的话直接裸奔就可以了，但是如果要交付给客户，那必须要整一个gui上去了。
 

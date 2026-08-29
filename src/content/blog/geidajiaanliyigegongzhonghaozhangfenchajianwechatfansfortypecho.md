@@ -2,8 +2,9 @@
 title: "给大家安利一个公众号涨粉插件:WeChatfans for Typecho"
 description: "请注意：本插件已经不兼容最新版的typecho，需要自己自行修改。 今天给大家安利一个微信公众号涨粉插件:WeChat Fans for Typecho。 在这里首先感谢博主同乐儿。博主为人比较谦虚，而且乐于助人。一开始我是看到他博客上有一"
 pubDate: 2019-01-26
-tags: ['技术']
+tags: ['前端']
 draft: false
+slug: typecho-wechatfans-plugin
 ---
 请注意：本插件已经不兼容最新版的typecho，需要自己自行修改。
 

@@ -2,8 +2,9 @@
 title: "只有1台电脑用scrapy+redis会提升爬取效率吗？"
 description: "是的，即使只有 1 台电脑 ，你仍然可以通过 Scrapy + Redis 提升爬取效率。虽然分布式爬虫通常用于多台机器的协作，但在单机环境下，Scrapy + Redis 仍然可以通过以下方式提升效率： 1\\. 提升效率的原理 并发爬取"
 pubDate: 2025-01-20
-tags: ['技术']
+tags: ['爬虫', '并发编程', '数据库']
 draft: false
+slug: scrapy-redis-single-machine-benefit
 ---
 是的，即使只有 **1 台电脑** ，你仍然可以通过 **Scrapy + Redis** 提升爬取效率。虽然分布式爬虫通常用于多台机器的协作，但在单机环境下，Scrapy + Redis 仍然可以通过以下方式提升效率：
 

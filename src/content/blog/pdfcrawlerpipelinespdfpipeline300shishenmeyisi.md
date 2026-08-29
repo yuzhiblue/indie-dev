@@ -2,8 +2,9 @@
 title: "'pdf_crawler.pipelines.PdfPipeline': 300是什么意思？"
 description: "在 Scrapy 中，ITEM_PIPELINES 是一个字典，用于配置项目的 Item Pipelines 。字典中的键是 Pipeline 的导入路径，值是一个整数的优先级（如 300）。这个优先级决定了 Pipeline 的执行顺序。"
 pubDate: 2025-01-20
-tags: ['技术']
+tags: ['Python', '爬虫']
 draft: false
+slug: scrapy-pipeline-priority-300
 ---
 在 Scrapy 中，`ITEM_PIPELINES` 是一个字典，用于配置项目的 **Item Pipelines** 。字典中的键是 Pipeline 的导入路径，值是一个整数的优先级（如 `300`）。这个优先级决定了 Pipeline 的执行顺序。
 

@@ -4,6 +4,7 @@ description: "在网上下载下来的源码肯定是有bug的，那么本篇文
 pubDate: 2015-03-16
 tags: ['技术']
 draft: false
+slug: 35dir-bug-fix-tips
 ---
 在网上下载下来的源码肯定是有bug的，那么本篇文章主要就是介绍如何修改一些bug。
 

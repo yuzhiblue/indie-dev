@@ -2,8 +2,9 @@
 title: "Playwright的launch_persistent_context，AI编程巨坑"
 description: "在今年3月份之前，我只听过playwright并没有实际用过。 直到最近一个项目需要操控网页，我才真正体验了一把。 总的来说，方便是挺方便，但是坑也是真的坑。 尤其是在AI编程的大环境下。如果你对于playwright不熟悉，贸然用play"
 pubDate: 2026-03-27
-tags: ['技术']
+tags: ['Python', '直播自动化', '并发编程']
 draft: false
+slug: playwright-launch-persistent-context-pitfalls
 ---
 在今年3月份之前，我只听过playwright并没有实际用过。
 

@@ -12,13 +12,26 @@ const sortedPosts = posts.sort(
 );
 const pagePosts = sortedPosts.slice(0, PAGE_SIZE);
 const lastPage = Math.max(1, Math.ceil(sortedPosts.length / PAGE_SIZE));
+
+// 标签筛选栏：仅展示可见文章里出现 >= 2 次的标签，避免单篇噪声
+const tagCounts = new Map<string, number>();
+for (const p of posts) {
+	for (const t of p.data.tags) tagCounts.set(t, (tagCounts.get(t) ?? 0) + 1);
+}
+const topTags = [...tagCounts.entries()]
+	.filter(([, n]) => n >= 2)
+	.sort((a, b) => b[1] - a[1])
+	.map(([t]) => t);
 ---
 
 <BaseLayout title="Blog - yuzhiblue" description="开发笔记与技术思考">
 	<style>
-		.page-header { padding: 40px 0; border-bottom: 1px solid var(--border); margin-bottom: 40px; }
+		.page-header { padding: 40px 0; border-bottom: 1px solid var(--border); margin-bottom: 24px; }
 		.page-header h1 { font-size: 2rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 8px; }
 		.page-header p { color: var(--text-muted); }
+		.tag-bar { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 40px; }
+		.tag-chip { display: inline-flex; align-items: center; padding: 4px 12px; border-radius: 20px; border: 1px solid var(--border); background: var(--card-bg); color: var(--text-muted); font-size: 0.8rem; text-decoration: none; transition: border-color 0.2s, color 0.2s; }
+		.tag-chip:hover { border-color: var(--accent); color: var(--accent); }
 		.empty { color: var(--text-muted); padding: 40px 0; text-align: center; }
 	</style>
 
@@ -26,6 +39,14 @@ const lastPage = Math.max(1, Math.ceil(sortedPosts.length / PAGE_SIZE));
 		<h1>Blog</h1>
 		<p>开发笔记、技术分享和产品思考</p>
 	</div>
+
+	{topTags.length > 0 && (
+		<nav class="tag-bar" aria-label="标签筛选">
+			{topTags.map((t) => (
+				<a class="tag-chip" href={`/blog/tag/${encodeURIComponent(t)}`}>{t}</a>
+			))}
+		</nav>
+	)}
 
 	{pagePosts.length === 0 ? (
 		<p class="empty">暂无文章，敬请期待。</p>

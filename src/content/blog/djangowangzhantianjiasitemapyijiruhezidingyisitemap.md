@@ -2,8 +2,9 @@
 title: "django网站添加sitemap以及如何自定义sitemap"
 description: "django网站添加sitemap的方式网络上有现成的方法，百度上随便搜一下就能找到，难的是如何自定义sitemap，本人页摸索了好久，终于成功了，这篇文章做一下总结。 先说一下如何添加django网站如何添加sitemap，大致分为一下几"
 pubDate: 2023-11-05
-tags: ['技术']
+tags: ['Python', '数据库', '开发工具']
 draft: false
+slug: django-custom-sitemap
 ---
 django网站添加sitemap的方式网络上有现成的方法，百度上随便搜一下就能找到，难的是如何自定义sitemap，本人页摸索了好久，终于成功了，这篇文章做一下总结。
 

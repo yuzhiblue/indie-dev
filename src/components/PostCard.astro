@@ -15,39 +15,49 @@ const readingTime = (body: string) => {
 };
 ---
 
-<a href={`/blog/${post.id}`} class:list={['post-card', { compact }]}>
-	<h2>{post.data.title}</h2>
-	{!compact && <p>{post.data.description}</p>}
-	<div class="post-meta">
-		<span>
-			{post.data.pubDate.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}
-		</span>
-		<span class="dot">·</span>
-		<span>{readingTime(post.body ?? '')} 分钟阅读</span>
-		{post.data.tags.length > 0 && (
-			<div class="post-tags">
-				{post.data.tags.map((tag) => (<span class="post-tag">{tag}</span>))}
-			</div>
-		)}
-	</div>
-</a>
+<article class:list={['post-card', { compact }]}>
+	<a href={`/blog/${post.id}`} class="post-card-main">
+		<h2>{post.data.title}</h2>
+		{!compact && <p>{post.data.description}</p>}
+		<div class="post-meta">
+			<span>
+				{post.data.pubDate.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}
+			</span>
+			<span class="dot">·</span>
+			<span>{readingTime(post.body ?? '')} 分钟阅读</span>
+		</div>
+	</a>
+	{post.data.tags.length > 0 && (
+		<div class="post-tags">
+			{post.data.tags.map((tag) => (
+				<a class="post-tag" href={`/blog/tag/${encodeURIComponent(tag)}`}>{tag}</a>
+			))}
+		</div>
+	)}
+	<a href={`/blog/${post.id}`} class="post-card-overlay" aria-label={post.data.title}></a>
+</article>
 
 <style>
 	.post-card {
+		position: relative;
 		display: block;
 		padding: 24px;
 		background: var(--card-bg);
 		border: 1px solid var(--border);
 		border-radius: 12px;
 		margin-bottom: 16px;
-		text-decoration: none;
 		transition: border-color 0.2s, transform 0.2s;
-		position: relative;
 		padding-right: 56px;
 	}
 	.post-card:hover {
 		border-color: var(--accent);
 		transform: translateY(-2px);
+	}
+	.post-card-main {
+		display: block;
+		text-decoration: none;
+		position: relative;
+		z-index: 1;
 	}
 	.post-card h2 {
 		font-size: 1.15rem;
@@ -75,12 +85,28 @@ const readingTime = (body: string) => {
 		display: flex;
 		flex-wrap: wrap;
 		gap: 6px;
+		margin-top: 12px;
+		position: relative;
+		z-index: 1;
 	}
 	.post-tag {
 		background: var(--bg-secondary);
 		padding: 2px 8px;
 		border-radius: 12px;
 		border: 1px solid var(--border);
+		color: var(--text-muted);
+		font-size: 0.75rem;
+		text-decoration: none;
+		transition: border-color 0.2s, color 0.2s;
+	}
+	.post-tag:hover {
+		border-color: var(--accent);
+		color: var(--accent);
+	}
+	.post-card-overlay {
+		position: absolute;
+		inset: 0;
+		z-index: 0;
 	}
 	.post-card::after {
 		content: '→';
@@ -89,7 +115,9 @@ const readingTime = (body: string) => {
 		position: absolute;
 		top: 24px;
 		right: 24px;
+		z-index: 1;
 		transition: color 0.2s, transform 0.2s;
+		pointer-events: none;
 	}
 	.post-card:hover::after {
 		color: var(--accent);
@@ -121,6 +149,9 @@ const readingTime = (body: string) => {
 		gap: 6px 8px;
 	}
 	.post-card.compact::after {
+		content: none;
+	}
+	.post-card.compact .post-card-overlay {
 		content: none;
 	}
 </style>

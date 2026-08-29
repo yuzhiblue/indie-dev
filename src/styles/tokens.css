@@ -1,0 +1,38 @@
+/**
+ * 设计令牌（Design Tokens）——全站唯一来源
+ * 由 BaseLayout 在 frontmatter 中 import，全局生效。
+ * 强调色分级：
+ *   --accent        主强调色（indigo 500），用于图标 hover、装饰线、主按钮描边
+ *   --accent-strong 实心按钮底（indigo 600），白字对比度 6.3:1，优于 --accent 的 4.6:1
+ *   --link          正文链接色（indigo 300），深底对比度 9.9:1，满足 WCAG AA
+ *   --accent-soft   低强度底色（标签/选中态）
+ */
+:root {
+	/* surfaces */
+	--bg: #0a0a0a;
+	--bg-secondary: #111;
+	--card-bg: #161616;
+	--border: #222;
+
+	/* text */
+	--text: #fafafa;
+	--text-muted: #888;
+
+	/* accent hierarchy */
+	--accent: #6366f1;
+	--accent-strong: #4f46e5;
+	--accent-hover: #4f46e5;
+	--link: #a5b4fc;
+	--link-hover: #c7d2fe;
+	--accent-soft: rgba(99, 102, 241, 0.12);
+
+	/* shape & layout */
+	--radius: 12px;
+	--radius-sm: 8px;
+	--radius-pill: 20px;
+	--max-width: 900px;
+
+	/* type */
+	--font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+	--font-mono: 'SF Mono', Monaco, monospace;
+}

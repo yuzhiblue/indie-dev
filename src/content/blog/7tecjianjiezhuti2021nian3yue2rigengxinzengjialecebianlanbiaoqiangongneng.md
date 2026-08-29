@@ -2,8 +2,9 @@
 title: "7TEC简洁主题，2021年3月2日更新,增加了侧边栏标签功能……"
 description: "2021年3月2日更新，增加了侧边栏标签功能，修复部分bug。 请注意：置顶功能需要配合插件stick才能使用，内容隐藏功能需要使用WechatFans For Typecho插件。 时隔7个月7TEC主题再一次更新。其实在19年年底已经打"
 pubDate: 2018-11-21
-tags: ['技术']
+tags: ['前端', '开发工具']
 draft: false
+slug: 7tec-theme-sidebar-tags-update
 ---
 2021年3月2日更新，增加了侧边栏标签功能，修复部分bug。
 

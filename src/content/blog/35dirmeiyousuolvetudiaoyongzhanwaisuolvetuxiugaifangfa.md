@@ -4,6 +4,7 @@ description: "有缩略图显示本地 没有缩略图调用站外缩略图的�
 pubDate: 2015-02-05
 tags: ['技术']
 draft: false
+slug: 35dir-external-thumbnail-fallback
 ---
 有缩略图显示本地 没有缩略图调用站外缩略图的修改方法 需要修改四个文件 请注意备份!
 

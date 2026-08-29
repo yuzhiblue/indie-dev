@@ -3,8 +3,9 @@ title: '如何用 Astro 搭建个人项目展示页'
 description: '从零开始搭建一个美观、SEO 友好的独立开发者展示站，包含项目展示和博客功能。'
 pubDate: 2025-01-15
 updatedDate: 2025-01-20
-tags: ['Astro', 'Web Development', 'Tutorial']
+tags: ['前端']
 draft: false
+slug: astro-portfolio-site-setup
 ---
 
 ## 为什么选择 Astro

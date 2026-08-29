@@ -4,7 +4,8 @@ import PostCard from '../../components/PostCard.astro';
 import { getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
-	const posts = await getCollection('blog');
+	// 过滤 draft：否则下线文章仍会生成详情页 URL 并进入 sitemap，列表隐藏形同虚设
+	const posts = await getCollection('blog', ({ data }) => !data.draft);
 	return posts.map((post) => ({
 		params: { slug: post.id },
 		props: { post },
@@ -53,7 +54,8 @@ const related = allPosts
     .author-avatar { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; border: 1px solid var(--border); background: var(--card-bg); }
     .article-meta { display: flex; align-items: center; gap: 16px; color: var(--text-muted); font-size: 0.9rem; }
     .article-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
-    .article-tag { background: var(--bg-secondary); color: var(--text-muted); font-size: 0.75rem; padding: 4px 12px; border-radius: 20px; border: 1px solid var(--border); }
+    .article-tag { background: var(--bg-secondary); color: var(--text-muted); font-size: 0.75rem; padding: 4px 12px; border-radius: 20px; border: 1px solid var(--border); text-decoration: none; transition: border-color 0.2s, color 0.2s; }
+    .article-tag:hover { border-color: var(--accent); color: var(--accent); }
     /* Markdown 内容（<Content/> 渲染，无 scoped cid）必须用 :global 完全跳出作用域 */
     :global(.article-content) { font-size: 1.05rem; line-height: 1.8; }
     :global(.article-content h2) { font-size: 1.5rem; font-weight: 700; margin: 48px 0 16px; letter-spacing: -0.02em; }
@@ -70,7 +72,8 @@ const related = allPosts
       border-radius: 12px; border: 1px solid var(--border);
       margin: 28px auto; background: var(--card-bg);
     }
-    :global(.article-content a) { color: var(--accent); text-decoration: underline; text-underline-offset: 4px; }
+    :global(.article-content a) { color: var(--link); text-decoration: underline; text-underline-offset: 4px; }
+    :global(.article-content a:hover) { color: var(--link-hover); }
     :global(.article-content table) { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 0.95rem; }
     :global(.article-content th), :global(.article-content td) { border: 1px solid var(--border); padding: 10px 14px; text-align: left; }
     :global(.article-content th) { background: var(--bg-secondary); color: var(--text); }
@@ -91,7 +94,7 @@ const related = allPosts
     .related { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); }
     .related-title { font-size: 1.3rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 20px; color: var(--text); }
     .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; align-items: stretch; }
-    @media (max-width: 720px) {
+    @media (max-width: 768px) {
       .post-nav { grid-template-columns: 1fr; }
       .post-nav-link.next { text-align: left; }
       .related-grid { grid-template-columns: 1fr; }
@@ -124,7 +127,9 @@ const related = allPosts
       </div>
       {post.data.tags.length > 0 && (
         <div class="article-tags">
-          {post.data.tags.map((tag) => (<span class="article-tag">{tag}</span>))}
+          {post.data.tags.map((tag) => (
+            <a class="article-tag" href={`/blog/tag/${encodeURIComponent(tag)}`}>{tag}</a>
+          ))}
         </div>
       )}
     </header>

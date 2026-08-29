@@ -2,8 +2,9 @@
 title: "用Scrapy怎么写分布式爬虫呢？"
 description: "使用 Scrapy 实现分布式爬虫时，通常需要结合 Scrapy 的爬虫框架和分布式任务队列（如 Redis ）来实现主节点和工作节点的通信。以下是具体实现步骤和代码示例。 1\\. 系统架构 主节点 ：负责生成初始任务（URL）并放入任务队"
 pubDate: 2025-01-20
-tags: ['技术']
+tags: ['爬虫', 'Python', '数据库']
 draft: false
+slug: scrapy-distributed-crawler-guide
 ---
 使用 **Scrapy** 实现分布式爬虫时，通常需要结合 **Scrapy** 的爬虫框架和分布式任务队列（如 **Redis** ）来实现主节点和工作节点的通信。以下是具体实现步骤和代码示例。
 

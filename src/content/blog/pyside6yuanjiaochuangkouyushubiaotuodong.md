@@ -2,8 +2,9 @@
 title: "pyside6圆角窗口与鼠标拖动"
 description: "最终效果 圆角窗口 实现圆角窗口要做以下两件事"
 pubDate: 2024-11-20
-tags: ['技术']
+tags: ['PySide6', 'Python']
 draft: false
+slug: pyside6-rounded-window-drag
 ---
 ### 最终效果
 

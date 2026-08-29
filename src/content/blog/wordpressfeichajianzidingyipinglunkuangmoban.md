@@ -2,8 +2,9 @@
 title: "wordpress非插件自定义评论框模板"
 description: "最近一直在折腾Wordpress，感觉网上很多都是很老旧的知识了，wordpress已经更新到4.1版本，很多知识也需要更新一下了。我打算写一系列关于Wordpress的文章，为大家更新一下知识。当然，我不是PHP程序员，也不会编写程序，但"
 pubDate: 2015-02-03
-tags: ['技术']
+tags: ['前端']
 draft: false
+slug: wordpress-custom-comment-form
 ---
 最近一直在折腾Wordpress，感觉网上很多都是很老旧的知识了，wordpress已经更新到4.1版本，很多知识也需要更新一下了。我打算写一系列关于Wordpress的文章，为大家更新一下知识。当然，我不是PHP程序员，也不会编写程序，但是时间长了慢慢的也就会用一些代码了。如果有什么错误也请大家留言指正。
 

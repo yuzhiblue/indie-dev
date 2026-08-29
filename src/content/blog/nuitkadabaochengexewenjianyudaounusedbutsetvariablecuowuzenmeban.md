@@ -2,8 +2,9 @@
 title: "Nuitka打包成exe文件，遇到unused-but-set-variable错误怎么办？"
 description: "网上的文章都把Nuitka吹成神了，说打包后可以防止被反编译，体积能缩小多少，速度能快多少。 结果自己一试，净报错，快两天的时间了，还没有打包出一个能用的程序，之前用pyinstaller第1次打包就成功了，这属实有点折磨人呀。 而且网上净"
 pubDate: 2024-07-30
-tags: ['技术']
+tags: ['Nuitka', '开发工具']
 draft: false
+slug: nuitka-unused-but-set-variable
 ---
 网上的文章都把Nuitka吹成神了，说打包后可以防止被反编译，体积能缩小多少，速度能快多少。
 

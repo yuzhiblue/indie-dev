@@ -2,8 +2,9 @@
 title: "warning window.write_event_value - no thread queue"
 description: "当我们使用pysimplegui构建程序GUI的时候始终出现warning window.write_event_value no thread queue found，这是怎么回事呢？ 如果你也像我一样，尝试了很多种方式，依然找不到答案。"
 pubDate: 2024-07-16
-tags: ['技术']
+tags: ['Python']
 draft: false
+slug: pysimplegui-write-event-value-thread-queue
 ---
 当我们使用pysimplegui构建程序GUI的时候始终出现warning window.write_event_value - no thread queue found，这是怎么回事呢？
 

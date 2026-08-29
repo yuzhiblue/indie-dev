@@ -2,8 +2,9 @@
 title: "scrapy分布式爬虫主节点只需要安装redis吗？"
 description: "是的，主节点 的主要职责是生成任务（如URL）并将任务推送到 Redis 队列中，因此主节点只需要安装 Redis 客户端库即可，而不需要安装 Scrapy 或其他爬虫相关的依赖。 1\\. 主节点的依赖 Redis 客户端库 ：用于连接 R"
 pubDate: 2025-01-20
-tags: ['技术']
+tags: ['Python', '爬虫', '开发工具']
 draft: false
+slug: scrapy-distributed-master-redis-setup
 ---
 是的，**主节点** 的主要职责是生成任务（如URL）并将任务推送到 **Redis** 队列中，因此主节点只需要安装 **Redis** 客户端库即可，而不需要安装 **Scrapy** 或其他爬虫相关的依赖。
 

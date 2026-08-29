@@ -2,8 +2,9 @@
 title: "使用bat命令批量修改文件名中的一部分"
 description: "都说Python是最简洁的编程语言。其实还有比Python更简洁的语言。 今天上午我还在睡梦中，突然接到朋友的语音电话。说请我帮个忙，他有大概3，400个文件需要改一下名字，把名字里面的1改成2，问我有没有方法。 这么好的显摆机会我怎么能放"
 pubDate: 2020-02-25
-tags: ['技术']
+tags: ['Python']
 draft: false
+slug: bat-batch-rename-files
 ---
 都说Python是最简洁的编程语言。其实还有比Python更简洁的语言。
 

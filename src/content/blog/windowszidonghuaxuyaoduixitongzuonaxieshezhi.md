@@ -2,8 +2,9 @@
 title: "windows自动化需要对系统做哪些设置"
 description: "在 Windows 系统上实现自动化（如使用 pywinauto、AutoHotkey 等工具）时，通常需要对系统进行一些设置，以确保脚本能够顺利运行。以下是一些常见的设置和优化建议： 1\\. 用户账户控制 UAC 问题 ：UAC 可能会阻"
 pubDate: 2024-12-30
-tags: ['技术']
+tags: ['Windows', 'Python', '开发工具']
 draft: false
+slug: windows-automation-system-settings
 ---
 在 Windows 系统上实现自动化（如使用 `pywinauto`、`AutoHotkey` 等工具）时，通常需要对系统进行一些设置，以确保脚本能够顺利运行。以下是一些常见的设置和优化建议：
 
