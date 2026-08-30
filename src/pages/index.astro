@@ -14,7 +14,8 @@ const featuredProjects = dedupeProjects(allProjects)
     const aDate = a.data.pubDate?.valueOf() ?? 0;
     const bDate = b.data.pubDate?.valueOf() ?? 0;
     return bDate - aDate;
-  });
+  })
+  .slice(0, 6);
 
 const recentPosts = await getCollection('blog', ({ data }) => !data.draft);
 const featuredPosts = recentPosts
