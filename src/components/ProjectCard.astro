@@ -3,14 +3,33 @@ import type { CollectionEntry } from 'astro:content';
 
 interface Props {
 	project: CollectionEntry<'projects'>;
+	layout?: 'list' | 'grid';
 }
 
-const { project } = Astro.props;
+const { project, layout = 'list' } = Astro.props;
+const hasCover = Boolean(project.data.coverImage);
+const initial = (project.data.title || '?').trim().charAt(0);
 ---
 
-<a href={`/projects/${project.id}`} class="project-card">
-	{project.data.coverImage && (
-		<img src={project.data.coverImage} alt={`${project.data.title} 封面`} class="project-thumb" loading="lazy" />
+<a
+	href={`/projects/${project.id}`}
+	class:list={['project-card', `is-${layout}`, { 'no-cover': !hasCover }]}
+>
+	{hasCover ? (
+		<img
+			src={project.data.coverImage}
+			alt={`${project.data.title} 封面`}
+			class="project-thumb"
+			loading="lazy"
+		/>
+	) : (
+		<div
+			class="project-thumb project-thumb-placeholder"
+			role="img"
+			aria-label={`${project.data.title} 封面占位`}
+		>
+			<span class="project-thumb-initial">{initial}</span>
+		</div>
 	)}
 	<div class="project-card-body">
 		<h2>
@@ -20,7 +39,7 @@ const { project } = Astro.props;
 		<p>{project.data.description}</p>
 		<div class="project-meta">
 			{project.data.pubDate && (
-				<span>
+				<span class="project-date">
 					{project.data.pubDate.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}
 				</span>
 			)}
@@ -42,7 +61,6 @@ const { project } = Astro.props;
 		background: var(--card-bg);
 		border: 1px solid var(--border);
 		border-radius: 12px;
-		margin-bottom: 16px;
 		text-decoration: none;
 		transition: border-color 0.2s, transform 0.2s;
 	}
@@ -66,23 +84,31 @@ const { project } = Astro.props;
 		gap: 8px;
 		flex-wrap: wrap;
 	}
-	.project-card:hover h2 {
-		color: var(--accent);
-	}
+	.project-card:hover h2 { color: var(--accent); }
 	.project-card p {
 		color: var(--text-muted);
 		font-size: 0.9rem;
 		margin-bottom: 12px;
 	}
 	.project-thumb {
-		width: 200px;
-		height: 130px;
-		object-fit: cover;
 		flex-shrink: 0;
 		border-radius: 10px;
 		border: 1px solid var(--border);
 		background: var(--bg-secondary);
+		object-fit: cover;
+		display: block;
 	}
+	.project-thumb-placeholder {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: linear-gradient(135deg, #1e1e2e 0%, #2a2a3e 100%);
+		color: var(--text-muted);
+		font-size: 1.8rem;
+		font-weight: 700;
+		letter-spacing: -0.02em;
+	}
+	.project-thumb-initial { user-select: none; }
 	.project-meta {
 		display: flex;
 		align-items: center;
@@ -90,7 +116,9 @@ const { project } = Astro.props;
 		font-size: 0.8rem;
 		color: var(--text-muted);
 		margin-top: auto;
+		flex-wrap: wrap;
 	}
+	.project-date { white-space: nowrap; }
 	.project-tags {
 		display: flex;
 		gap: 6px;
@@ -113,13 +141,32 @@ const { project } = Astro.props;
 		border-radius: 20px;
 		font-weight: 600;
 	}
+
+	/* 列表模式：横向 + 200x130 缩略图（用于 /projects 列表） */
+	.project-card.is-list { margin-bottom: 16px; }
+	.project-card.is-list .project-thumb { width: 200px; height: 130px; }
+
+	/* 网格模式：纵向 + 16:9 顶部封面（用于首页 Projects） */
+	.project-card.is-grid {
+		flex-direction: column;
+		padding: 0;
+		overflow: hidden;
+	}
+	.project-card.is-grid .project-thumb {
+		width: 100%;
+		height: auto;
+		aspect-ratio: 16 / 9;
+		border: none;
+		border-radius: 0;
+	}
+	.project-card.is-grid .project-thumb-placeholder { border-radius: 0; }
+	.project-card.is-grid .project-card-body { padding: 20px; }
+	.project-card.is-grid h2 { font-size: 1.1rem; }
+	.project-card.is-grid p { margin-bottom: 16px; line-height: 1.5; }
+	.project-card.is-grid .project-tags { margin-left: 0; justify-content: flex-start; }
+
 	@media (max-width: 640px) {
-		.project-card {
-			flex-direction: column;
-		}
-		.project-thumb {
-			width: 100%;
-			height: 180px;
-		}
+		.project-card.is-list { flex-direction: column; }
+		.project-card.is-list .project-thumb { width: 100%; height: 180px; }
 	}
 </style>

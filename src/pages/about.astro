@@ -1,41 +1,83 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+import { dedupeProjects } from '../lib/projects-i18n';
+
+const projects = dedupeProjects(await getCollection('projects', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
 const timeline = [
   {
-    year: '2024',
-    title: '独立开发',
-    desc: '开始全职投入独立开发，专注于为开发者打造小而美的工具型产品。',
+    year: '2025.07',
+    title: 'OBStimer 发布',
+    desc: 'OBS Studio 定时脚本插件上线。直接调用 OBS Studio API 控制推流与录制按钮，不依赖窗口置顶，稳定性更高，一套脚本覆盖所有支持推流码的平台。',
   },
   {
-    year: '2023',
-    title: 'DevTool CLI 立项',
-    desc: '从日常脚手架搭建的痛点出发，开源了零配置命令行工具 DevTool CLI。',
+    year: '2025.05',
+    title: 'Wxtimer 发布',
+    desc: '视频号版本上线，支持读秒验证自动下播、直播带货、循环直播与多组定时，适配微信视频号的开播流程。',
   },
   {
-    year: '2022',
-    title: '前端工程化探索',
-    desc: '深入组件库与构建工具，沉淀出 Pixel UI 等开源项目。',
+    year: '2025.04',
+    title: 'Doutimer 插件化重构',
+    desc: '把最早的单文件架构拆成调度框架、平台面板、自动化实现三层解耦，新增平台只需实现面板与自动化层，不再改动调度核心。',
   },
+  {
+    year: '2025.03',
+    title: 'Kwaitimer 独立',
+    desc: '把快手能力从双平台版本中拆出，做成独立的快手单平台版本，降低不需要抖音的用户的使用与理解成本。',
+  },
+  {
+    year: '2024.07',
+    title: 'Doutimer 上线',
+    desc: '第一款产品。通过调用 Windows 底层 API 实现自动化点击，支持抖音、快手双平台的定时开播与下播。',
+  },
+];
+
+const stack = [
+  { label: '语言与框架', items: ['Python', 'PySide6 / Qt'] },
+  { label: '桌面自动化', items: ['Windows API', 'UI 自动化'] },
+  { label: '服务端', items: ['Cloudflare Workers', 'D1 / KV'] },
+  { label: '站点', items: ['Astro', 'MDX'] },
 ];
 ---
 
-<BaseLayout title="About - yuzhiblue" description="关于 yuzhiblue：独立开发者，专注简洁实用的开发者工具">
+<BaseLayout title="About - yuzhiblue" description="关于 yuzhiblue：独立开发者，专注 Windows 桌面自动化与直播工具">
   <section class="about-hero">
     <h1>关于我</h1>
     <p class="lead">
-      我是 yuzhiblue，一名独立开发者。我相信工具的价值在于「让复杂的事变简单」，
-      所以一直专注于打造简洁、实用、开箱即用的开发者工具与产品。
+      我是 yuzhiblue，一名独立开发者。近两年我把精力集中在 Windows 桌面自动化上，
+      为主播和直播运营做能替他们守着开播时间的工具。
     </p>
   </section>
 
   <section class="block">
     <h2 class="section-title">我在做什么</h2>
     <p class="text">
-      目前主要围绕命令行工具、UI 组件库和轻量 Web 应用展开。我喜欢从自己的真实痛点出发，
-      先做出来自己用，再打磨成别人也能轻松上手的工具。比起「大而全」，我更在意「小而美」——
-      一个能每天帮你省下几分钟的小工具，往往比庞大的系统更有生命力。
+      直播有一个很具体、也很折磨人的痛点：开播和下播的时间点必须准，但人不可能一直守在电脑前。
+      我的工具通过调用 Windows 底层 API 直接操作直播伴侣与 OBS Studio，把定时任务稳定跑完——
+      任务执行期间不要求窗口在最上层，可以最小化到后台照常运行。
     </p>
+    <p class="text">
+      我的做法是先把工具做出来自己用，再打磨成别人也能不看文档就上手的产品。
+      比起「大而全」，我更在意「小而准」：一个每天帮你省下半小时、且不会在关键时刻掉链子的小工具，
+      往往比庞大的系统更有生命力。
+    </p>
+  </section>
+
+  <section class="block">
+    <h2 class="section-title">产品</h2>
+    <ul class="product-list">
+      {projects.map((project) => (
+        <li class="product-item">
+          <a class="product-link" href={`/projects/${project.id}`}>
+            <span class="product-name">{project.data.title}</span>
+            <span class="product-desc">{project.data.description}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
   </section>
 
   <section class="block">
@@ -54,15 +96,31 @@ const timeline = [
   </section>
 
   <section class="block">
+    <h2 class="section-title">技术栈</h2>
+    <div class="stack-grid">
+      {stack.map((group) => (
+        <div class="stack-group">
+          <span class="stack-label">{group.label}</span>
+          <div class="stack-items">
+            {group.items.map((item) => (<span class="stack-item">{item}</span>))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="block">
     <h2 class="section-title">更多</h2>
     <p class="text">
-      想了解更多项目细节或最新动态，欢迎前往首页的「关注我」板块，在 GitHub、X 或公众号找到我。
+      想了解产品细节或最新动态，可以先看看
+      <a href="/projects">项目列表</a>；
+      有问题或想聊聊，欢迎在首页的「关注我」板块找到我。
     </p>
   </section>
 </BaseLayout>
 
 <style>
-  .about-hero { margin-bottom: 56px; }
+  .about-hero { margin-bottom: 48px; }
   .about-hero h1 {
     font-size: 2.4rem; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 16px;
     background: linear-gradient(135deg, #fff 0%, #888 100%);
@@ -77,7 +135,20 @@ const timeline = [
   .section-title::before {
     content: ''; width: 4px; height: 20px; background: var(--accent); border-radius: 2px;
   }
-  .text { color: var(--text-muted); font-size: 0.95rem; line-height: 1.8; max-width: 680px; }
+  .text { color: var(--text-muted); font-size: 0.95rem; line-height: 1.8; max-width: 680px; margin-bottom: 14px; }
+  .text:last-child { margin-bottom: 0; }
+  .text a { color: var(--accent); }
+
+  .product-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .product-link {
+    display: block; padding: 16px 18px; background: var(--card-bg);
+    border: 1px solid var(--border); border-radius: 10px;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .product-link:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .product-name { display: block; font-size: 0.98rem; font-weight: 600; color: var(--text); margin-bottom: 6px; }
+  .product-desc { display: block; font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; }
+
   .timeline { list-style: none; display: flex; flex-direction: column; gap: 24px; }
   .timeline-item { display: flex; gap: 20px; align-items: flex-start; }
   .timeline-year {
@@ -86,6 +157,24 @@ const timeline = [
   }
   .timeline-content h3 { font-size: 1rem; font-weight: 600; margin-bottom: 6px; }
   .timeline-content p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; }
+
+  .stack-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px;
+  }
+  .stack-group {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 10px; padding: 14px 16px;
+  }
+  .stack-label { display: block; font-size: 0.78rem; color: var(--text-muted); margin-bottom: 10px; }
+  .stack-items { display: flex; flex-wrap: wrap; gap: 8px; }
+  .stack-item {
+    font-size: 0.78rem; padding: 4px 10px; border-radius: 20px;
+    background: var(--bg-secondary); border: 1px solid var(--border); color: var(--text);
+  }
+
+  @media (max-width: 768px) {
+    .about-hero h1 { font-size: 2rem; }
+  }
   @media (max-width: 640px) {
     .about-hero h1 { font-size: 1.8rem; }
     .timeline-item { flex-direction: column; gap: 4px; }
