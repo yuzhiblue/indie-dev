@@ -8,6 +8,8 @@ featured: true
 coverImage: '/projects/obstimer/cover.png'
 download: 'https://wwsm.lanzouo.com/incxS30yw58d'
 purchase: 'https://e.tb.cn/h.hn7C4xIY8KYN4jH?tk=svvs4UuuEB0'
+lang: 'zh'
+i18nKey: 'obstimer'
 draft: false
 ---
 

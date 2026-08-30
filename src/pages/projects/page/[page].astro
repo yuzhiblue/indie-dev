@@ -3,11 +3,13 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 import ProjectCard from '../../../components/ProjectCard.astro';
 import Pagination from '../../../components/Pagination.astro';
+import { dedupeProjects } from '../../../lib/projects-i18n';
 
 export async function getStaticPaths() {
 	const PAGE_SIZE = 12;
+
 	const projects = await getCollection('projects', ({ data }) => !data.draft);
-	const sorted = projects.sort((a, b) => {
+	const sorted = dedupeProjects(projects).sort((a, b) => {
 		const aFeatured = a.data.featured ? 1 : 0;
 		const bFeatured = b.data.featured ? 1 : 0;
 		if (aFeatured !== bFeatured) return bFeatured - aFeatured;

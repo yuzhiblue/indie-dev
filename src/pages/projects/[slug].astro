@@ -1,122 +1,190 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection, render } from 'astro:content';
+import { baseKeyOf, langMeta } from '../../lib/projects-i18n';
+
+// Per-language UI chrome (back link, "updated" label, date locale)
+const LANG_CHROME: Record<string, { back: string; updatedPre: string; updatedPost: string; dateLocale: string }> = {
+  zh: { back: '← 返回项目', updatedPre: '（更新于 ', updatedPost: '）', dateLocale: 'zh-CN' },
+  en: { back: '← Back to projects', updatedPre: '(Updated ', updatedPost: ')', dateLocale: 'en-US' },
+};
+
+// Per-language action button labels (download / purchase / etc.)
+const LANG_ACTIONS: Record<string, { demo: string; purchase: string; download: string; website: string; github: string }> = {
+  zh: { demo: '在线演示 ↗', purchase: '立即购买 ↗', download: '下载 ↗', website: '访问官网 ↗', github: 'GitHub 源码 ↗' },
+  en: { demo: 'Live Demo ↗', purchase: 'Buy Now ↗', download: 'Download ↗', website: 'Visit Website ↗', github: 'GitHub Repo ↗' },
+};
 
 export async function getStaticPaths() {
-	const projects = await getCollection('projects');
-	return projects.map((project) => ({
-		params: { slug: project.id },
-		props: { project },
-	}));
+  const all = await getCollection('projects');
+  // Group translations that share the same i18n base key
+  const groups = new Map<string, typeof all>();
+  for (const p of all) {
+    const k = baseKeyOf(p);
+    if (!groups.has(k)) groups.set(k, []);
+    groups.get(k)!.push(p);
+  }
+  return all.map((project) => {
+    const group = groups.get(baseKeyOf(project)) ?? [project];
+    const siblings = group.map((p) => {
+      const lang = p.data.lang ?? 'zh';
+      const meta = langMeta(lang);
+      return { slug: p.id, lang, label: meta.label, code: meta.code };
+    });
+    return { params: { slug: project.id }, props: { project, siblings } };
+  });
 }
 
-const { project } = Astro.props;
+const { project, siblings } = Astro.props;
 const { Content } = await render(project);
+
+const lang = project.data.lang ?? 'zh';
+const meta = langMeta(lang);
+const chrome = LANG_CHROME[lang] ?? LANG_CHROME.zh;
+const actions = LANG_ACTIONS[lang] ?? LANG_ACTIONS.zh;
+
+const site = Astro.site ?? new URL('https://dev.7tec.cn');
+const absUrl = (slug: string) => new URL(`/projects/${slug}`, site).toString();
+const mainSibling = siblings.find((s) => s.lang === 'zh') ?? siblings[0];
+const showSwitch = siblings.length > 1;
 ---
 
-<BaseLayout title={`${project.data.title} - yuzhiblue`} description={project.data.description}>
-	<style is:raw>
-		.article { max-width: 760px; margin: 0 auto; }
-		.cover {
-			width: 100%; aspect-ratio: 16 / 9; object-fit: cover;
-			border-radius: 16px; border: 1px solid var(--border);
-			margin: 0 0 32px; background: var(--card-bg);
-		}
-		.cover-placeholder {
-			width: 100%; aspect-ratio: 16 / 9;
-			border-radius: 16px; border: 1px solid var(--border);
-			margin: 0 0 32px; background: linear-gradient(135deg, #1e1e2e 0%, #2a2a3e 100%);
-		}
-		.article-header { margin-bottom: 32px; display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
-		.article-header-left { min-width: 0; flex: 1; }
-		.article-header h1 { font-size: 2.2rem; font-weight: 800; letter-spacing: -0.03em; line-height: 1.2; margin-bottom: 16px; }
-		.article-meta { display: flex; align-items: center; gap: 16px; color: var(--text-muted); font-size: 0.9rem; flex-wrap: wrap; }
-		.article-tags { display: flex; gap: 8px; margin-top: 16px; flex-wrap: wrap; }
-		.article-tag { background: var(--bg-secondary); color: var(--text-muted); font-size: 0.75rem; padding: 4px 12px; border-radius: 20px; border: 1px solid var(--border); }
-		.article-actions { display: flex; flex-direction: column; gap: 12px; flex-shrink: 0; align-items: stretch; }
-		.btn {
-			display: inline-flex; align-items: center; gap: 8px; font-size: 0.9rem; font-weight: 600;
-			padding: 10px 18px; border-radius: 10px; transition: all 0.2s; border: 1px solid transparent;
-		}
-		.btn-primary { background: var(--accent); color: #fff; }
-		.btn-primary:hover { background: var(--accent-hover); color: #fff; }
-		.btn-outline { background: transparent; color: var(--text); border-color: var(--border); }
-		.btn-outline:hover { border-color: var(--accent); color: var(--accent); }
-		/* Markdown 内容（<Content/> 渲染，无 scoped cid）必须用 :global 完全跳出作用域 */
-		:global(.article-content) { font-size: 1.05rem; line-height: 1.8; }
-		:global(.article-content h2) { font-size: 1.5rem; font-weight: 700; margin: 48px 0 16px; letter-spacing: -0.02em; }
-		:global(.article-content h3) { font-size: 1.2rem; font-weight: 600; margin: 32px 0 12px; }
-		:global(.article-content p) { margin-bottom: 20px; color: #ccc; }
-		:global(.article-content code) { background: var(--bg-secondary); padding: 2px 6px; border-radius: 4px; font-size: 0.9em; font-family: 'SF Mono', Monaco, monospace; }
-		:global(.article-content pre) { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 8px; padding: 20px; overflow-x: auto; margin: 24px 0; }
-		:global(.article-content pre code) { background: none; padding: 0; }
-		:global(.article-content blockquote) { border-left: 3px solid var(--accent); padding-left: 20px; margin: 24px 0; color: var(--text-muted); }
-		:global(.article-content ul), :global(.article-content ol) { margin: 16px 0; padding-left: 24px; }
-		:global(.article-content li) { margin-bottom: 8px; color: #ccc; }
-		:global(.article-content img) {
-			display: block; max-width: 100%; height: auto;
-			border-radius: 12px; border: 1px solid var(--border);
-			margin: 28px auto; background: var(--card-bg);
-		}
-		:global(.article-content a) { color: var(--accent); text-decoration: underline; text-underline-offset: 4px; }
-		:global(.article-content table) { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 0.95rem; }
-		:global(.article-content th), :global(.article-content td) { border: 1px solid var(--border); padding: 10px 14px; text-align: left; }
-		:global(.article-content th) { background: var(--bg-secondary); color: var(--text); }
-		.back-link { display: inline-flex; align-items: center; gap: 6px; color: var(--text-muted); font-size: 0.9rem; margin-bottom: 24px; transition: color 0.2s; }
-		.back-link:hover { color: var(--accent); }
-		@media (max-width: 640px) {
-			.article-header { flex-direction: column; }
-			.article-actions { flex-direction: row; flex-wrap: wrap; align-items: flex-start; }
-			.btn { flex: 0 0 auto; }
-		}
-	</style>
+<BaseLayout title={`${project.data.title} - yuzhiblue`} description={project.data.description} lang={meta.code}>
+  <Fragment slot="head">
+    <link rel="canonical" href={absUrl(project.id)} />
+    {showSwitch && siblings.map((s) => (
+      <link rel="alternate" hreflang={s.code} href={absUrl(s.slug)} />
+    ))}
+    {showSwitch && <link rel="alternate" hreflang="x-default" href={absUrl(mainSibling.slug)} />}
+  </Fragment>
 
-	<article class="article">
-		<a href="/projects" class="back-link">← Back to projects</a>
-		<header class="article-header">
-			<div class="article-header-left">
-				<h1>{project.data.title}</h1>
-				<div class="article-meta">
-					{project.data.pubDate && (
-						<time datetime={project.data.pubDate.toISOString()}>
-							{project.data.pubDate.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}
-						</time>
-					)}
-					{project.data.updatedDate && (
-						<span>（更新于 {project.data.updatedDate.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}）</span>
-					)}
-				</div>
-				{project.data.tags.length > 0 && (
-					<div class="article-tags">
-						{project.data.tags.map((tag) => (<span class="article-tag">{tag}</span>))}
-					</div>
-				)}
-			</div>
-			{(project.data.demo || project.data.purchase || project.data.download || project.data.website || project.data.github) && (
-				<div class="article-actions">
-					{project.data.demo && (
-						<a href={project.data.demo} target="_blank" rel="noopener" class="btn btn-primary">在线演示 ↗</a>
-					)}
-					{project.data.purchase && (
-						<a href={project.data.purchase} target="_blank" rel="noopener" class="btn btn-primary">立即购买 ↗</a>
-					)}
-					{project.data.download && (
-						<a href={project.data.download} target="_blank" rel="noopener" class="btn btn-outline">下载 ↗</a>
-					)}
-					{project.data.website && (
-						<a href={project.data.website} target="_blank" rel="noopener" class="btn btn-outline">访问官网 ↗</a>
-					)}
-					{project.data.github && (
-						<a href={project.data.github} target="_blank" rel="noopener" class="btn btn-outline">GitHub 源码 ↗</a>
-					)}
-				</div>
-			)}
-		</header>
-		{project.data.coverImage ? (
-			<img src={project.data.coverImage} alt={`${project.data.title} 封面`} class="cover" />
-		) : (
-			<div class="cover-placeholder" role="img" aria-label={`${project.data.title} 封面`}></div>
-		)}
-		<div class="article-content"><Content /></div>
-	</article>
+  <style is:raw>
+    .article { max-width: 760px; margin: 0 auto; }
+    .cover {
+      width: 100%; aspect-ratio: 16 / 9; object-fit: cover;
+      border-radius: 16px; border: 1px solid var(--border);
+      margin: 0 0 32px; background: var(--card-bg);
+    }
+    .cover-placeholder {
+      width: 100%; aspect-ratio: 16 / 9;
+      border-radius: 16px; border: 1px solid var(--border);
+      margin: 0 0 32px; background: linear-gradient(135deg, #1e1e2e 0%, #2a2a3e 100%);
+    }
+    .article-header { margin-bottom: 32px; display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+    .article-header-left { min-width: 0; flex: 1; }
+    .article-header h1 { font-size: 2.2rem; font-weight: 800; letter-spacing: -0.03em; line-height: 1.2; margin-bottom: 16px; }
+    .article-meta { display: flex; align-items: center; gap: 16px; color: var(--text-muted); font-size: 0.9rem; flex-wrap: wrap; }
+    .article-tags { display: flex; gap: 8px; margin-top: 16px; flex-wrap: wrap; }
+    .article-tag { background: var(--bg-secondary); color: var(--text-muted); font-size: 0.75rem; padding: 4px 12px; border-radius: 20px; border: 1px solid var(--border); }
+    .article-actions { display: flex; flex-direction: column; gap: 12px; flex-shrink: 0; align-items: stretch; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px; font-size: 0.9rem; font-weight: 600;
+      padding: 10px 18px; border-radius: 10px; transition: all 0.2s; border: 1px solid transparent;
+    }
+    .btn-primary { background: var(--accent-strong); color: #fff; }
+    .btn-primary:hover { background: var(--accent-hover); color: #fff; }
+    .btn-outline { background: transparent; color: var(--text); border-color: var(--border); }
+    .btn-outline:hover { border-color: var(--link); color: var(--link); }
+    /* Language switcher (Plan B: per-language content files) */
+    .lang-switch { display: flex; align-items: center; gap: 8px; margin-bottom: 24px; flex-wrap: wrap; }
+    .lang-switch-label { font-size: 0.8rem; color: var(--text-muted); }
+    .lang-switch a {
+      font-size: 0.85rem; padding: 5px 14px; border-radius: 20px;
+      border: 1px solid var(--border); color: var(--text-muted); transition: all 0.2s;
+    }
+    .lang-switch a:hover { border-color: var(--link); color: var(--link); }
+    .lang-switch a[aria-current='true'] { background: var(--accent-strong); color: #fff; border-color: var(--accent-strong); }
+    /* Markdown content (<Content/> renders without a scoped cid, so :global is required) */
+    :global(.article-content) { font-size: 1.05rem; line-height: 1.8; }
+    :global(.article-content h2) { font-size: 1.5rem; font-weight: 700; margin: 48px 0 16px; letter-spacing: -0.02em; }
+    :global(.article-content h3) { font-size: 1.2rem; font-weight: 600; margin: 32px 0 12px; }
+    :global(.article-content p) { margin-bottom: 20px; color: #ccc; }
+    :global(.article-content code) { background: var(--bg-secondary); padding: 2px 6px; border-radius: 4px; font-size: 0.9em; font-family: 'SF Mono', Monaco, monospace; }
+    :global(.article-content pre) { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 8px; padding: 20px; overflow-x: auto; margin: 24px 0; }
+    :global(.article-content pre code) { background: none; padding: 0; }
+    :global(.article-content blockquote) { border-left: 3px solid var(--accent); padding-left: 20px; margin: 24px 0; color: var(--text-muted); }
+    :global(.article-content ul), :global(.article-content ol) { margin: 16px 0; padding-left: 24px; }
+    :global(.article-content li) { margin-bottom: 8px; color: #ccc; }
+    :global(.article-content img) {
+      display: block; max-width: 100%; height: auto;
+      border-radius: 12px; border: 1px solid var(--border);
+      margin: 28px auto; background: var(--card-bg);
+    }
+    :global(.article-content a) { color: var(--link); text-decoration: underline; text-underline-offset: 4px; }
+    :global(.article-content a:hover) { color: var(--link-hover); }
+    :global(.article-content table) { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 0.95rem; }
+    :global(.article-content th), :global(.article-content td) { border: 1px solid var(--border); padding: 10px 14px; text-align: left; }
+    :global(.article-content th) { background: var(--bg-secondary); color: var(--text); }
+    .back-link { display: inline-flex; align-items: center; gap: 6px; color: var(--text-muted); font-size: 0.9rem; margin-bottom: 24px; transition: color 0.2s; }
+    .back-link:hover { color: var(--accent); }
+    @media (max-width: 768px) {
+      .article-header { flex-direction: column; }
+      .article-actions { flex-direction: row; flex-wrap: wrap; align-items: flex-start; }
+      .btn { flex: 0 0 auto; }
+    }
+    @media (max-width: 640px) {
+      .article-header h1 { font-size: 1.8rem; }
+    }
+  </style>
+
+  <article class="article">
+    <a href="/projects" class="back-link">{chrome.back}</a>
+    {showSwitch && (
+      <nav class="lang-switch" aria-label="语言版本">
+        <span class="lang-switch-label">语言</span>
+        {siblings.map((s) => (
+          <a
+            href={`/projects/${s.slug}`}
+            hreflang={s.code}
+            aria-current={s.slug === project.id ? 'true' : undefined}
+          >{s.label}</a>
+        ))}
+      </nav>
+    )}
+    <header class="article-header">
+      <div class="article-header-left">
+        <h1>{project.data.title}</h1>
+        <div class="article-meta">
+          {project.data.pubDate && (
+            <time datetime={project.data.pubDate.toISOString()}>
+              {project.data.pubDate.toLocaleDateString(chrome.dateLocale, { year: 'numeric', month: 'long', day: 'numeric' })}
+            </time>
+          )}
+          {project.data.updatedDate && (
+            <span>{chrome.updatedPre}{project.data.updatedDate.toLocaleDateString(chrome.dateLocale, { year: 'numeric', month: 'long', day: 'numeric' })}{chrome.updatedPost}</span>
+          )}
+        </div>
+        {project.data.tags.length > 0 && (
+          <div class="article-tags">
+            {project.data.tags.map((tag) => (<span class="article-tag">{tag}</span>))}
+          </div>
+        )}
+      </div>
+      {(project.data.demo || project.data.purchase || project.data.download || project.data.website || project.data.github) && (
+        <div class="article-actions">
+          {project.data.demo && (
+            <a href={project.data.demo} target="_blank" rel="noopener" class="btn btn-primary">{actions.demo}</a>
+          )}
+          {project.data.purchase && (
+            <a href={project.data.purchase} target="_blank" rel="noopener" class="btn btn-primary">{actions.purchase}</a>
+          )}
+          {project.data.download && (
+            <a href={project.data.download} target="_blank" rel="noopener" class="btn btn-outline">{actions.download}</a>
+          )}
+          {project.data.website && (
+            <a href={project.data.website} target="_blank" rel="noopener" class="btn btn-outline">{actions.website}</a>
+          )}
+          {project.data.github && (
+            <a href={project.data.github} target="_blank" rel="noopener" class="btn btn-outline">{actions.github}</a>
+          )}
+        </div>
+      )}
+    </header>
+    {project.data.coverImage ? (
+      <img src={project.data.coverImage} alt={`${project.data.title} 封面`} class="cover" />
+    ) : (
+      <div class="cover-placeholder" role="img" aria-label={`${project.data.title} 封面`}></div>
+    )}
+    <div class="article-content"><Content /></div>
+  </article>
 </BaseLayout>
