@@ -29,7 +29,3 @@ excerpt(140, “…”); ?>
 替换成
 
 同乐儿博客官方下载地址:http://www.tongleer.com/2055.html
-
-**我发现上面有一些BUG，样式也不够美观，所以我自己稍微修改了一下。如果你想使用我这个版本请点击下面的链接。**
-
-http://www.7tec.cn/usr/uploads/2019/01/WechatFans.tar.gz

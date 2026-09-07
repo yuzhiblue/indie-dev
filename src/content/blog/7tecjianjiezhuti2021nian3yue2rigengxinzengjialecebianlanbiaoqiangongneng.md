@@ -68,8 +68,6 @@ slug: 7tec-theme-sidebar-tags-update
   * 增加了版权信息和文字字数显示；
   * 修改了文章标签的显示方式；
 
-**下载地址：**
+**项目地址：**
 
-链接:http://218.0.49.89:8888/down/M2qGMGMnk69J 提取码:XejpGE
-
-请注意：该文章已失效
+https://github.com/yuzhiblue/7tec

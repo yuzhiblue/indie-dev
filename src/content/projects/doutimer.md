@@ -6,7 +6,7 @@ updatedDate: 2025-04-15
 tags: ['Windows', '自动化', '直播', '抖音']
 featured: true
 coverImage: '/projects/doutimer/cover.png'
-download: 'https://wwbqm.lanzouv.com/iRZlc3k258la'
+download: 'https://cnb.cool/yuzhiblue/Releases/-/git/raw/main/%E6%8A%96%E9%9F%B3%E7%9B%B4%E6%92%AD%E5%AE%9A%E6%97%B6%E5%8A%A9%E6%89%8B/Dou_0.5.0.exe'
 purchase: 'https://e.tb.cn/h.6oeYmXNdzl7e7ZT'
 draft: false
 ---
@@ -18,16 +18,20 @@ draft: false
 或者放在桌面底部，均可以照常运行。
 
 本软件运行环境要求：win10 / win11 64 位，支持本地和云电脑，不支持多开；
-支持抖音和快手双平台.
 
-## 最新版 0.4.0307（2025-04-15 更新）
 
-- 本次更新：修复常用定时 BUG / 添加开播时间和下播时间验证 / 修复其他问题
+## 最新版 0.5.0（2026-08-31 更新）
+
+- 本次更新：添加邮箱通知功能 / 剥离快手相关逻辑 / 修复其他问题
 
 ### 下载地址
 
-- 蓝奏云：https://wwbqm.lanzouv.com/iRZlc3k258la （密码：`7sub`）
-- 百度网盘：https://pan.baidu.com/s/18KVP4e3BuzaZvZ9gu97TXQ?pwd=7tec （提取码：`7tec`）
+- 蓝奏云下载：
+https://wwbqm.lanzouv.com/iLLj5460mv1a
+密码:99fz
+
+- 百度网盘下载：
+链接: https://pan.baidu.com/s/1IypBeTMmhOmAI78MRLFAYw?pwd=vnw4 提取码: vnw4 复制这段内容后打开百度网盘手机App，操作更方便哦
 
 ### 使用教程
 
@@ -36,7 +40,6 @@ draft: false
 ### 购买地址
 
 - 淘宝：https://e.tb.cn/h.6oeYmXNdzl7e7ZT
-- 闲鱼：https://m.tb.cn/h.6oediqM?tk=3H1HVgbOSpQ
 
 ### 小贴士
 
@@ -64,4 +67,4 @@ draft: false
 ## 系统要求
 
 - Windows 10 及以上 64 位系统。
-- 仅限抖音 / 快手电脑版直播伴侣。
+- 仅限抖音电脑版直播伴侣。

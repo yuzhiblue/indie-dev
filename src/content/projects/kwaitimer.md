@@ -2,10 +2,10 @@
 title: '快手直播定时助手（Kwaitimer）'
 description: '直播定时助手的快手版本，调用 Windows 底层 API 实现自动化点击，支持快手直播定时开播与下播。'
 pubDate: 2025-03-28
-updatedDate: 2025-03-28
+updatedDate: 2026-08-30
 tags: ['Windows', '自动化', '快手', '直播']
 featured: false
-download: 'https://wwbqm.lanzouv.com/iPJKN3ne9syh'
+download: 'https://cnb.cool/yuzhiblue/Releases/-/git/raw/main/%E5%BF%AB%E6%89%8B%E7%9B%B4%E6%92%AD%E5%AE%9A%E6%97%B6%E5%8A%A9%E6%89%8B/Kwai_0.5.0.exe'
 draft: false
 ---
 
@@ -13,7 +13,7 @@ draft: false
 
 欢迎使用快手直播定时助手！本软件是直播定时助手的快手版本。
 
-最新版本 0.4.0328。
+最新版本 0.5.0
 
 通过调用 Windows 底层 API 接口，实现自动化点击功能。本软件旨在提高个人直播效率，请勿用于违法违规用途。
 
@@ -23,20 +23,22 @@ draft: false
 
 ## 功能特性
 
-> 以下特性参考同系列直播定时助手（抖音 / 快手双平台）整理，具体以实际软件为准。
-
 - 支持定时开播、定时下播
 - 支持多组定时
 - 支持循环直播
 - 支持多种定时方式
+- 支持团购带货自动挂车功能
 
-## 最新版 0.4.0328
+## 最新版 0.5.0
 
 ### 下载地址
 
-- 蓝奏云：https://wwbqm.lanzouv.com/iPJKN3ne9syh （密码：`bkbv`）
+- 蓝奏云下载：
+https://wwbqm.lanzouv.com/iLqq5464ankd
+密码:dgnh
 
-> 页面暂未提供购买链接与百度网盘地址，如需可联系微信客服 `salesleads` 咨询。
+- 百度网盘：
+链接: https://pan.baidu.com/s/1o-AUmwawPir13m5Zc0D4Jw?pwd=hsxy 提取码: hsxy 复制这段内容后打开百度网盘手机App，操作更方便哦
 
 ## 使用说明
 
