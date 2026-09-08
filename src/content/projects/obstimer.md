@@ -29,6 +29,10 @@ OBS定时助手是 OBS Studio 上面的一个定时脚本插件。通过调用 O
 - 定时关闭摄像机
 - 支持无限次循环功能
 
+## 界面截图
+
+![脚本主界面](/projects/obstimer/1.png)
+
 ## 下载地址
 
 - 蓝奏云：https://wwsm.lanzouo.com/incxS30yw58d （密码：`gy7u`）

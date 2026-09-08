@@ -33,6 +33,14 @@ draft: false
 
 ## 最新版 0.4.0
 
+## 界面截图
+
+![软件主界面：常用定时](/projects/wxtimer/1.png)
+
+![软件主界面：多组定时](/projects/wxtimer/2.png)
+
+![软件主界面：循环定时](/projects/wxtimer/3.png)
+
 ### 下载地址
 
 - 蓝奏云下载：

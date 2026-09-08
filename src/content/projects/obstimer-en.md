@@ -29,6 +29,10 @@ If you stream via OBS (on any platform — Douyin, Kuaishou, WeChat Channels, Xi
 - Scheduled turn off camera
 - Infinite loop supported
 
+## Photos
+
+![mainborard](/projects/obstimer/1.png)
+
 ## Download
 
 - LanZou Cloud: https://wwsm.lanzouo.com/incxS30yw58d （password: `gy7u`）

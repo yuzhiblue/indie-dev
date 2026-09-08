@@ -24,6 +24,15 @@ draft: false
 
 - 本次更新：添加邮箱通知功能 / 剥离快手相关逻辑 / 修复其他问题
 
+## 界面截图
+
+![软件主界面：常用定时](/projects/doutimer/1.png)
+
+![软件主界面：多组定时](/projects/doutimer/2.png)
+
+![软件主界面：循环定时](/projects/doutimer/3.png)
+
+
 ### 下载地址
 
 - 蓝奏云下载：

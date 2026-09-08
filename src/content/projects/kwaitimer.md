@@ -5,6 +5,7 @@ pubDate: 2025-03-28
 updatedDate: 2026-08-30
 tags: ['Windows', '自动化', '快手', '直播']
 featured: false
+coverImage: '/projects/kwaitimer/cover.png'
 download: 'https://cnb.cool/yuzhiblue/Releases/-/git/raw/main/%E5%BF%AB%E6%89%8B%E7%9B%B4%E6%92%AD%E5%AE%9A%E6%97%B6%E5%8A%A9%E6%89%8B/Kwai_0.5.0.exe'
 draft: false
 ---
@@ -30,6 +31,14 @@ draft: false
 - 支持团购带货自动挂车功能
 
 ## 最新版 0.5.0
+
+## 界面截图
+
+![软件主界面：常用定时](/projects/kwaitimer/1.png)
+
+![软件主界面：多组定时](/projects/kwaitimer/2.png)
+
+![软件主界面：循环定时](/projects/kwaitimer/3.png)
 
 ### 下载地址
 
