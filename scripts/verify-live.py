@@ -93,7 +93,7 @@ def main() -> int:
     check('首页无 dev.7tec.cn 残留', 'dev.7tec.cn' not in home)
 
     # ---------- 静态文件 ----------
-    for path in ['robots.txt', 'ads.txt', 'favicon.svg', 'og-default.png']:
+    for path in ['robots.txt', 'ads.txt', 'favicon.svg', 'favicon.ico', 'apple-touch-icon.png', 'og-default.png']:
         code, _, _ = fetch(urljoin(base, path))
         check(f'/{path} 可访问', code == 200, f'HTTP {code}')
 

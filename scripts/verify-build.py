@@ -46,7 +46,7 @@ if not DIST.exists():
     raise SystemExit('dist 不存在，请先执行 npm run build')
 
 # --- 静态文件 ---
-for name in ['robots.txt', '404.html', 'sitemap-index.xml', 'rss.xml']:
+for name in ['robots.txt', '404.html', 'sitemap-index.xml', 'rss.xml', 'favicon.ico', 'favicon.svg', 'apple-touch-icon.png']:
     check(f'{name} 已生成', (DIST / name).exists())
 
 # --- 首页 ---
@@ -61,6 +61,7 @@ check('首页 JSON-LD = WebSite + Person', set(ld_types(home)) == {'WebSite', 'P
 check('canonical 已切换到主域 7tec.cn', bool(canonical) and canonical[0].startswith('https://7tec.cn/'), str(canonical))
 check('首页 og:image 指向默认分享图', 'content="https://7tec.cn/og-default.png"' in home)
 check('首页含 RSS 订阅入口', 'href="/rss.xml"' in home)
+check('首页含 theme-color', 'name="theme-color"' in home)
 home_desc = re.search(r'<meta name="description" content="([^"]*)"', home)
 check('首页 description 长度充足（≥120 字符）',
       bool(home_desc) and len(home_desc.group(1)) >= 120,
