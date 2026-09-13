@@ -2,7 +2,7 @@
 
 基于 [Astro](https://astro.build) 构建的个人作品集与博客站点，属于独立开发者 **yuzhiblue**，用于展示独立开发的产品、工具与开源项目，并记录技术笔记与产品思考。
 
-- 线上地址：<https://dev.7tec.cn>
+- 线上地址：<https://7tec.cn>
 - 作者：yuzhiblue（GitHub [@yuzhiblue](https://github.com/yuzhiblue)）
 
 ## 技术栈
@@ -134,7 +134,7 @@ draft: false
 
 ## 部署说明
 
-- `astro.config.mjs` 中 `site` 设为 `https://dev.7tec.cn`，并使用 `base: './'` 的相对路径，使构建产物在 `file://` 直接打开时也能正确加载资源。
+- `astro.config.mjs` 中 `site` 设为 `https://7tec.cn`，并使用 `base: './'` 的相对路径，使构建产物在 `file://` 直接打开时也能正确加载资源。
 - 构建脚本通过 `inlineStylesheets: 'always'` 将样式内联进 HTML，便于静态托管。
 - 部署时直接发布 `npm run build` 生成的 `./dist/` 目录即可。
 

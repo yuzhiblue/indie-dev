@@ -32,7 +32,7 @@ export async function getStaticPaths() {
 const { posts, current, last, prevUrl, nextUrl } = Astro.props;
 ---
 
-<BaseLayout title={`Blog - 第 ${current} 页 - yuzhiblue`} description="开发笔记与技术思考">
+<BaseLayout title={`开发博客 - 第 ${current} 页`} description="开发笔记与技术思考：Windows 自动化、Python / PySide6、Astro 建站与独立产品开发经验。">
 	<style>
 		.page-header { padding: 40px 0; border-bottom: 1px solid var(--border); margin-bottom: 40px; }
 		.page-header h1 { font-size: 2rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 8px; }

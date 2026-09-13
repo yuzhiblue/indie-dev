@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PostCard from '../../components/PostCard.astro';
+import { blogPostingSchema } from '../../lib/seo';
 import { getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
@@ -43,7 +44,13 @@ const related = allPosts
   .map((r) => r.post);
 ---
 
-<BaseLayout title={`${post.data.title} - yuzhiblue`} description={post.data.description}>
+<BaseLayout
+  title={post.data.title}
+  description={post.data.description}
+  type="article"
+  image={post.data.coverImage}
+  schema={blogPostingSchema(post)}
+>
   <style>
     .article { max-width: 760px; margin: 0 auto; }
     .article-header { margin-bottom: 40px; padding-bottom: 24px; border-bottom: 1px solid var(--border); }
@@ -111,7 +118,7 @@ const related = allPosts
       <h1>{post.data.title}</h1>
       <div class="article-author">
         <a class="author-link" href="/about">
-          <img class="author-avatar" src="/avatar.svg" alt="yuzhiblue" width="32" height="32" />
+          <img class="author-avatar" src="/avatar.svg" alt="yuzhiblue" width="32" height="32" decoding="async" />
           yuzhiblue
         </a>
         <div class="article-meta">

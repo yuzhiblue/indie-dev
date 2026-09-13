@@ -1,7 +1,8 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection, render } from 'astro:content';
-import { baseKeyOf, langMeta } from '../../lib/projects-i18n';
+import { baseKeyOf, dedupeProjects, langMeta } from '../../lib/projects-i18n';
+import { softwareApplicationSchema } from '../../lib/seo';
 
 // Per-language UI chrome (back link, "updated" label, date locale)
 const LANG_CHROME: Record<string, { back: string; updatedPre: string; updatedPost: string; dateLocale: string }> = {
@@ -16,7 +17,7 @@ const LANG_ACTIONS: Record<string, { demo: string; purchase: string; download: s
 };
 
 export async function getStaticPaths() {
-  const all = await getCollection('projects');
+  const all = await getCollection('projects', ({ data }) => !data.draft);
   // Group translations that share the same i18n base key
   const groups = new Map<string, typeof all>();
   for (const p of all) {
@@ -24,6 +25,8 @@ export async function getStaticPaths() {
     if (!groups.has(k)) groups.set(k, []);
     groups.get(k)!.push(p);
   }
+  // 每个项目组的代表（优先中文），用于「相关项目」互链
+  const representatives = dedupeProjects(all);
   return all.map((project) => {
     const group = groups.get(baseKeyOf(project)) ?? [project];
     const siblings = group.map((p) => {
@@ -31,11 +34,14 @@ export async function getStaticPaths() {
       const meta = langMeta(lang);
       return { slug: p.id, lang, label: meta.label, code: meta.code };
     });
-    return { params: { slug: project.id }, props: { project, siblings } };
+    const related = representatives
+      .filter((p) => baseKeyOf(p) !== baseKeyOf(project))
+      .slice(0, 3);
+    return { params: { slug: project.id }, props: { project, siblings, related } };
   });
 }
 
-const { project, siblings } = Astro.props;
+const { project, siblings, related } = Astro.props;
 const { Content } = await render(project);
 
 const lang = project.data.lang ?? 'zh';
@@ -43,15 +49,21 @@ const meta = langMeta(lang);
 const chrome = LANG_CHROME[lang] ?? LANG_CHROME.zh;
 const actions = LANG_ACTIONS[lang] ?? LANG_ACTIONS.zh;
 
-const site = Astro.site ?? new URL('https://dev.7tec.cn');
+const site = Astro.site ?? new URL('https://7tec.cn');
 const absUrl = (slug: string) => new URL(`/projects/${slug}`, site).toString();
 const mainSibling = siblings.find((s) => s.lang === 'zh') ?? siblings[0];
 const showSwitch = siblings.length > 1;
+const relatedTitle = lang === 'en' ? 'Related projects' : '相关项目';
 ---
 
-<BaseLayout title={`${project.data.title} - yuzhiblue`} description={project.data.description} lang={meta.code}>
+<BaseLayout
+  title={project.data.title}
+  description={project.data.description}
+  lang={meta.code}
+  image={project.data.coverImage}
+  schema={softwareApplicationSchema(project)}
+>
   <Fragment slot="head">
-    <link rel="canonical" href={absUrl(project.id)} />
     {showSwitch && siblings.map((s) => (
       <link rel="alternate" hreflang={s.code} href={absUrl(s.slug)} />
     ))}
@@ -117,6 +129,26 @@ const showSwitch = siblings.length > 1;
     :global(.article-content th) { background: var(--bg-secondary); color: var(--text); }
     .back-link { display: inline-flex; align-items: center; gap: 6px; color: var(--text-muted); font-size: 0.9rem; margin-bottom: 24px; transition: color 0.2s; }
     .back-link:hover { color: var(--accent); }
+    /* 相关项目互链 */
+    .related { margin-top: 64px; padding-top: 32px; border-top: 1px solid var(--border); }
+    .related-title { font-size: 1.3rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 20px; color: var(--text); }
+    .related-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+    .related-item {
+      display: flex; flex-direction: column; gap: 12px; padding: 16px;
+      background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .related-item:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .related-thumb {
+      width: 100%; aspect-ratio: 16 / 9; object-fit: cover;
+      border-radius: 8px; border: 1px solid var(--border); background: var(--bg-secondary);
+    }
+    .related-name { display: block; font-size: 0.95rem; font-weight: 600; color: var(--text); }
+    .related-desc {
+      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+      font-size: 0.82rem; color: var(--text-muted); line-height: 1.6;
+    }
+    .related-item:hover .related-name { color: var(--accent); }
     @media (max-width: 768px) {
       .article-header { flex-direction: column; }
       .article-actions { flex-direction: row; flex-wrap: wrap; align-items: flex-start; }
@@ -181,10 +213,41 @@ const showSwitch = siblings.length > 1;
       )}
     </header>
     {project.data.coverImage ? (
-      <img src={project.data.coverImage} alt={`${project.data.title} 封面`} class="cover" />
+      <img
+        src={project.data.coverImage}
+        alt={`${project.data.title} 封面`}
+        class="cover"
+        decoding="async"
+        fetchpriority="high"
+      />
     ) : (
       <div class="cover-placeholder" role="img" aria-label={`${project.data.title} 封面`}></div>
     )}
     <div class="article-content"><Content /></div>
+
+    {related.length > 0 && (
+      <section class="related" aria-label={relatedTitle}>
+        <h2 class="related-title">{relatedTitle}</h2>
+        <div class="related-list">
+          {related.map((p) => (
+            <a class="related-item" href={`/projects/${p.id}`}>
+              {p.data.coverImage ? (
+                <img
+                  class="related-thumb"
+                  src={p.data.coverImage}
+                  alt={`${p.data.title} 封面`}
+                  loading="lazy"
+                  decoding="async"
+                />
+              ) : (
+                <div class="related-thumb" aria-hidden="true"></div>
+              )}
+              <span class="related-name">{p.data.title}</span>
+              <span class="related-desc">{p.data.description}</span>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
   </article>
 </BaseLayout>

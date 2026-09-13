@@ -1,5 +1,42 @@
 ---
-const { title, description, lang = 'zh-CN' } = Astro.props;
+import type { JsonLd } from '../lib/seo';
+
+interface Props {
+  title: string;
+  description: string;
+  lang?: string;
+  /** title 已是完整标题时置为 true，不再追加站点名后缀 */
+  rawTitle?: boolean;
+  /** Open Graph 类型 */
+  type?: 'website' | 'article' | 'profile';
+  /** 分享图：public 下的绝对路径，或完整 URL */
+  image?: string;
+  /** 输出 noindex（如 404、低价值归档页） */
+  noindex?: boolean;
+  /** 结构化数据（JSON-LD），单个对象或数组 */
+  schema?: JsonLd | JsonLd[];
+}
+
+const {
+  title,
+  description,
+  lang = 'zh-CN',
+  rawTitle = false,
+  type = 'website',
+  image,
+  noindex = false,
+  schema,
+} = Astro.props;
+
+const site = Astro.site ?? new URL('https://7tec.cn');
+const canonical = new URL(Astro.url.pathname, site).toString();
+const fullTitle = rawTitle ? title : `${title} | yuzhiblue`;
+// 页面没有专属封面时回落到站点默认分享图，保证任何页面都有 og:image
+const ogImage = new URL(image ?? '/og-default.png', site).toString();
+const ogLocale = lang.startsWith('en') ? 'en_US' : 'zh_CN';
+const schemaList = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
+// 避免 JSON 内容中的 </script> 提前闭合标签
+const toJsonLd = (value: JsonLd) => JSON.stringify(value).replace(/</g, '\\u003c');
 
 const socialLinks = [
   {
@@ -31,8 +68,8 @@ import '../styles/tokens.css';
   <head>
     <meta charset="UTF-8" />
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4N8PD8Q73L"></script>
-    <script>
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-4N8PD8Q73L"></script>
+    <script is:inline>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
@@ -42,7 +79,7 @@ import '../styles/tokens.css';
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <meta name="google-adsense-account" content="ca-pub-4625795004585815" />
-    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <!-- Google AdSense -->
     <script
       is:inline
@@ -50,7 +87,30 @@ import '../styles/tokens.css';
       src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4625795004585815"
       crossorigin="anonymous"
     ></script>
-    <title>{title}</title>
+    <title>{fullTitle}</title>
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
+    <meta name="author" content="yuzhiblue" />
+
+    <meta property="og:type" content={type} />
+    <meta property="og:site_name" content="yuzhiblue" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content={ogLocale} />
+    {ogImage && <meta property="og:image" content={ogImage} />}
+
+    <meta name="twitter:card" content={ogImage ? 'summary_large_image' : 'summary'} />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    {ogImage && <meta name="twitter:image" content={ogImage} />}
+
+    <link rel="alternate" type="application/rss+xml" title="yuzhiblue 开发博客" href={new URL('/rss.xml', site).toString()} />
+
+    {schemaList.map((item) => (
+      <script type="application/ld+json" is:inline set:html={toJsonLd(item)} />
+    ))}
+
     <slot name="head" />
     <style is:global>
       * { margin: 0; padding: 0; box-sizing: border-box; }

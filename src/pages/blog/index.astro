@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 import PostCard from '../../components/PostCard.astro';
 import Pagination from '../../components/Pagination.astro';
+import { collectionSchema } from '../../lib/seo';
 
 const PAGE_SIZE = 12;
 
@@ -24,7 +25,15 @@ const topTags = [...tagCounts.entries()]
 	.map(([t]) => t);
 ---
 
-<BaseLayout title="Blog - yuzhiblue" description="开发笔记与技术思考">
+<BaseLayout
+	title="开发博客"
+	description="开发笔记与技术思考：Windows 自动化、Python / PySide6、Astro 建站与独立产品开发经验。"
+	schema={collectionSchema({
+		name: '开发博客',
+		description: '开发笔记与技术思考：Windows 自动化、Python / PySide6、Astro 建站与独立产品开发经验。',
+		path: '/blog',
+	})}
+>
 	<style>
 		.page-header { padding: 40px 0; border-bottom: 1px solid var(--border); margin-bottom: 24px; }
 		.page-header h1 { font-size: 2rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 8px; }

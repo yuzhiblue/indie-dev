@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 
 import { dedupeProjects } from '../lib/projects-i18n';
+import { personSchema } from '../lib/seo';
 
 const projects = dedupeProjects(await getCollection('projects', ({ data }) => !data.draft))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
@@ -43,7 +44,11 @@ const stack = [
 ];
 ---
 
-<BaseLayout title="About - yuzhiblue" description="关于 yuzhiblue：独立开发者，专注 Windows 桌面自动化与直播工具">
+<BaseLayout
+  title="关于我"
+  description="关于 yuzhiblue：独立开发者，专注 Windows 桌面自动化与直播定时工具，代表产品 Doutimer、Wxtimer、OBStimer。"
+  schema={personSchema()}
+>
   <section class="about-hero">
     <h1>关于我</h1>
     <p class="lead">

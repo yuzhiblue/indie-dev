@@ -2,6 +2,7 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 import PostCard from '../../../components/PostCard.astro';
+import { collectionSchema } from '../../../lib/seo';
 
 export async function getStaticPaths() {
 	// 仅对可见（非 draft）文章出现的标签生成页面
@@ -23,7 +24,16 @@ const { tag, posts } = Astro.props;
 const sorted = posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 
-<BaseLayout title={`#${tag} - yuzhiblue`} description={`标签「${tag}」下的全部文章`}>
+<BaseLayout
+	title={`#${tag} 标签下的文章`}
+	description={`标签「${tag}」下的全部文章：共 ${sorted.length} 篇开发笔记与技术分享。`}
+	noindex={sorted.length < 2}
+	schema={collectionSchema({
+		name: `#${tag} 标签下的文章`,
+		description: `标签「${tag}」下的全部文章`,
+		path: `/blog/tag/${tag}`,
+	})}
+>
 	<style>
 		.back { display: inline-block; margin-bottom: 16px; color: var(--text-muted); font-size: 0.9rem; transition: color 0.2s; }
 		.back:hover { color: var(--accent); }

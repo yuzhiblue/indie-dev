@@ -9,6 +9,8 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "build:verify": "npm run build && npm run verify",
+    "verify": "python scripts/verify-build.py",
     "preview": "astro preview",
     "astro": "astro"
   },

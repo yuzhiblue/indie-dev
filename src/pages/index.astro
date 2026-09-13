@@ -4,6 +4,7 @@ import ProjectCard from '../components/ProjectCard.astro';
 import { getCollection } from 'astro:content';
 
 import { dedupeProjects } from '../lib/projects-i18n';
+import { personSchema, websiteSchema } from '../lib/seo';
 
 const allProjects = await getCollection('projects', ({ data }) => !data.draft);
 const featuredProjects = dedupeProjects(allProjects)
@@ -23,7 +24,12 @@ const featuredPosts = recentPosts
   .slice(0, 5);
 ---
 
-<BaseLayout title="Home - yuzhiblue, an indie dev from China.This site is used to show my projects,blogs and more." description="独立开发者作品展示">
+<BaseLayout
+  title="yuzhiblue - 独立开发者 | Windows 直播自动化与开发工具"
+  description="yuzhiblue（7TEC）的个人站点：独立开发 Windows 桌面自动化与直播定时工具（Doutimer、Wxtimer、OBStimer、Kwaitimer），并分享编程与产品开发笔记。"
+  rawTitle
+  schema={[websiteSchema(), personSchema()]}
+>
   <style>
     .hero { padding: 64px 0 48px; text-align: center; }
     .hero-actions {
@@ -97,8 +103,8 @@ const featuredPosts = recentPosts
   </style>
 
   <section class="hero">
-    <img class="hero-avatar" src="/avatar.svg" alt="yuzhiblue" width="96" height="96" />
-    <h1>Hi, I'm yuzhiblue</h1>
+    <img class="hero-avatar" src="/avatar.svg" alt="yuzhiblue" width="96" height="96" decoding="async" />
+    <h1>独立开发者 yuzhiblue</h1>
     <p>独立开发者，专注于打造简洁实用的开发者工具与产品。相信小而美的工具能让日常更高效。</p>
     <div class="hero-actions">
       <a href="/projects" class="btn btn-primary">查看项目 →</a>

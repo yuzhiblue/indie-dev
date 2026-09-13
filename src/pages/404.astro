@@ -1,0 +1,42 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="页面不存在（404）"
+  description="抱歉，你访问的页面不存在或已被移动。可以返回首页，或浏览项目与博客。"
+  noindex
+>
+  <style>
+    .notfound { text-align: center; padding: 40px 0 20px; }
+    .code {
+      font-size: 6rem; font-weight: 800; letter-spacing: -0.04em; line-height: 1;
+      background: linear-gradient(135deg, #fff 0%, #888 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      margin-bottom: 16px;
+    }
+    .notfound h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 12px; }
+    .notfound p { color: var(--text-muted); margin-bottom: 32px; }
+    .actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; font-size: 0.95rem; font-weight: 600;
+      padding: 10px 20px; border-radius: 10px; border: 1px solid transparent;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+    }
+    .btn-primary { background: var(--accent-strong); color: #fff; }
+    .btn-primary:hover { background: var(--accent-hover); color: #fff; }
+    .btn-outline { background: transparent; color: var(--text); border-color: var(--border); }
+    .btn-outline:hover { border-color: var(--link); color: var(--link); }
+  </style>
+
+  <section class="notfound">
+    <div class="code">404</div>
+    <h1>页面不存在</h1>
+    <p>抱歉，你访问的页面不存在或已被移动。</p>
+    <div class="actions">
+      <a href="/" class="btn btn-primary">返回首页</a>
+      <a href="/projects" class="btn btn-outline">查看项目</a>
+      <a href="/blog" class="btn btn-outline">浏览博客</a>
+    </div>
+  </section>
+</BaseLayout>
