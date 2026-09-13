@@ -61,6 +61,10 @@ check('首页 JSON-LD = WebSite + Person', set(ld_types(home)) == {'WebSite', 'P
 check('canonical 已切换到主域 7tec.cn', bool(canonical) and canonical[0].startswith('https://7tec.cn/'), str(canonical))
 check('首页 og:image 指向默认分享图', 'content="https://7tec.cn/og-default.png"' in home)
 check('首页含 RSS 订阅入口', 'href="/rss.xml"' in home)
+home_desc = re.search(r'<meta name="description" content="([^"]*)"', home)
+check('首页 description 长度充足（≥120 字符）',
+      bool(home_desc) and len(home_desc.group(1)) >= 120,
+      f'{len(home_desc.group(1))} 字符' if home_desc else '未找到')
 
 # --- 文章页 ---
 all_blog_html = sorted((DIST / 'blog').glob('*/index.html'))
