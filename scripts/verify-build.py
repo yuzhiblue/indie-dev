@@ -60,6 +60,7 @@ check('首页 RSS 声明存在', 'application/rss+xml' in home)
 check('首页 JSON-LD = WebSite + Person', set(ld_types(home)) == {'WebSite', 'Person'}, str(ld_types(home)))
 check('canonical 已切换到主域 7tec.cn', bool(canonical) and canonical[0].startswith('https://7tec.cn/'), str(canonical))
 check('首页 og:image 指向默认分享图', 'content="https://7tec.cn/og-default.png"' in home)
+check('首页含 RSS 订阅入口', 'href="/rss.xml"' in home)
 
 # --- 文章页 ---
 all_blog_html = sorted((DIST / 'blog').glob('*/index.html'))
