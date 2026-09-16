@@ -8,7 +8,7 @@ slug: directx-repair-tools
 ---
 这两天有用户反应这么一个问题。定时软件一直显示正在开播中,但是他却不点击开播按钮。
 
-[![定时软件一直显示正在开播中，却不点击按钮](/images/blog/directxrepairtools/1.png)
+![定时软件一直显示正在开播中，却不点击按钮](/images/blog/directxrepairtools/1.png)
 
 经过我们不断地排查，终于找到了解决这个问题的方法。
 
@@ -20,12 +20,12 @@ slug: directx-repair-tools
 
 如果你是新手小白，对于电脑不了解，请先在百度或豆包里搜索一下如何下载安装软件。
 
-第一步，下载环境修复工具：[`DirectX repair tools`](https://cnb.cool/yuzhiblue/Releases/-/blob/main/%E7%8E%AF%E5%A2%83%E4%BF%AE%E5%A4%8D%E8%BD%AF%E4%BB%B6/DirectX.zip).
+第一步：下载环境修复工具：[`DirectX repair tools`](https://cnb.cool/yuzhiblue/Releases/-/blob/main/%E7%8E%AF%E5%A2%83%E4%BF%AE%E5%A4%8D%E8%BD%AF%E4%BB%B6/DirectX.zip).
 
-第二步,将软件解压缩到电脑任意位置。
+第二步：将软件解压缩到电脑任意位置。
 
-第三步，双击 `DirectX Repair.exe` 开始自动修复系统环境。
+第三步：双击 `DirectX Repair.exe` 开始自动修复系统环境。
 
-第四步，等待系统修复完成，重启电脑。
+第四步：等待系统修复完成，重启电脑。
 
 基本上通过以上四步就可以完美解决上述问题，如果你还有别的问题，请及时向我们反馈。
