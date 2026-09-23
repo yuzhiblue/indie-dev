@@ -6,7 +6,7 @@ updatedDate: 2025-04-15
 tags: ['Windows', '自动化', '直播', '抖音']
 featured: true
 coverImage: '/projects/doutimer/cover.png'
-download: 'https://cnb.cool/yuzhiblue/Releases/-/git/raw/main/%E6%8A%96%E9%9F%B3%E7%9B%B4%E6%92%AD%E5%AE%9A%E6%97%B6%E5%8A%A9%E6%89%8B/Dou_0.5.0.exe'
+download: 'https://cnb.cool/yuzhiblue/Releases/-/blob/main/%E6%8A%96%E9%9F%B3%E7%9B%B4%E6%92%AD%E5%AE%9A%E6%97%B6%E5%8A%A9%E6%89%8B/Dou_0.5.2.exe'
 purchase: 'https://e.tb.cn/h.6oeYmXNdzl7e7ZT'
 draft: false
 ---
@@ -36,11 +36,12 @@ draft: false
 ### 下载地址
 
 - 蓝奏云下载：
-https://wwbqm.lanzouv.com/iLLj5460mv1a
-密码:99fz
+https://wwbqm.lanzouv.com/iiq4S49oeb7a
+密码:f6ks
 
 - 百度网盘下载：
-链接: https://pan.baidu.com/s/1IypBeTMmhOmAI78MRLFAYw?pwd=vnw4 提取码: vnw4 复制这段内容后打开百度网盘手机App，操作更方便哦
+通过网盘分享的文件：Dou_0.5.2.exe
+链接: https://pan.baidu.com/s/1tU4Zt5glIOOU8iSJHhQF9Q?pwd=83d8 提取码: 83d8 复制这段内容后打开百度网盘手机App，操作更方便哦
 
 ### 使用教程
 
