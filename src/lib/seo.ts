@@ -7,6 +7,7 @@ export const SITE_NAME = 'yuzhiblue';
 export const SITE_URL = 'https://7tec.cn';
 export const AUTHOR_NAME = 'yuzhiblue';
 export const AUTHOR_TITLE = '独立开发者';
+export const AUTHOR_EMAIL = '630110598@qq.com';
 
 export const SOCIAL_PROFILES = [
   'https://github.com/yuzhiblue',
@@ -38,6 +39,7 @@ export function personSchema(site?: URL): JsonLd {
     '@type': 'Person',
     name: AUTHOR_NAME,
     url: abs('/about', site),
+    email: AUTHOR_EMAIL,
     jobTitle: AUTHOR_TITLE,
     description: '专注 Windows 桌面自动化与直播定时工具开发',
     sameAs: SOCIAL_PROFILES,

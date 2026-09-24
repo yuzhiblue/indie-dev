@@ -102,6 +102,28 @@ check('sitemap 使用主域', 'https://7tec.cn/' in sitemap and 'dev.7tec.cn' no
 # --- 404 ---
 check('404 页输出 noindex', 'noindex' in read('404.html'))
 
+# --- 隐私政策（AdSense 硬性要求） ---
+privacy_file = DIST / 'privacy' / 'index.html'
+check('隐私政策页已生成', privacy_file.exists())
+if privacy_file.exists():
+    privacy = privacy_file.read_text(encoding='utf-8')
+    check('隐私政策披露 Cookie 使用', 'Cookie' in privacy)
+    check('隐私政策披露 Google AdSense 与 DART Cookie',
+          'AdSense' in privacy and 'DoubleClick' in privacy)
+    check('隐私政策提供个性化广告退出链接',
+          'google.com/settings/ads' in privacy and 'aboutads.info' in privacy)
+    check('隐私政策披露 Google Analytics', 'Google Analytics' in privacy)
+    check('隐私政策提供邮箱联系方式', 'mailto:' in privacy)
+    check('隐私政策页未被 noindex', 'noindex' not in privacy)
+    check('隐私政策已进 sitemap', '/privacy' in sitemap)
+
+# 站内每个页面（旧 slug 重定向页除外）都应能从页脚到达隐私政策
+_crawlable = [p for p in DIST.rglob('*.html')
+              if 'http-equiv="refresh"' not in p.read_text(encoding='utf-8')]
+_no_privacy_link = [p.relative_to(DIST).as_posix() for p in _crawlable
+                    if 'href="/privacy"' not in p.read_text(encoding='utf-8')]
+check('全站页脚均含隐私政策入口', not _no_privacy_link, str(_no_privacy_link[:5]))
+
 # --- RSS ---
 rss = read('rss.xml')
 item_count = rss.count('<item>')

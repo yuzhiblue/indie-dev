@@ -1,0 +1,197 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const updatedDate = '2026年9月24日';
+const siteUrl = (Astro.site ?? new URL('https://7tec.cn')).toString().replace(/\/$/, '');
+---
+
+<BaseLayout
+  title="隐私政策"
+  description="yuzhiblue 个人站点的隐私政策：说明本站如何收集与使用访问数据、Cookie 与类似技术，以及 Google AdSense、Google Analytics 等第三方服务的数据处理方式与用户退出个性化广告的途径。"
+>
+  <style>
+    .policy-header { margin-bottom: 40px; }
+    .policy-header h1 {
+      font-size: 2.2rem; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 12px;
+      background: linear-gradient(135deg, #fff 0%, #888 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .policy-header .lead { color: var(--text-muted); font-size: 1.02rem; max-width: 680px; line-height: 1.75; }
+    .policy-header .meta { color: var(--text-muted); font-size: 0.82rem; margin-top: 12px; }
+    .policy { max-width: 760px; }
+    .policy .block { margin-bottom: 40px; }
+    .policy h2 {
+      font-size: 1.1rem; font-weight: 600; color: var(--text);
+      margin-bottom: 16px; display: flex; align-items: center; gap: 12px;
+    }
+    .policy h2::before {
+      content: ''; width: 4px; height: 20px; background: var(--accent); border-radius: 2px;
+      flex-shrink: 0;
+    }
+    .policy h3 { font-size: 0.98rem; font-weight: 600; color: var(--text); margin: 20px 0 10px; }
+    .policy p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.85; margin-bottom: 12px; }
+    .policy p:last-child { margin-bottom: 0; }
+    .policy ul { list-style: none; display: flex; flex-direction: column; gap: 8px; margin: 12px 0; }
+    .policy ul li {
+      position: relative; padding-left: 18px;
+      color: var(--text-muted); font-size: 0.95rem; line-height: 1.8;
+    }
+    .policy ul li::before {
+      content: ''; position: absolute; left: 2px; top: 0.72em;
+      width: 5px; height: 5px; border-radius: 50%; background: var(--accent);
+    }
+    .policy a { color: var(--link); text-decoration: underline; text-underline-offset: 2px; }
+    .policy a:hover { color: var(--link-hover); }
+    .policy strong { color: var(--text); font-weight: 600; }
+    .policy .footer-note {
+      margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border);
+      color: var(--text-muted); font-size: 0.85rem;
+    }
+    @media (max-width: 640px) {
+      .policy-header h1 { font-size: 1.8rem; }
+    }
+  </style>
+
+  <section class="policy-header">
+    <h1>隐私政策</h1>
+    <p class="lead">
+      本页说明 yuzhiblue（以下称「本站」，网址 <a href={siteUrl}>{siteUrl}</a>）
+      在你访问时如何处理与你相关的信息。请在使用本站前阅读并了解本政策。
+    </p>
+    <p class="meta">生效日期：{updatedDate}</p>
+  </section>
+
+  <div class="policy">
+    <section class="block">
+      <h2>一、我们收集哪些信息</h2>
+      <p>
+        本站是个人开发者独立运营的静态内容网站，<strong>没有注册、登录、评论等任何需要你提交个人信息的表单</strong>，
+        我们不会主动向你收集姓名、手机号、身份证号、支付信息等个人身份信息。
+      </p>
+      <p>在你访问本站时，以下信息会由本站或相关第三方服务自动收集：</p>
+      <ul>
+        <li>
+          <strong>访问日志</strong>：托管服务商会记录你的 IP 地址、访问时间、请求路径、浏览器与操作系统类型、来源页面等，
+          用于保障服务安全、排查故障与防止滥用。
+        </li>
+        <li>
+          <strong>匿名统计数据</strong>：本站使用 Google Analytics 了解页面访问量、停留时长、访问来源与设备类型等，
+          用于评估内容质量并改进站点。这些数据以聚合形式呈现，不用于识别你的个人身份。
+        </li>
+      </ul>
+    </section>
+
+    <section class="block">
+      <h2>二、Cookie 与类似技术</h2>
+      <p>
+        Cookie 是网站在你浏览器中保存的小型文本文件。本站及其使用的第三方服务会通过 Cookie
+        或类似技术（如像素标签、本地存储）实现访问统计与广告投放。
+      </p>
+      <p>
+        你可以随时在浏览器设置中查看、限制或删除 Cookie。禁用 Cookie 后，本站的基本浏览功能仍然可用，
+        但统计与广告的相关体验会受到影响。
+      </p>
+    </section>
+
+    <section class="block">
+      <h2>三、第三方广告（Google AdSense）</h2>
+      <p>本站使用 <strong>Google AdSense</strong> 展示广告。关于第三方广告，你需要了解以下几点：</p>
+      <ul>
+        <li>
+          包括 Google 在内的第三方供应商会使用 Cookie，根据你<strong>此前访问本站和/或其他网站</strong>的记录来投放广告。
+        </li>
+        <li>
+          Google 使用 <strong>DoubleClick DART Cookie</strong> 等技术，使你看到的广告更贴合你的兴趣（即「个性化广告」）。
+        </li>
+        <li>
+          <strong>你可以退出个性化广告</strong>：访问
+          <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer">Google 广告设置</a>
+          停用个性化广告；也可以访问
+          <a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener noreferrer">aboutads.info</a>
+          或
+          <a href="https://www.youronlinechoices.com/" target="_blank" rel="noopener noreferrer">youronlinechoices.com</a>
+          停用部分第三方供应商的 Cookie。
+        </li>
+        <li>
+          如果你位于欧洲经济区、英国或瑞士，在相关法律要求下，只有在你通过同意管理平台（CMP）给出同意后，
+          才会展示基于 Cookie 的广告；你可以随时通过广告上的同意选项撤回同意。
+        </li>
+        <li>
+          本站无法控制第三方广告商收集的数据，也无法访问其 Cookie。第三方广告商对数据的使用受其自身隐私政策约束，
+          详见
+          <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google 隐私权政策</a>
+          与
+          <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener noreferrer">Google 广告技术说明</a>。
+        </li>
+      </ul>
+    </section>
+
+    <section class="block">
+      <h2>四、第三方分析服务</h2>
+      <p>
+        本站使用 <strong>Google Analytics</strong>（衡量 ID：G-4N8PD8Q73L）统计访问情况。
+        Google Analytics 会使用 Cookie 收集你的访问数据（如浏览页面、会话时长、大致地理位置），用于生成聚合报告，
+        帮助我们了解哪些内容更受欢迎。
+      </p>
+      <p>
+        你可以通过安装
+        <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer">Google Analytics 停用浏览器插件</a>
+        拒绝被其统计，也可以直接在浏览器中限制或删除相关 Cookie。更多信息见
+        <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google 隐私权政策</a>。
+      </p>
+    </section>
+
+    <section class="block">
+      <h2>五、外部链接</h2>
+      <p>
+        本站的博客文章与页面中会引用外部网站的链接。我们不对这些第三方网站的内容、隐私做法或数据处理方式负责，
+        建议你在访问时查看其各自的隐私政策。
+      </p>
+    </section>
+
+    <section class="block">
+      <h2>六、儿童隐私</h2>
+      <p>
+        本站内容面向成年开发者与从业者，不会有意收集儿童的个人信息。若你认为我们在无意中收集了儿童信息，
+        请通过下方方式联系我们，我们会在核实后尽快删除。
+      </p>
+    </section>
+
+    <section class="block">
+      <h2>七、你的权利</h2>
+      <p>
+        在适用法律（如欧盟 GDPR、加州 CCPA）赋予你的权利范围内，你有权查询、更正或删除与你相关的数据，
+        或反对、限制特定的数据处理与个性化广告。你可以通过上文提到的 Google 退出渠道管理广告相关数据，
+        也可以通过下方方式直接联系我们。
+      </p>
+    </section>
+
+    <section class="block">
+      <h2>八、政策更新</h2>
+      <p>
+        我们可能会根据法律要求或服务变化更新本政策，更新后会在本页顶部标注生效日期。
+        继续使用本站即视为你接受更新后的政策。
+      </p>
+    </section>
+
+    <section class="block">
+      <h2>九、联系我们</h2>
+      <p>如果你对本隐私政策有任何疑问，或希望行使上述权利，可以通过以下方式联系我：</p>
+      <ul>
+        <li>
+          邮箱：<a href="mailto:630110598@qq.com">630110598@qq.com</a>
+        </li>
+        <li>
+          GitHub：<a href="https://github.com/yuzhiblue" target="_blank" rel="noopener noreferrer">github.com/yuzhiblue</a>
+        </li>
+        <li>
+          X（Twitter）：<a href="https://x.com/yuzhiblue" target="_blank" rel="noopener noreferrer">x.com/yuzhiblue</a>
+        </li>
+      </ul>
+    </section>
+
+    <p class="footer-note">
+      本政策生效日期：{updatedDate}。如本政策有实质性变更，我们会在本页做出说明。
+    </p>
+  </div>
+</BaseLayout>
