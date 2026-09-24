@@ -6,7 +6,7 @@ updatedDate: 2025-04-15
 tags: ['Windows', '自动化', '直播', '抖音']
 featured: true
 coverImage: '/projects/doutimer/cover.png'
-download: 'https://cnb.cool/yuzhiblue/Releases/-/blob/main/%E6%8A%96%E9%9F%B3%E7%9B%B4%E6%92%AD%E5%AE%9A%E6%97%B6%E5%8A%A9%E6%89%8B/Dou_0.5.2.exe'
+download: 'https://cnb.cool/yuzhiblue/Releases'
 purchase: 'https://e.tb.cn/h.6oeYmXNdzl7e7ZT'
 draft: false
 ---
@@ -20,7 +20,7 @@ draft: false
 本软件运行环境要求：win10 / win11 64 位，支持本地和云电脑，不支持多开；
 
 
-## 最新版 0.5.0（2026-08-31 更新）
+## 最新版 0.5.2（2026-09-23 更新）
 
 - 本次更新：添加邮箱通知功能 / 剥离快手相关逻辑 / 修复其他问题
 
@@ -60,6 +60,8 @@ https://wwbqm.lanzouv.com/iiq4S49oeb7a
 
 | 版本 | 说明 |
 | --- | --- |
+| 0.5.2 | 修复已知bug，增加软件的稳定性 |
+| 0.5.0 | 添加邮箱通知功能，剥离快手相关逻辑，修复其他问题 |
 | 0.3.0524 | 修复多组定时失效、解绑、快手错误提示等 |
 | 0.3.0429 | 修复 BUG，数值限制，多线程优化 |
 | 0.3.0415 | 代码重构，日志，每天定时，快手团购，解绑，多组定时 |
