@@ -3,7 +3,7 @@ title: "django创建ForiegnKey的时候一定要马上一个默认值default"
 description: "django创建ForiegnKey的时候一定要马上一个默认值default 就像这样一样，别问我怎么知道的。 不信你试试看，看他迁移的时候会不会报错。 所以网上为什么那么多No changes detected的问题。很大一部分原因都在于"
 pubDate: 2024-07-30
 tags: ['Python', '数据库']
-draft: false
+draft: true
 slug: django-foreignkey-default
 ---
 django创建ForiegnKey的时候一定要马上一个默认值**default**

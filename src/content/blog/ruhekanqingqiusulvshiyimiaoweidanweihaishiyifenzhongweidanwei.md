@@ -3,7 +3,7 @@ title: "如何看请求速率是以秒为单位还是以分钟为单位？"
 description: "要判断目标服务器的请求速率限制是以秒 为单位还是以分钟 为单位，可以通过以下几种方法来确定： 1\\. 查看响应头 许多服务器会在响应头中明确返回速率限制的时间单位。常见的字段包括： \\ XRateLimitLimit：允许的最大请求数。 \\"
 pubDate: 2025-01-20
 tags: ['开发工具', 'Python']
-draft: false
+draft: true
 slug: request-rate-unit-seconds-or-minutes
 ---
 要判断目标服务器的请求速率限制是以**秒** 为单位还是以**分钟** 为单位，可以通过以下几种方法来确定：

@@ -3,7 +3,7 @@ title: "如何使用asyncio和aiohttp实现大批量pdf文件的爬取任务？�
 description: "使用 asyncio 和 aiohttp 实现大批量 PDF 文件的爬取任务，并控制并发量为 200，可以通过以下步骤实现： 1\\. 实现思路 异步爬取 ：使用 aiohttp 发起异步 HTTP 请求，下载 PDF 文件。 并发控制 ：使"
 pubDate: 2025-01-20
 tags: ['Python', '并发编程']
-draft: false
+draft: true
 slug: asyncio-aiohttp-bulk-pdf-crawler
 ---
 使用 **`asyncio`** 和 **`aiohttp`** 实现大批量 PDF 文件的爬取任务，并控制并发量为 200，可以通过以下步骤实现：

@@ -3,7 +3,7 @@ title: "css display:flex 属性"
 description: "一：display:flex 布局 display:flex 是一种布局方式。它即可以应用于容器中，也可以应用于行内元素。是W3C提出的一种新的方案，可以简便、完整、响应式地实现各种页面布局。目前，它已经得到了所有浏览器的支持。 Flex是"
 pubDate: 2019-08-14
 tags: ['技术']
-draft: false
+draft: true
 slug: css-display-flex
 ---
 一：display:flex 布局

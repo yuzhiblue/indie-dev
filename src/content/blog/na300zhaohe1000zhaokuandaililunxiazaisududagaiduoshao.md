@@ -3,7 +3,7 @@ title: "那300兆和1000兆宽带理论下载速度大概多少？"
 description: "宽带的理论下载速度可以通过以下公式计算： \\text{下载速度 MB/s} = \\frac{\\text{带宽 Mbps}}{8} 这里将 Mbps（兆比特每秒） 转换为 MB/s（兆字节每秒） ，因为 1 字节 = 8 比特。 1\\. 30"
 pubDate: 2025-01-20
 tags: ['技术']
-draft: false
+draft: true
 slug: 300mbps-vs-1000mbps-speed
 ---
 宽带的理论下载速度可以通过以下公式计算：

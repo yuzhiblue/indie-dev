@@ -3,7 +3,7 @@ title: "35dir如何自定义数据统计栏？"
 description: "我们在网上下载的系统默认的数据统计栏比较简单，只有主题分类、优秀站点和站长资讯三个，看着不够详细。下面我们通过修改一些代码让其更符合我们的要求。 一、添加待审站点 分别打开themes/default/index.html和themes/d"
 pubDate: 2015-02-08
 tags: ['技术']
-draft: false
+draft: true
 slug: 35dir-custom-stats-bar
 ---
 我们在网上下载的系统默认的数据统计栏比较简单，只有主题分类、优秀站点和站长资讯三个，看着不够详细。下面我们通过修改一些代码让其更符合我们的要求。

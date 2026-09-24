@@ -3,7 +3,7 @@ title: "python脚本打包成exe可执行文件过程中的一些要点"
 description: "python打包成exe可执行文件，首先要考虑两个问题。 一个是杀毒软件报毒的问题，一个是打包文件大小的问题。 杀毒软件报毒大概率是因为调用了cmd命令行去处理任务。这个时候可以修改一下执行逻辑。尽量不用cmd命令执行命令。 关于打包文件大"
 pubDate: 2024-07-18
 tags: ['开发工具', 'Nuitka', 'Python']
-draft: false
+draft: true
 slug: python-to-exe-packaging-tips
 ---
 python打包成exe可执行文件，首先要考虑两个问题。

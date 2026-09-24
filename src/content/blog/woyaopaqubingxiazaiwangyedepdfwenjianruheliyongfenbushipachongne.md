@@ -3,7 +3,7 @@ title: "我要爬取并下载网页的pdf文件，如何利用分布式爬虫呢
 description: "利用分布式爬虫爬取并下载网页的PDF文件可以显著提升效率，尤其适合大规模任务。以下是实现分布式爬虫的基本步骤和关键技术： 1\\. 系统架构设计 主节点（Master） ：负责任务调度、URL管理和节点协调。 工作节点（Worker） ：执行"
 pubDate: 2025-01-20
 tags: ['数据库', '爬虫', 'Python']
-draft: false
+draft: true
 slug: distributed-crawler-for-pdf-download
 ---
 利用分布式爬虫爬取并下载网页的PDF文件可以显著提升效率，尤其适合大规模任务。以下是实现分布式爬虫的基本步骤和关键技术：

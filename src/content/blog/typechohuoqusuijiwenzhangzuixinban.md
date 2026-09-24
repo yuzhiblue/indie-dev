@@ -3,7 +3,7 @@ title: "typecho获取随机文章（最新版）"
 description: "最近在帮一个朋友做网站，发现提示错误database query erro。 于是我就打开了debug模式查看一下是哪里的问题。 将上面代码丢进config.inc.php页面，保存，刷新首页。提示随机文章报错。no such functi"
 pubDate: 2019-03-09
 tags: ['数据库', '前端']
-draft: false
+draft: true
 slug: typecho-random-posts
 ---
 最近在帮一个朋友做网站，发现提示错误database query erro。

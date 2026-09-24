@@ -3,7 +3,7 @@ title: "35dir没有缩略图调用站外缩略图修改方法"
 description: "有缩略图显示本地 没有缩略图调用站外缩略图的修改方法 需要修改四个文件 请注意备份! 1.打开文件 source\\module\\prelink.php 搜索get_webthumb 找到以下代码 修改成以下代码 2.打开文件 source\\"
 pubDate: 2015-02-05
 tags: ['技术']
-draft: false
+draft: true
 slug: 35dir-external-thumbnail-fallback
 ---
 有缩略图显示本地 没有缩略图调用站外缩略图的修改方法 需要修改四个文件 请注意备份!

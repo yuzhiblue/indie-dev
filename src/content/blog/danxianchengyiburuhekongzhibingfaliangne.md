@@ -3,7 +3,7 @@ title: "单线程异步如何控制并发量呢？"
 description: "在单线程异步编程中（如使用 Python 的 asyncio），控制并发量是通过信号量（Semaphore） 或任务队列 来实现的。信号量是一种同步原语，用于限制同时运行的异步任务数量。 以下是具体实现方法和示例代码： 1\\. 使用信号量（"
 pubDate: 2025-01-20
 tags: ['并发编程', 'Python', 'Cloudflare']
-draft: false
+draft: true
 slug: async-concurrency-control
 ---
 在单线程异步编程中（如使用 Python 的 `asyncio`），控制并发量是通过**信号量（Semaphore）** 或**任务队列** 来实现的。信号量是一种同步原语，用于限制同时运行的异步任务数量。

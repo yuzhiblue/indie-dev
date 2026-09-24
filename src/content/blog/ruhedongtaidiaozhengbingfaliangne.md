@@ -3,7 +3,7 @@ title: "如何动态调整并发量呢？"
 description: "动态调整并发量是指在程序运行过程中，根据当前的任务负载、系统资源或外部条件，实时增加或减少并发任务的数量。在单线程异步编程中（如使用 Python 的 asyncio），可以通过以下方法实现动态调整并发量： 1\\. 使用信号量动态调整并发量"
 pubDate: 2025-01-20
 tags: ['并发编程', 'Python', 'Cloudflare']
-draft: false
+draft: true
 slug: dynamic-concurrency-tuning
 ---
 动态调整并发量是指在程序运行过程中，根据当前的任务负载、系统资源或外部条件，实时增加或减少并发任务的数量。在单线程异步编程中（如使用 Python 的 `asyncio`），可以通过以下方法实现动态调整并发量：

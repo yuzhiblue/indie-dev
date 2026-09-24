@@ -3,7 +3,7 @@ title: "35dir部分bug修复小技巧"
 description: "在网上下载下来的源码肯定是有bug的，那么本篇文章主要就是介绍如何修改一些bug。 一、sitemap链接错误 打开新建好的分类目录网站首页，然后把鼠标放到最下面的站点地图链接上，你会发现地址上面多了一个斜杠，点击之后直接进入404页面。显"
 pubDate: 2015-03-16
 tags: ['技术']
-draft: false
+draft: true
 slug: 35dir-bug-fix-tips
 ---
 在网上下载下来的源码肯定是有bug的，那么本篇文章主要就是介绍如何修改一些bug。

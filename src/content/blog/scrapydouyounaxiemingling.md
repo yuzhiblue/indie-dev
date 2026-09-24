@@ -3,7 +3,7 @@ title: "scrapy 都有哪些命令？"
 description: "Scrapy 提供了丰富的命令行工具，用于创建、运行和管理爬虫项目。以下是一些常用的 Scrapy 命令及其用途： 1\\. 全局命令 这些命令可以在任何目录下运行。 命令 | 用途 | scrapy startproject <projec"
 pubDate: 2025-01-20
 tags: ['开发工具', '爬虫', 'Python']
-draft: false
+draft: true
 slug: scrapy-commands-cheatsheet
 ---
 Scrapy 提供了丰富的命令行工具，用于创建、运行和管理爬虫项目。以下是一些常用的 Scrapy 命令及其用途：

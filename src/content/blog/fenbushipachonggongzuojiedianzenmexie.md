@@ -3,7 +3,7 @@ title: "分布式爬虫工作节点怎么写？"
 description: "工作节点是分布式爬虫的核心部分，负责执行实际的爬取和下载任务。以下是工作节点的实现步骤和示例代码。 1\\. 工作节点的职责 接收任务 ：从消息队列中获取任务（如URL）。 爬取网页 ：下载网页内容并提取PDF链接。 下载PDF ：下载PDF"
 pubDate: 2025-01-20
 tags: ['开发工具', 'Python', '爬虫']
-draft: false
+draft: true
 slug: scrapy-distributed-worker-node
 ---
 工作节点是分布式爬虫的核心部分，负责执行实际的爬取和下载任务。以下是工作节点的实现步骤和示例代码。
