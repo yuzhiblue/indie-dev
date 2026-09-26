@@ -2,7 +2,7 @@
 title: 'OBS定时助手（OBStimer）'
 description: 'OBS Studio 上的定时脚本插件，通过调用 OBS Studio API 直接控制按钮，支持定时开关推流、录制、摄像机与无限循环。'
 pubDate: 2025-07-27
-updatedDate: 2025-07-27
+updatedDate: 2026-09-26
 tags: ['OBS', '自动化', '直播', '录制', '脚本']
 featured: true
 coverImage: '/projects/obstimer/cover.png'
@@ -35,8 +35,7 @@ OBS定时助手是 OBS Studio 上面的一个定时脚本插件。通过调用 O
 ## 下载地址
 
 - 蓝奏云：https://wwbqm.lanzouv.com/iNLUj4a0559e
-- 百度网盘：通过网盘分享的文件：obstimer_v0.2.1.zip
-链接: https://pan.baidu.com/s/1p-GLBoiV4dM0ITa2pgaIkA?pwd=tjxk 提取码: tjxk 复制这段内容后打开百度网盘手机App，操作更方便哦
+- 百度网盘：[obstimer_v0.2.1.zip](https://pan.baidu.com/s/1p-GLBoiV4dM0ITa2pgaIkA?pwd=tjxk)（提取码：`tjxk`）
 
 ## 购买地址
 
