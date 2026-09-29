@@ -20,9 +20,9 @@ draft: false
 本软件运行环境要求：win10 / win11 64 位，支持本地和云电脑，不支持多开；
 
 
-## 最新版 0.5.2（2026-09-23 更新）
+## 最新版 0.5.3（2026-09-29 更新）
 
-- 本次更新：添加邮箱通知功能 / 剥离快手相关逻辑 / 修复其他问题
+- 本次更新：修复已知bug，添加允许发送诊断包的功能
 
 ## 界面截图
 
@@ -36,12 +36,12 @@ draft: false
 ### 下载地址
 
 - 蓝奏云下载：
-https://wwbqm.lanzouv.com/iiq4S49oeb7a
-密码:f6ks
+https://wwbqm.lanzouv.com/ibng84ad2m4b
+密码:ej9k
 
 - 百度网盘下载：
-通过网盘分享的文件：Dou_0.5.2.exe
-链接: https://pan.baidu.com/s/1tU4Zt5glIOOU8iSJHhQF9Q?pwd=83d8 提取码: 83d8 复制这段内容后打开百度网盘手机App，操作更方便哦
+通过网盘分享的文件：Dou_0.5.3.exe
+链接: https://pan.baidu.com/s/1UGz2TTZHbzeKPWp1DJi9sQ?pwd=8ihj 提取码: 8ihj 复制这段内容后打开百度网盘手机App，操作更方便哦
 
 ### 使用教程
 
