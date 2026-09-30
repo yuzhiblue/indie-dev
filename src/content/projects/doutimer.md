@@ -1,7 +1,7 @@
 ---
 title: '直播定时助手（Doutimer）'
 description: '通过调用 Windows 底层 API 实现自动化点击，支持抖音、快手双平台的直播定时开播与下播工具。'
-pubDate: 2024-07-16
+pubDate: 2025-07-16
 updatedDate: 2026-09-29
 tags: ['Windows', '自动化', '直播', '抖音']
 featured: true
@@ -20,9 +20,9 @@ draft: false
 本软件运行环境要求：win10 / win11 64 位，支持本地和云电脑，不支持多开；
 
 
-## 最新版 0.5.3（2026-09-29 更新）
+## 最新版 0.5.4（2026-09-30 更新）
 
-- 本次更新：修复已知bug，添加允许发送诊断包的功能
+- 本次更新：修复已知bug，优化开播下播流程
 
 ## 界面截图
 
@@ -36,12 +36,12 @@ draft: false
 ### 下载地址
 
 - 蓝奏云下载：
-https://wwbqm.lanzouv.com/ibng84ad2m4b
-密码:ej9k
+https://wwbqm.lanzouv.com/ih5ac4agfg1i
+密码:8ptm
 
 - 百度网盘下载：
-通过网盘分享的文件：Dou_0.5.3.exe
-链接: https://pan.baidu.com/s/1UGz2TTZHbzeKPWp1DJi9sQ?pwd=8ihj 提取码: 8ihj 复制这段内容后打开百度网盘手机App，操作更方便哦
+通过网盘分享的文件：Dou_0.5.4.exe
+链接: https://pan.baidu.com/s/1sjCp7lhB-zXkl1aWM1OAmQ?pwd=vu8j 提取码: vu8j 复制这段内容后打开百度网盘手机App，操作更方便哦
 
 ### 使用教程
 
@@ -60,6 +60,8 @@ https://wwbqm.lanzouv.com/ibng84ad2m4b
 
 | 版本 | 说明 |
 | --- | --- |
+| 0.5.4 | 修复已知bug，优化开播下播流程 |
+| 0.5.3 | 修复已知bug，添加允许发送诊断包的功能 |
 | 0.5.2 | 修复已知bug，增加软件的稳定性 |
 | 0.5.0 | 添加邮箱通知功能，剥离快手相关逻辑，修复其他问题 |
 | 0.3.0524 | 修复多组定时失效、解绑、快手错误提示等 |
