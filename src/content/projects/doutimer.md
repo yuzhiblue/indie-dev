@@ -20,9 +20,11 @@ draft: false
 本软件运行环境要求：win10 / win11 64 位，支持本地和云电脑，不支持多开；
 
 
-## 最新版 0.5.4（2026-09-30 更新）
+## 最新版 0.5.5（2026-10-02 更新）
 
-- 本次更新：修复已知bug，优化开播下播流程
+- 修复诊断模块 qInstallMessageHandler 死代码（v0.5.4 回归问题），Qt 致命信息恢复写入日志。
+- crash.log 启动补发判据改为真实崩溃证据：良性 COM 噪音（0x80040155 / 0x8001010D）启动时清空不再误报；真实证据归档为 .prev 并补发一次；新装机场景自动排除。
+- 诊断包新增最近 3 张失败截图（screenshots/ 目录），便于识别遮挡点击的弹窗。
 
 ## 界面截图
 
@@ -35,13 +37,13 @@ draft: false
 
 ### 下载地址
 
-- 蓝奏云下载：
-https://wwbqm.lanzouv.com/ih5ac4agfg1i
-密码:8ptm
+- 蓝奏云：
+https://wwbqm.lanzouv.com/iUiJT4anjfif
+密码:hpsv
 
-- 百度网盘下载：
-通过网盘分享的文件：Dou_0.5.4.exe
-链接: https://pan.baidu.com/s/1sjCp7lhB-zXkl1aWM1OAmQ?pwd=vu8j 提取码: vu8j 复制这段内容后打开百度网盘手机App，操作更方便哦
+- 百度网盘：
+通过网盘分享的文件：Dou_0.5.5.exe
+链接: https://pan.baidu.com/s/1dG4v3R-3-i92Sw7MLjv6UQ?pwd=74jw 提取码: 74jw 复制这段内容后打开百度网盘手机App，操作更方便哦
 
 ### 使用教程
 
@@ -60,6 +62,9 @@ https://wwbqm.lanzouv.com/ih5ac4agfg1i
 
 | 版本 | 说明 |
 | --- | --- |
+| 0.5.5 | - 修复诊断模块 qInstallMessageHandler 死代码（v0.5.4 回归问题），Qt 致命信息恢复写入日志。
+- crash.log 启动补发判据改为真实崩溃证据：良性 COM 噪音（0x80040155 / 0x8001010D）启动时清空不再误报；真实证据归档为 .prev 并补发一次；新装机场景自动排除。
+- 诊断包新增最近 3 张失败截图（screenshots/ 目录），便于识别遮挡点击的弹窗。 |
 | 0.5.4 | 修复已知bug，优化开播下播流程 |
 | 0.5.3 | 修复已知bug，添加允许发送诊断包的功能 |
 | 0.5.2 | 修复已知bug，增加软件的稳定性 |
