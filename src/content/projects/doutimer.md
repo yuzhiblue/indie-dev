@@ -37,13 +37,14 @@ draft: false
 
 ### 下载地址
 
+https://cnb.cool/yuzhiblue/Releases
+
 - 蓝奏云：
-https://wwbqm.lanzouv.com/iUiJT4anjfif
-密码:hpsv
+https://wwbqm.lanzouv.com/iy57j4bc3eje 密码:hhct
 
 - 百度网盘：
-通过网盘分享的文件：Dou_0.5.5.exe
-链接: https://pan.baidu.com/s/1dG4v3R-3-i92Sw7MLjv6UQ?pwd=74jw 提取码: 74jw 复制这段内容后打开百度网盘手机App，操作更方便哦
+通过网盘分享的文件：Dou_0.5.6.exe
+链接: https://pan.baidu.com/s/1I-nettA5wUf1ARlEIBgCVQ?pwd=7yfp 提取码: 7yfp 复制这段内容后打开百度网盘手机App，操作更方便哦
 
 ### 使用教程
 
