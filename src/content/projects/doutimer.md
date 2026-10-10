@@ -2,7 +2,7 @@
 title: '直播定时助手（Doutimer）'
 description: '通过调用 Windows 底层 API 实现自动化点击，支持抖音、快手双平台的直播定时开播与下播工具。'
 pubDate: 2025-07-16
-updatedDate: 2026-09-29
+updatedDate: 2026-10-10
 tags: ['Windows', '自动化', '直播', '抖音']
 featured: true
 coverImage: '/projects/doutimer/cover.png'
