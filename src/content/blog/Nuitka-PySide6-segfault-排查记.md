@@ -1,5 +1,5 @@
 ---
-title: "一次"编译成功却运行即崩"的排查记：Nuitka 4.3 + PySide6 的 segfault 之坑"
+title: "一次“编译成功却运行即崩”的排查记：Nuitka 4.3 + PySide6 的 segfault 之坑"
 description: "Nuitka 4.3 打包的 PySide6 程序运行必崩（access violation），回退 Nuitka 4.2.2 一切正常。整个过程踩了 7 个坑，记录如下，希望能帮你少走弯路。"
 pubDate: 2026-10-13
 tags: ['Nuitka', 'PySide6', 'segfault', 'faulthandler', '二分排查', '依赖锁定']
