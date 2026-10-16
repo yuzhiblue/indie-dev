@@ -1,6 +1,10 @@
 /**
  * 由 scripts/apply-slugs.mjs 自动生成，请勿手改。
  * 保证博客 slug 重写前已被搜索引擎收录的旧链接不 404。
+ * 例外：2026-10-16 手工修正了 4 条目标文章已删除的条目（doutimer-release-0-2-0725 /
+ * astro-portfolio-site-setup / kuaishou-partner-version-warning /
+ * activation-error-network-node-notice），改为指向 /blog/；重新生成时需保留这些修正。
+ * 该文件同时被 middleware.js（EdgeOne 真 301）和 astro.config.mjs（stub 兜底）消费。
  */
 export const blogRedirects = [
 	{
@@ -69,7 +73,7 @@ export const blogRedirects = [
 	},
 	{
 		"from": "/blog/douyinkuaishouzhibobanlvdingshizhushougongjuyigengxin020725banben",
-		"to": "/blog/doutimer-release-0-2-0725"
+		"to": "/blog/"
 	},
 	{
 		"from": "/blog/fenbushipachonggongzuojiedianzenmexie",
@@ -93,7 +97,7 @@ export const blogRedirects = [
 	},
 	{
 		"from": "/blog/hello-world",
-		"to": "/blog/astro-portfolio-site-setup"
+		"to": "/blog/"
 	},
 	{
 		"from": "/blog/kefoutongshishiyongyibuyuxiancheng",
@@ -101,7 +105,7 @@ export const blogRedirects = [
 	},
 	{
 		"from": "/blog/kuaishouzhibobanlvzuixinbanzanweishipeiqingwugengxin",
-		"to": "/blog/kuaishou-partner-version-warning"
+		"to": "/blog/"
 	},
 	{
 		"from": "/blog/mubiaofuwuqiduidangeipdeqingqiusulvyouxianzhizhegeqingqiusulvshishenmezenmehengliang",
@@ -273,7 +277,7 @@ export const blogRedirects = [
 	},
 	{
 		"from": "/blog/yinwangluojiediandiaozhengruoyujihuoyichangqingjishifankuiyibianzuochudiaozheng",
-		"to": "/blog/activation-error-network-node-notice"
+		"to": "/blog/"
 	},
 	{
 		"from": "/blog/yongscrapyzenmexiefenbushipachongne",

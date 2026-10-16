@@ -42,6 +42,15 @@ const cases = [
 	['/images/blog/xxx.png', 'next', null],
 	['/_astro/abc123.css', 'next', null],
 	['/404.html', 'next', null],
+	// 旧拼音 URL：真 301 到新 slug（不带斜杠和带斜杠两种来源形式都要覆盖）
+	['/blog/githubwangsutaimandabukaizenmeban', 'redirect', 'https://7tec.cn/blog/github-slow-connection-fix/'],
+	['/blog/githubwangsutaimandabukaizenmeban/', 'redirect', 'https://7tec.cn/blog/github-slow-connection-fix/'],
+	['/blog/cssdisplayflexshuxing', 'redirect', 'https://7tec.cn/blog/css-display-flex/'],
+	['/blog/cssdisplayflexshuxing/', 'redirect', 'https://7tec.cn/blog/css-display-flex/'],
+	['/blog/gitdejiandanyongfa?src=baidu', 'redirect', 'https://7tec.cn/blog/git-basics/?src=baidu'],
+	// 目标文章已删除的旧链接：301 到博客列表
+	['/blog/hello-world', 'redirect', 'https://7tec.cn/blog/'],
+	['/blog/hello-world/', 'redirect', 'https://7tec.cn/blog/'],
 ];
 
 let pass = 0;
