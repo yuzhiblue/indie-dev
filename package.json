@@ -8,6 +8,7 @@
   },
   "scripts": {
     "dev": "astro dev",
+    "prebuild": "node -e \"fs.rmSync('dist',{recursive:true,force:true})\"",
     "build": "astro build",
     "build:verify": "npm run build && npm run verify",
     "verify": "python scripts/verify-build.py",

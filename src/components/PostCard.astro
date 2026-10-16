@@ -16,7 +16,7 @@ const readingTime = (body: string) => {
 ---
 
 <article class:list={['post-card', { compact }]}>
-	<a href={`/blog/${post.id}`} class="post-card-main">
+	<a href={`/blog/${post.id}/`} class="post-card-main">
 		<h2>{post.data.title}</h2>
 		{!compact && <p>{post.data.description}</p>}
 		<div class="post-meta">
@@ -30,11 +30,11 @@ const readingTime = (body: string) => {
 	{post.data.tags.length > 0 && (
 		<div class="post-tags">
 			{post.data.tags.map((tag) => (
-				<a class="post-tag" href={`/blog/tag/${encodeURIComponent(tag)}`}>{tag}</a>
+				<a class="post-tag" href={`/blog/tag/${encodeURIComponent(tag)}/`}>{tag}</a>
 			))}
 		</div>
 	)}
-	<a href={`/blog/${post.id}`} class="post-card-overlay" aria-label={post.data.title}></a>
+	<a href={`/blog/${post.id}/`} class="post-card-overlay" aria-label={post.data.title}></a>
 </article>
 
 <style>

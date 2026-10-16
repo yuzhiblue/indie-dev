@@ -23,7 +23,7 @@ export const GET: APIRoute = async ({ site }) => {
 
   const items = posts
     .map((post) => {
-      const url = new URL(`/blog/${post.id}`, base).toString();
+      const url = new URL(`/blog/${post.id}/`, base).toString();
       return `    <item>
       <title>${cdata(post.data.title)}</title>
       <link>${escapeXml(url)}</link>
@@ -38,7 +38,7 @@ export const GET: APIRoute = async ({ site }) => {
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>${cdata('yuzhiblue 开发博客')}</title>
-    <link>${escapeXml(new URL('/blog', base).toString())}</link>
+    <link>${escapeXml(new URL('/blog/', base).toString())}</link>
     <description>${cdata('开发笔记与技术思考：Windows 自动化、Python / PySide6、Astro 建站与独立产品开发经验。')}</description>
     <language>zh-CN</language>
     <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>

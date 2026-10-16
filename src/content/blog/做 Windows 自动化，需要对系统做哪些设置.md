@@ -74,7 +74,7 @@ slug: windows-automation-system-settings
 
 **问题**：这是最容易被忽略、也最难排查的一类。新装系统如果缺少 DirectX 相关组件，Chromium 内核的客户端界面能显示，但**不再产生新的渲染帧**，无障碍树（UIA）也就停止刷新，自动化工具读取控件时会挂起 —— 表现为「任务卡住不动，也不报错，用鼠标碰一下窗口就继续了」。
 
-**怎么解决**：用 DirectX 修复工具（DirectX Repair）检测并补齐组件，然后重启。这个案例我单独写过一篇：[定时软件一直显示正在开播中，却不点击按钮，怎么办？](/blog/directx-repair-tools)
+**怎么解决**：用 DirectX 修复工具（DirectX Repair）检测并补齐组件，然后重启。这个案例我单独写过一篇：[定时软件一直显示正在开播中，却不点击按钮，怎么办？](/blog/directx-repair-tools/)
 
 ## 五、安全软件（按需）
 

@@ -107,8 +107,8 @@ const featuredPosts = recentPosts
     <h1>独立开发者 yuzhiblue</h1>
     <p>独立开发者，专注于打造简洁实用的开发者工具与产品。相信小而美的工具能让日常更高效。</p>
     <div class="hero-actions">
-      <a href="/projects" class="btn btn-primary">查看项目 →</a>
-      <a href="/about" class="btn btn-outline">关于我</a>
+      <a href="/projects/" class="btn btn-primary">查看项目 →</a>
+      <a href="/about/" class="btn btn-outline">关于我</a>
     </div>
   </section>
 
@@ -126,13 +126,13 @@ const featuredPosts = recentPosts
     <div class="post-list">
       {featuredPosts.map((post, i) => (
         <div class="post-item">
-          <a href={`/blog/${post.id}`}>{post.data.title}{i === 0 && <span class="post-badge">Latest</span>}</a>
+          <a href={`/blog/${post.id}/`}>{post.data.title}{i === 0 && <span class="post-badge">Latest</span>}</a>
           <span class="post-date">
             {post.data.pubDate.toLocaleDateString('zh-CN', { year: 'numeric', month: 'short', day: 'numeric' })}
           </span>
         </div>
       ))}
     </div>
-    <a href="/blog" class="view-all">View all posts →</a>
+    <a href="/blog/" class="view-all">View all posts →</a>
   </section>
 </BaseLayout>

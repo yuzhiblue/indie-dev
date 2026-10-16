@@ -38,7 +38,7 @@ export function personSchema(site?: URL): JsonLd {
     '@context': 'https://schema.org',
     '@type': 'Person',
     name: AUTHOR_NAME,
-    url: abs('/about', site),
+    url: abs('/about/', site),
     email: AUTHOR_EMAIL,
     jobTitle: AUTHOR_TITLE,
     description: '专注 Windows 桌面自动化与直播定时工具开发',
@@ -61,7 +61,7 @@ export function blogPostingSchema(
   },
   site?: URL,
 ): JsonLd {
-  const url = abs(`/blog/${post.id}`, site);
+  const url = abs(`/blog/${post.id}/`, site);
   return {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
@@ -73,7 +73,7 @@ export function blogPostingSchema(
     dateModified: (post.data.updatedDate ?? post.data.pubDate).toISOString(),
     inLanguage: 'zh-CN',
     keywords: post.data.tags.join(', '),
-    author: { '@type': 'Person', name: AUTHOR_NAME, url: abs('/about', site) },
+    author: { '@type': 'Person', name: AUTHOR_NAME, url: abs('/about/', site) },
     publisher: { '@type': 'Person', name: AUTHOR_NAME },
     ...(post.data.coverImage ? { image: abs(post.data.coverImage, site) } : {}),
   };
@@ -93,7 +93,7 @@ export function softwareApplicationSchema(
   },
   site?: URL,
 ): JsonLd {
-  const url = abs(`/projects/${project.id}`, site);
+  const url = abs(`/projects/${project.id}/`, site);
   return {
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
@@ -103,7 +103,7 @@ export function softwareApplicationSchema(
     applicationCategory: 'UtilitiesApplication',
     operatingSystem: 'Windows 10, Windows 11',
     inLanguage: 'zh-CN',
-    author: { '@type': 'Person', name: AUTHOR_NAME, url: abs('/about', site) },
+    author: { '@type': 'Person', name: AUTHOR_NAME, url: abs('/about/', site) },
     ...(project.data.coverImage ? { image: abs(project.data.coverImage, site) } : {}),
     ...(project.data.download ? { downloadUrl: project.data.download } : {}),
   };

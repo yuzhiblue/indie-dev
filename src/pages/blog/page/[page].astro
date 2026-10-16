@@ -21,8 +21,8 @@ export async function getStaticPaths() {
 				posts: sorted.slice(start, start + PAGE_SIZE),
 				current: p,
 				last: lastPage,
-				prevUrl: p === 2 ? '/blog' : `/blog/page/${p - 1}`,
-				nextUrl: p < lastPage ? `/blog/page/${p + 1}` : null,
+				prevUrl: p === 2 ? '/blog/' : `/blog/page/${p - 1}/`,
+				nextUrl: p < lastPage ? `/blog/page/${p + 1}/` : null,
 			},
 		});
 	}

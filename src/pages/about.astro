@@ -76,7 +76,7 @@ const stack = [
     <ul class="product-list">
       {projects.map((project) => (
         <li class="product-item">
-          <a class="product-link" href={`/projects/${project.id}`}>
+          <a class="product-link" href={`/projects/${project.id}/`}>
             <span class="product-name">{project.data.title}</span>
             <span class="product-desc">{project.data.description}</span>
           </a>
@@ -118,7 +118,7 @@ const stack = [
     <h2 class="section-title">更多</h2>
     <p class="text">
       想了解产品细节或最新动态，可以先看看
-      <a href="/projects">项目列表</a>；
+      <a href="/projects/">项目列表</a>；
       有问题或想聊聊，欢迎发邮件到
       <a href="mailto:630110598@qq.com">630110598@qq.com</a>，
       或在首页的「关注我」板块找到我。

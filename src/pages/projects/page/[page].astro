@@ -28,8 +28,8 @@ export async function getStaticPaths() {
 				projects: sorted.slice(start, start + PAGE_SIZE),
 				current: p,
 				last: lastPage,
-				prevUrl: p === 2 ? '/projects' : `/projects/page/${p - 1}`,
-				nextUrl: p < lastPage ? `/projects/page/${p + 1}` : null,
+				prevUrl: p === 2 ? '/projects/' : `/projects/page/${p - 1}/`,
+				nextUrl: p < lastPage ? `/projects/page/${p + 1}/` : null,
 			},
 		});
 	}

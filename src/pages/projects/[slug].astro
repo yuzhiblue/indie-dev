@@ -50,7 +50,7 @@ const chrome = LANG_CHROME[lang] ?? LANG_CHROME.zh;
 const actions = LANG_ACTIONS[lang] ?? LANG_ACTIONS.zh;
 
 const site = Astro.site ?? new URL('https://7tec.cn');
-const absUrl = (slug: string) => new URL(`/projects/${slug}`, site).toString();
+const absUrl = (slug: string) => new URL(`/projects/${slug}/`, site).toString();
 const mainSibling = siblings.find((s) => s.lang === 'zh') ?? siblings[0];
 const showSwitch = siblings.length > 1;
 const relatedTitle = lang === 'en' ? 'Related projects' : '相关项目';
@@ -160,13 +160,13 @@ const relatedTitle = lang === 'en' ? 'Related projects' : '相关项目';
   </style>
 
   <article class="article">
-    <a href="/projects" class="back-link">{chrome.back}</a>
+    <a href="/projects/" class="back-link">{chrome.back}</a>
     {showSwitch && (
       <nav class="lang-switch" aria-label="语言版本">
         <span class="lang-switch-label">语言</span>
         {siblings.map((s) => (
           <a
-            href={`/projects/${s.slug}`}
+            href={`/projects/${s.slug}/`}
             hreflang={s.code}
             aria-current={s.slug === project.id ? 'true' : undefined}
           >{s.label}</a>
@@ -230,7 +230,7 @@ const relatedTitle = lang === 'en' ? 'Related projects' : '相关项目';
         <h2 class="related-title">{relatedTitle}</h2>
         <div class="related-list">
           {related.map((p) => (
-            <a class="related-item" href={`/projects/${p.id}`}>
+            <a class="related-item" href={`/projects/${p.id}/`}>
               {p.data.coverImage ? (
                 <img
                   class="related-thumb"

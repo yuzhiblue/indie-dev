@@ -12,7 +12,7 @@ const initial = (project.data.title || '?').trim().charAt(0);
 ---
 
 <a
-	href={`/projects/${project.id}`}
+	href={`/projects/${project.id}/`}
 	class:list={['project-card', `is-${layout}`, { 'no-cover': !hasCover }]}
 >
 	{hasCover ? (

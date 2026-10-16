@@ -31,7 +31,7 @@ const topTags = [...tagCounts.entries()]
 	schema={collectionSchema({
 		name: '开发博客',
 		description: '开发笔记与技术思考：Windows 自动化、Python / PySide6、Astro 建站与独立产品开发经验。',
-		path: '/blog',
+		path: '/blog/',
 	})}
 >
 	<style>
@@ -52,7 +52,7 @@ const topTags = [...tagCounts.entries()]
 	{topTags.length > 0 && (
 		<nav class="tag-bar" aria-label="标签筛选">
 			{topTags.map((t) => (
-				<a class="tag-chip" href={`/blog/tag/${encodeURIComponent(t)}`}>{t}</a>
+				<a class="tag-chip" href={`/blog/tag/${encodeURIComponent(t)}/`}>{t}</a>
 			))}
 		</nav>
 	)}
@@ -67,7 +67,7 @@ const topTags = [...tagCounts.entries()]
 		current={1}
 		last={lastPage}
 		prevUrl={null}
-		nextUrl={lastPage > 1 ? '/blog/page/2' : null}
+		nextUrl={lastPage > 1 ? '/blog/page/2/' : null}
 		baseUrl="/blog"
 	/>
 </BaseLayout>

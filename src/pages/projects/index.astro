@@ -28,7 +28,7 @@ const lastPage = Math.max(1, Math.ceil(sortedProjects.length / PAGE_SIZE));
 	schema={collectionSchema({
 		name: '项目',
 		description: 'yuzhiblue 独立开发与维护的产品与工具：Windows 直播定时助手、OBS 插件与开源项目。',
-		path: '/projects',
+		path: '/projects/',
 	})}
 >
 	<style>
@@ -53,7 +53,7 @@ const lastPage = Math.max(1, Math.ceil(sortedProjects.length / PAGE_SIZE));
 		current={1}
 		last={lastPage}
 		prevUrl={null}
-		nextUrl={lastPage > 1 ? '/projects/page/2' : null}
+		nextUrl={lastPage > 1 ? '/projects/page/2/' : null}
 		baseUrl="/projects"
 	/>
 </BaseLayout>

@@ -121,8 +121,26 @@ if privacy_file.exists():
 _crawlable = [p for p in DIST.rglob('*.html')
               if 'http-equiv="refresh"' not in p.read_text(encoding='utf-8')]
 _no_privacy_link = [p.relative_to(DIST).as_posix() for p in _crawlable
-                    if 'href="/privacy"' not in p.read_text(encoding='utf-8')]
+                    if 'href="/privacy/"' not in p.read_text(encoding='utf-8')]
 check('全站页脚均含隐私政策入口', not _no_privacy_link, str(_no_privacy_link[:5]))
+
+# --- URL 规范化一致性（astro.config trailingSlash: 'always'）---
+# canonical / og:url / sitemap 均为带尾斜杠形式，内部链接与 JSON-LD 必须一致，
+# 否则两种形式会被搜索引擎当成重复页面（曾导致 obstimer 规范网址被 Google 改选）
+_slash_bad: list[str] = []
+for html_file in _crawlable:
+    text = html_file.read_text(encoding='utf-8')
+    rel = html_file.relative_to(DIST).as_posix()
+    for m in re.findall(r'<link rel="canonical" href="([^"]+)"', text):
+        if not m.endswith('/'):
+            _slash_bad.append(f'{rel} canonical={m}')
+    for m in re.findall(r'href="(/[^"]*)"', text):
+        if re.match(r'^/(blog|projects|about|privacy)(/[^/]*)?$', m) and not m.endswith('/'):
+            _slash_bad.append(f'{rel} link={m}')
+    for m in re.findall(r'"url":\s*"(https://7tec\.cn[^"]*)"', text):
+        if not m.endswith('/'):
+            _slash_bad.append(f'{rel} jsonld={m}')
+check('全站 canonical / 内部链接 / JSON-LD 均为带斜杠形式', not _slash_bad, str(_slash_bad[:5]))
 
 # --- RSS ---
 rss = read('rss.xml')
