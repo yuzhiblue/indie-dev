@@ -2,11 +2,11 @@
 title: '视频号直播定时助手（Wxtimer）'
 description: '直播定时助手的视频号版本，调用 Windows 底层 API 实现自动化点击，支持直播带货、循环直播与多组定时。'
 pubDate: 2025-05-21
-updatedDate: 2026-08-31
+updatedDate: 2026-10-25
 tags: ['Windows', '自动化', '视频号', '直播']
 featured: true
 coverImage: '/projects/wxtimer/cover.png'
-download: 'https://cnb.cool/yuzhiblue/Releases/-/git/raw/main/%E8%A7%86%E9%A2%91%E5%8F%B7%E7%9B%B4%E6%92%AD%E5%AE%9A%E6%97%B6%E5%8A%A9%E6%89%8B/Wx_0.4.0.exe'
+download: 'https://cnb.cool/yuzhiblue/Releases'
 purchase: 'https://e.tb.cn/h.SfGc1V9iEPHfcYD?tk=lvSM4y3IhbT'
 draft: false
 ---
@@ -15,7 +15,7 @@ draft: false
 
 欢迎使用视频号直播定时助手！本软件是直播定时助手的视频号版本。
 
-最新版本 0.4.0，简洁稳定，欢迎试用。
+最新版本 0.5.0，简洁稳定，欢迎试用。
 
 通过调用 Windows 底层 API 接口，实现自动化点击功能。本软件旨在提高个人直播效率，请勿用于违法违规用途。
 
@@ -31,7 +31,7 @@ draft: false
 - 邮件通知功能
 - 支持多种定时方式
 
-## 最新版 0.4.0
+## 最新版 0.5.0
 
 ## 界面截图
 
@@ -44,11 +44,12 @@ draft: false
 ### 下载地址
 
 - 蓝奏云下载：
-https://wwbqm.lanzouv.com/i3u8f464h7od
-密码:dz32
+https://wwbqm.lanzouv.com/itk054datoqh
+密码:8hb0
 
 - 百度网盘：
-链接: https://pan.baidu.com/s/1JO1z0Jj_p-KpV6aAoODm-g?pwd=6ns5 提取码: 6ns5 复制这段内容后打开百度网盘手机App，操作更方便哦
+通过网盘分享的文件：wx_0.5.0.exe
+链接: https://pan.baidu.com/s/13KYJ5hJTkhsgCB1dk2cz7g?pwd=rh2u 提取码: rh2u 复制这段内容后打开百度网盘手机App，操作更方便哦
 
 ### 购买地址
 

@@ -2,12 +2,12 @@
 title: '直播定时助手（Doutimer）'
 description: '通过调用 Windows 底层 API 实现自动化点击，支持抖音、快手双平台的直播定时开播与下播工具。'
 pubDate: 2025-07-16
-updatedDate: 2026-10-10
+updatedDate: 2026-10-25
 tags: ['Windows', '自动化', '直播', '抖音']
 featured: true
 coverImage: '/projects/doutimer/cover.png'
 download: 'https://cnb.cool/yuzhiblue/Releases'
-purchase: 'https://e.tb.cn/h.6oeYmXNdzl7e7ZT'
+purchase: 'https://h5.m.taobao.com/awp/core/detail.htm?ft=t&id=1091435655239'
 draft: false
 ---
 
@@ -50,7 +50,7 @@ https://wwbqm.lanzouv.com/iy57j4bc3eje 密码:hhct
 
 ### 购买地址
 
-- 淘宝：https://e.tb.cn/h.6oeYmXNdzl7e7ZT
+- 淘宝：https://h5.m.taobao.com/awp/core/detail.htm?ft=t&id=1091435655239
 
 ### 小贴士
 
@@ -70,7 +70,7 @@ https://wwbqm.lanzouv.com/iy57j4bc3eje 密码:hhct
 | 0.3.0524 | 修复多组定时失效、解绑、快手错误提示等 |
 | 0.3.0429 | 修复 BUG，数值限制，多线程优化 |
 | 0.3.0415 | 代码重构，日志，每天定时，快手团购，解绑，多组定时 |
-| 0.2.1105 | 快手电商挂车，UI，优化 |
+| 0.2.1105 | 快手电商挂车，UI，优化 | 
 | 0.2.1015 / 0.2.1013 / 0.2.1008 / 0.2.1007 | 修复 BUG，稳定性 |
 | 0.2.0830 | 循环直播，违规警告，自动关机 |
 | 0.2.0725 | 定时开播，界面重写 |
