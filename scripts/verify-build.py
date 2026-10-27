@@ -53,7 +53,7 @@ for name in ['robots.txt', '404.html', 'sitemap-index.xml', 'rss.xml', 'favicon.
 home = read('index.html')
 canonical = re.findall(r'<link rel="canonical" href="([^"]+)"', home)
 check('首页 canonical 是绝对地址', bool(canonical) and canonical[0].startswith('https://'), str(canonical))
-check('首页 title 使用新文案', 'yuzhiblue - 独立开发者' in home)
+check('首页 title 使用新文案', '7TEC - 独立开发者' in home)
 check('首页含 OG 站名与 url', 'og:site_name' in home and 'og:url' in home)
 check('首页含 Twitter Card', 'twitter:card' in home)
 check('首页 RSS 声明存在', 'application/rss+xml' in home)
