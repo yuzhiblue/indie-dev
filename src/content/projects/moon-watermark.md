@@ -6,6 +6,8 @@ updatedDate: 2026-10-27
 tags: ['MoonBit', '开源', '水印', '图像处理', '信息安全']
 featured: false
 github: 'https://github.com/yuzhiblue/moon-watermark'
+lang: 'zh'
+i18nKey: 'moon-watermark'
 draft: false
 ---
 

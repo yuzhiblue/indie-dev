@@ -6,6 +6,8 @@ updatedDate: 2026-10-27
 tags: ['MoonBit', '开源', 'Diff', '算法', '库']
 featured: false
 github: 'https://github.com/yuzhiblue/moon-diff'
+lang: 'zh'
+i18nKey: 'moon-diff'
 draft: false
 ---
 

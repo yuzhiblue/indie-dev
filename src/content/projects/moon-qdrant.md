@@ -6,6 +6,8 @@ updatedDate: 2026-10-27
 tags: ['MoonBit', '开源', '向量数据库', 'RAG', '客户端库']
 featured: false
 github: 'https://github.com/yuzhiblue/moon-qdrant'
+lang: 'zh'
+i18nKey: 'moon-qdrant'
 draft: false
 ---
 

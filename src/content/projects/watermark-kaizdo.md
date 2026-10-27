@@ -6,6 +6,8 @@ updatedDate: 2026-10-27
 tags: ['直播', '水印', '防盗播', 'OBS', '在线工具']
 featured: false
 website: 'https://watermark.kaizdo.com/'
+lang: 'zh'
+i18nKey: 'watermark-kaizdo'
 draft: false
 ---
 

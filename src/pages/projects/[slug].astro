@@ -8,12 +8,14 @@ import { softwareApplicationSchema } from '../../lib/seo';
 const LANG_CHROME: Record<string, { back: string; updatedPre: string; updatedPost: string; dateLocale: string }> = {
   zh: { back: '← 返回项目', updatedPre: '（更新于 ', updatedPost: '）', dateLocale: 'zh-CN' },
   en: { back: '← Back to projects', updatedPre: '(Updated ', updatedPost: ')', dateLocale: 'en-US' },
+  ja: { back: '← プロジェクト一覧へ', updatedPre: '（更新日: ', updatedPost: '）', dateLocale: 'ja-JP' },
 };
 
 // Per-language action button labels (download / purchase / etc.)
 const LANG_ACTIONS: Record<string, { demo: string; purchase: string; download: string; website: string; github: string }> = {
   zh: { demo: '在线演示 ↗', purchase: '立即购买 ↗', download: '下载 ↗', website: '访问官网 ↗', github: 'GitHub 源码 ↗' },
   en: { demo: 'Live Demo ↗', purchase: 'Buy Now ↗', download: 'Download ↗', website: 'Visit Website ↗', github: 'GitHub Repo ↗' },
+  ja: { demo: 'デモを見る ↗', purchase: '購入する ↗', download: 'ダウンロード ↗', website: '公式サイトへ ↗', github: 'GitHub リポジトリ ↗' },
 };
 
 export async function getStaticPaths() {
@@ -53,7 +55,12 @@ const site = Astro.site ?? new URL('https://7tec.cn');
 const absUrl = (slug: string) => new URL(`/projects/${slug}/`, site).toString();
 const mainSibling = siblings.find((s) => s.lang === 'zh') ?? siblings[0];
 const showSwitch = siblings.length > 1;
-const relatedTitle = lang === 'en' ? 'Related projects' : '相关项目';
+const RELATED_TITLES: Record<string, string> = {
+  zh: '相关项目',
+  en: 'Related projects',
+  ja: '関連プロジェクト',
+};
+const relatedTitle = RELATED_TITLES[lang] ?? RELATED_TITLES.zh;
 ---
 
 <BaseLayout
