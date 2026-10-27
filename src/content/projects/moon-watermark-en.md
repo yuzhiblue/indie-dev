@@ -7,6 +7,8 @@ tags: ['MoonBit', 'Open Source', 'Watermarking', 'Image Processing', 'Security']
 featured: false
 github: 'https://github.com/yuzhiblue/moon-watermark'
 lang: 'en'
+applicationCategory: 'DeveloperApplication'
+operatingSystem: 'Cross-platform'
 i18nKey: 'moon-watermark'
 draft: false
 ---

@@ -7,6 +7,8 @@ tags: ['授权系统', 'Cloudflare', '独立开发', '软件授权', '基础设�
 featured: true
 coverImage: '/projects/license-server/cover.png'
 lang: 'zh'
+applicationCategory: 'WebApplication'
+operatingSystem: 'Any'
 i18nKey: 'license-server'
 draft: false
 ---

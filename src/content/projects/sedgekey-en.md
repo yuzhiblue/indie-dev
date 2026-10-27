@@ -7,6 +7,8 @@ tags: ['E-commerce', 'Cloudflare', 'Indie Development', 'Storefront', 'Infrastru
 featured: false
 coverImage: '/projects/sedgekey/cover.png'
 lang: 'en'
+applicationCategory: 'WebApplication'
+operatingSystem: 'Any'
 i18nKey: 'sedgekey'
 draft: false
 ---

@@ -3,7 +3,7 @@
  * 这里只负责产出纯对象，序列化与注入由 BaseLayout 统一处理。
  */
 
-export const SITE_NAME = 'yuzhiblue';
+export const SITE_NAME = '7TEC';
 export const SITE_URL = 'https://7tec.cn';
 export const AUTHOR_NAME = 'yuzhiblue';
 export const AUTHOR_TITLE = '独立开发者';
@@ -41,7 +41,7 @@ export function personSchema(site?: URL): JsonLd {
     url: abs('/about/', site),
     email: AUTHOR_EMAIL,
     jobTitle: AUTHOR_TITLE,
-    description: '专注 Windows 桌面自动化与直播定时工具开发',
+    description: '专注 Windows 桌面自动化、直播工具与开发者基础设施建设',
     sameAs: SOCIAL_PROFILES,
   };
 }
@@ -89,8 +89,11 @@ export function softwareApplicationSchema(
       tags: string[];
       coverImage?: string;
       download?: string;
+      applicationCategory?: string;
+      operatingSystem?: string;
     };
   },
+  lang = 'zh-CN',
   site?: URL,
 ): JsonLd {
   const url = abs(`/projects/${project.id}/`, site);
@@ -100,9 +103,9 @@ export function softwareApplicationSchema(
     name: project.data.title,
     description: project.data.description,
     url,
-    applicationCategory: 'UtilitiesApplication',
-    operatingSystem: 'Windows 10, Windows 11',
-    inLanguage: 'zh-CN',
+    applicationCategory: project.data.applicationCategory ?? 'UtilitiesApplication',
+    operatingSystem: project.data.operatingSystem ?? 'Windows 10, Windows 11',
+    inLanguage: lang,
     author: { '@type': 'Person', name: AUTHOR_NAME, url: abs('/about/', site) },
     ...(project.data.coverImage ? { image: abs(project.data.coverImage, site) } : {}),
     ...(project.data.download ? { downloadUrl: project.data.download } : {}),

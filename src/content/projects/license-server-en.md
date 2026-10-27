@@ -7,6 +7,8 @@ tags: ['Licensing', 'Cloudflare', 'Indie Development', 'Software Licensing', 'In
 featured: false
 coverImage: '/projects/license-server/cover.png'
 lang: 'en'
+applicationCategory: 'WebApplication'
+operatingSystem: 'Any'
 i18nKey: 'license-server'
 draft: false
 ---

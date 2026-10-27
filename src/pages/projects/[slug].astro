@@ -68,7 +68,7 @@ const relatedTitle = RELATED_TITLES[lang] ?? RELATED_TITLES.zh;
   description={project.data.description}
   lang={meta.code}
   image={project.data.coverImage}
-  schema={softwareApplicationSchema(project)}
+  schema={softwareApplicationSchema(project, meta.code)}
 >
   <Fragment slot="head">
     {showSwitch && siblings.map((s) => (

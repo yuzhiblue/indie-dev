@@ -7,6 +7,8 @@ tags: ['MoonBit', '开源', '水印', '图像处理', '信息安全']
 featured: false
 github: 'https://github.com/yuzhiblue/moon-watermark'
 lang: 'zh'
+applicationCategory: 'DeveloperApplication'
+operatingSystem: 'Cross-platform'
 i18nKey: 'moon-watermark'
 draft: false
 ---

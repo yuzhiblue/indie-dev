@@ -6,6 +6,8 @@ updatedDate: 2026-10-27
 tags: ['支付', 'Cloudflare', '独立开发', '基础设施', '内部系统']
 featured: false
 lang: 'zh'
+applicationCategory: 'WebApplication'
+operatingSystem: 'Any'
 i18nKey: 'pay-gateway'
 draft: false
 ---

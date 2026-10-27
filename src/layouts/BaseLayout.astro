@@ -30,10 +30,11 @@ const {
 
 const site = Astro.site ?? new URL('https://7tec.cn');
 const canonical = new URL(Astro.url.pathname, site).toString();
-const fullTitle = rawTitle ? title : `${title} | yuzhiblue`;
+const fullTitle = rawTitle ? title : `${title} | 7TEC`;
 // 页面没有专属封面时回落到站点默认分享图，保证任何页面都有 og:image
 const ogImage = new URL(image ?? '/og-default.png', site).toString();
-const ogLocale = lang.startsWith('en') ? 'en_US' : 'zh_CN';
+const ogLocaleMap: Record<string, string> = { en: 'en_US', ja: 'ja_JP' };
+const ogLocale = ogLocaleMap[lang] ?? 'zh_CN';
 const schemaList = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
 // 避免 JSON 内容中的 </script> 提前闭合标签
 const toJsonLd = (value: JsonLd) => JSON.stringify(value).replace(/</g, '\\u003c');
@@ -103,7 +104,7 @@ import '../styles/tokens.css';
     <meta name="author" content="yuzhiblue" />
 
     <meta property="og:type" content={type} />
-    <meta property="og:site_name" content="yuzhiblue" />
+    <meta property="og:site_name" content="7TEC" />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
@@ -115,7 +116,7 @@ import '../styles/tokens.css';
     <meta name="twitter:description" content={description} />
     {ogImage && <meta name="twitter:image" content={ogImage} />}
 
-    <link rel="alternate" type="application/rss+xml" title="yuzhiblue 开发博客" href={new URL('/rss.xml', site).toString()} />
+    <link rel="alternate" type="application/rss+xml" title="7TEC 开发博客" href={new URL('/rss.xml', site).toString()} />
 
     {schemaList.map((item) => (
       <script type="application/ld+json" is:inline set:html={toJsonLd(item)} />

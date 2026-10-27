@@ -8,6 +8,8 @@ featured: true
 coverImage: '/projects/watermark-kaizdo/cover.png'
 website: 'https://watermark.kaizdo.com/'
 lang: 'zh'
+applicationCategory: 'WebApplication'
+operatingSystem: 'Any'
 i18nKey: 'watermark-kaizdo'
 draft: false
 ---

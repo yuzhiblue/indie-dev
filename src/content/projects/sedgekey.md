@@ -7,6 +7,8 @@ tags: ['发卡系统', 'Cloudflare', '独立开发', '电子商务', '基础设�
 featured: false
 coverImage: '/projects/sedgekey/cover.png'
 lang: 'zh'
+applicationCategory: 'WebApplication'
+operatingSystem: 'Any'
 i18nKey: 'sedgekey'
 draft: false
 ---

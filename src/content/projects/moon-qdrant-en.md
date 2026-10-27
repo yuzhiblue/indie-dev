@@ -7,6 +7,8 @@ tags: ['MoonBit', 'Open Source', 'Vector Database', 'RAG', 'Client Library']
 featured: false
 github: 'https://github.com/yuzhiblue/moon-qdrant'
 lang: 'en'
+applicationCategory: 'DeveloperApplication'
+operatingSystem: 'Cross-platform'
 i18nKey: 'moon-qdrant'
 draft: false
 ---

@@ -7,6 +7,8 @@ tags: ['MoonBit', '开源', 'Diff', '算法', '库']
 featured: false
 github: 'https://github.com/yuzhiblue/moon-diff'
 lang: 'zh'
+applicationCategory: 'DeveloperApplication'
+operatingSystem: 'Cross-platform'
 i18nKey: 'moon-diff'
 draft: false
 ---
