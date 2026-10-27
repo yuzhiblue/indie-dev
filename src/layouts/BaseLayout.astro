@@ -15,6 +15,8 @@ interface Props {
   noindex?: boolean;
   /** 结构化数据（JSON-LD），单个对象或数组 */
   schema?: JsonLd | JsonLd[];
+  /** 宽幅布局（1180px 容器 + 无顶部留白），用于首页 */
+  wide?: boolean;
 }
 
 const {
@@ -26,6 +28,7 @@ const {
   image,
   noindex = false,
   schema,
+  wide = false,
 } = Astro.props;
 
 const site = Astro.site ?? new URL('https://7tec.cn');
@@ -85,7 +88,7 @@ import '../styles/tokens.css';
       })();
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#0a0a0a" />
+    <meta name="theme-color" content="#f5f2ea" />
     <meta name="description" content={description} />
     <meta name="google-adsense-account" content="ca-pub-4625795004585815" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -135,11 +138,38 @@ import '../styles/tokens.css';
       .container { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
       header { border-bottom: 1px solid var(--border); padding: 20px 0; }
       header .container { display: flex; align-items: center; justify-content: space-between; }
-      .logo { font-size: 1.25rem; font-weight: 700; color: var(--text); letter-spacing: -0.02em; }
+      .logo {
+        display: inline-flex; align-items: center; gap: 9px;
+        color: var(--text); text-decoration: none;
+      }
+      .logo-mark {
+        display: grid; width: 30px; height: 30px; place-items: center;
+        background: var(--accent-strong); color: #fff;
+        font-size: 0.92rem; font-weight: 800; line-height: 1;
+      }
+      .logo-wordmark { font-size: 1.2rem; font-weight: 800; letter-spacing: -0.055em; }
+      .logo-caption {
+        margin-left: 6px; padding-left: 12px; border-left: 1px solid var(--border);
+        color: var(--text-muted); font-size: 0.76rem; letter-spacing: 0.02em;
+      }
       nav { display: flex; gap: 24px; }
       nav a { color: var(--text-muted); font-size: 0.9rem; transition: color 0.2s; }
       nav a:hover { color: var(--text); }
       main { padding: 60px 0; flex: 1; }
+      body.wide { --max-width: 1180px; }
+      body.wide main { padding: 0 0 76px; }
+      a:focus-visible {
+        outline: 3px solid var(--accent);
+        outline-offset: 4px;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+          scroll-behavior: auto !important;
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
       footer { border-top: 1px solid var(--border); padding: 30px 0; text-align: center; color: var(--text-muted); font-size: 0.85rem; }
       footer p + p { margin-top: 6px; }
       .footer-links a { color: var(--text-muted); }
@@ -175,21 +205,26 @@ import '../styles/tokens.css';
       }
       @media (max-width: 640px) {
         nav { gap: 14px; }
+        .logo-caption { display: none; }
       }
     </style>
   </head>
-  <body>
+  <body class:list={{ wide }}>
     <header>
       <div class="container">
-        <a href="/" class="logo">7TEC</a>
-        <nav>
-          <a href="/projects/">Projects</a>
-          <a href="/blog/">Blog</a>
-          <a href="/about/">About</a>
+        <a href="/" class="logo" aria-label="7TEC 首页">
+          <span class="logo-mark" aria-hidden="true">7</span>
+          <span class="logo-wordmark" aria-hidden="true">7TEC</span>
+          <span class="logo-caption">独立开发者工作室</span>
+        </a>
+        <nav aria-label="主导航">
+          <a href="/projects/">项目</a>
+          <a href="/blog/">开发笔记</a>
+          <a href="/about/">关于</a>
         </nav>
       </div>
     </header>
-    <main><div class="container"><slot /></div></main>
+    <main class:list={{ 'main--home': wide }}><div class="container"><slot /></div></main>
     <section class="site-follow">
       <div class="container">
         <h2 class="footer-follow-title">关注我</h2>
@@ -222,7 +257,7 @@ import '../styles/tokens.css';
     </section>
     <footer>
       <div class="container">
-        <p>&copy; {new Date().getFullYear()} yuzhiblue. All rights reserved.</p>
+        <p>&copy; {new Date().getFullYear()} yuzhiblue · 保留所有权利。</p>
         <p class="footer-links">
           <a href="/privacy/">隐私政策</a>
           <span class="footer-sep" aria-hidden="true">·</span>
