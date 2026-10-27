@@ -25,6 +25,7 @@
     "esbuild": true
   },
   "overrides": {
-    "nanoid": "5.1.16"
+    "nanoid": "5.1.16",
+    "zod": "4.6.6"
   }
 }
