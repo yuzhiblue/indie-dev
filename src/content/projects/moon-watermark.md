@@ -83,6 +83,10 @@ moon run cmd/main -- verify-dct out.png --delta 48
 - 不可见水印不抗几何攻击（裁剪/旋转/缩放），此类场景建议走 DCT/LSB 通道
 - 载体格式支持 PNG / JPEG
 
+## 相关产品
+
+作者基于同一方向做了在线版产品：[直播贴片水印工具](/projects/watermark-kaizdo/)——面向直播主的贴片水印 SaaS，OBS 浏览器源即插即用，支持动态取证变量与 21 种行为特效，无需写代码。
+
 ## 链接
 
 - GitHub 仓库：https://github.com/yuzhiblue/moon-watermark
