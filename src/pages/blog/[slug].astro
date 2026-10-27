@@ -48,11 +48,12 @@ const related = allPosts
   title={post.data.title}
   description={post.data.description}
   type="article"
+  wide
   image={post.data.coverImage}
   schema={blogPostingSchema(post)}
 >
   <style>
-    .article { max-width: 900px; margin: 0 auto; }
+    .article { max-width: none; margin: 0 auto; }
     .article-header { margin-bottom: 40px; padding-bottom: 24px; border-bottom: 1px solid var(--border); }
     .article-header h1 { font-size: 2.2rem; font-weight: 800; letter-spacing: -0.03em; line-height: 1.2; margin-bottom: 16px; }
     .article-author { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }

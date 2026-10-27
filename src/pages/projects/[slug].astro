@@ -67,6 +67,7 @@ const relatedTitle = RELATED_TITLES[lang] ?? RELATED_TITLES.zh;
   title={project.data.title}
   description={project.data.description}
   lang={meta.code}
+  wide
   image={project.data.coverImage}
   schema={softwareApplicationSchema(project, meta.code)}
 >
@@ -78,7 +79,7 @@ const relatedTitle = RELATED_TITLES[lang] ?? RELATED_TITLES.zh;
   </Fragment>
 
   <style is:raw>
-    .article { max-width: 900px; margin: 0 auto; }
+    .article { max-width: none; margin: 0 auto; }
     .cover {
       width: 100%; aspect-ratio: 16 / 9; object-fit: cover;
       border-radius: 16px; border: 1px solid var(--border);
