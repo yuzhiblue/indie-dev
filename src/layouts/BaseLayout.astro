@@ -15,8 +15,10 @@ interface Props {
   noindex?: boolean;
   /** 结构化数据（JSON-LD），单个对象或数组 */
   schema?: JsonLd | JsonLd[];
-  /** 宽幅布局（1180px 容器 + 无顶部留白），用于首页 */
+  /** 宽幅布局（1180px 容器），用于首页与关于页 */
   wide?: boolean;
+  /** 去掉 main 顶部留白（页面自带头部留白时使用），用于首页 */
+  flush?: boolean;
 }
 
 const {
@@ -29,6 +31,7 @@ const {
   noindex = false,
   schema,
   wide = false,
+  flush = false,
 } = Astro.props;
 
 const site = Astro.site ?? new URL('https://7tec.cn');
@@ -157,7 +160,8 @@ import '../styles/tokens.css';
       nav a:hover { color: var(--text); }
       main { padding: 60px 0; flex: 1; }
       body.wide { --max-width: 1180px; }
-      body.wide main { padding: 0 0 76px; }
+      body.wide main { padding-bottom: 76px; }
+      main.main--home { padding: 0; }
       a:focus-visible {
         outline: 3px solid var(--accent);
         outline-offset: 4px;
@@ -224,7 +228,7 @@ import '../styles/tokens.css';
         </nav>
       </div>
     </header>
-    <main class:list={{ 'main--home': wide }}><div class="container"><slot /></div></main>
+    <main class:list={{ 'main--home': flush }}><div class="container"><slot /></div></main>
     <section class="site-follow">
       <div class="container">
         <h2 class="footer-follow-title">关注我</h2>
