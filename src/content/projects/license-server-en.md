@@ -5,6 +5,7 @@ pubDate: 2026-10-27
 updatedDate: 2026-10-27
 tags: ['Licensing', 'Cloudflare', 'Indie Development', 'Software Licensing', 'Infrastructure']
 featured: false
+coverImage: '/projects/license-server/cover.png'
 lang: 'en'
 i18nKey: 'license-server'
 draft: false

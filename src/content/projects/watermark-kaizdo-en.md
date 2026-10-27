@@ -5,6 +5,7 @@ pubDate: 2026-10-27
 updatedDate: 2026-10-27
 tags: ['Live Streaming', 'Watermark', 'Anti-Piracy', 'OBS', 'Online Tool']
 featured: false
+coverImage: '/projects/watermark-kaizdo/cover.png'
 website: 'https://watermark.kaizdo.com/'
 lang: 'en'
 i18nKey: 'watermark-kaizdo'
@@ -69,6 +70,20 @@ Green-screen / solid-background mode is supported. Window captures and assets wi
 - Canvas up to 4K, plus portrait and arbitrary sizes;
 - One-click tile across the full frame, or pin to all four corners;
 - Landscape streams, portrait e-commerce, course recordings — one editor covers them all.
+
+## A Quick Look
+
+**Web editor** — text/image stickers, dynamic variables and 21 behavior effects, with live WYSIWYG preview:
+
+![Watermark sticker web editor](/projects/watermark-kaizdo/editor.png)
+
+**Actual OBS result** — tiled watermark covering the full frame; timestamp + session + channel variables form the traceability chain:
+
+![Tiled watermark effect in an OBS stream](/projects/watermark-kaizdo/obs.png)
+
+**Console** — create projects, copy render URLs and export config snapshots; multiple projects managed in one place:
+
+![Watermark tool console: project management](/projects/watermark-kaizdo/dashboard.png)
 
 ## Three Steps, Live in Five Minutes
 

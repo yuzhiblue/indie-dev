@@ -5,6 +5,7 @@ pubDate: 2026-10-27
 updatedDate: 2026-10-27
 tags: ['ライブ配信', 'ウォーターマーク', '防盗撮', 'OBS', 'オンラインツール']
 featured: false
+coverImage: '/projects/watermark-kaizdo/cover.png'
 website: 'https://watermark.kaizdo.com/'
 lang: 'ja'
 i18nKey: 'watermark-kaizdo'
@@ -69,6 +70,20 @@ draft: false
 - 最大 4K キャンバス、縦画面・任意サイズに対応；
 - ワンクリックで全画面タイリング、または四隅に配置；
 - 横画面配信・縦画面 EC・講義録画——1 つのエディタですべてカバー。
+
+## 画面紹介
+
+**Web エディタ** — テキスト/画像ステッカー、動的変数、21 種類の動作エフェクト、WYSIWYG でリアルタイムプレビュー：
+
+![透かしステッカー Web エディタ](/projects/watermark-kaizdo/editor.png)
+
+**OBS での実際の効果** — 全画面タイリング透かし。時刻 + セッション + チャンネル変数でトレーサビリティチェーンを構成：
+
+![OBS 配信画面でのタイリング透かし効果](/projects/watermark-kaizdo/obs.png)
+
+**コンソール** — プロジェクトの作成、レンダリング URL のコピー、設定スナップショットの書き出し。複数プロジェクトを一元管理：
+
+![透かしツール コンソール：プロジェクト管理](/projects/watermark-kaizdo/dashboard.png)
 
 ## 3 ステップ、5 分で導入
 

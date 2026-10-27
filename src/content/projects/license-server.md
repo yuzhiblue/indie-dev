@@ -5,6 +5,7 @@ pubDate: 2026-10-27
 updatedDate: 2026-10-27
 tags: ['授权系统', 'Cloudflare', '独立开发', '软件授权', '基础设施']
 featured: false
+coverImage: '/projects/license-server/cover.png'
 lang: 'zh'
 i18nKey: 'license-server'
 draft: false

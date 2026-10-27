@@ -5,6 +5,7 @@ pubDate: 2026-10-27
 updatedDate: 2026-10-27
 tags: ['E-commerce', 'Cloudflare', 'Indie Development', 'Storefront', 'Infrastructure']
 featured: false
+coverImage: '/projects/sedgekey/cover.png'
 lang: 'en'
 i18nKey: 'sedgekey'
 draft: false
@@ -69,6 +70,16 @@ That means your users, friends and community can all become your sales channel �
 ### Admin Panel: Security by Default
 
 The admin account system ships with **TOTP two-factor authentication**, **Cloudflare Turnstile login captcha** (optional) and operation logs. Credential stuffing and brute-force login attempts get stopped at the system layer.
+
+## A Quick Look
+
+**Buyer storefront** — product listing, spec selection, checkout and order lookup, fully self-service:
+
+![SEdgeKey buyer storefront: product listing](/projects/sedgekey/cover.png)
+
+**Admin panel** — orders, products, card-key stock, payment config and the affiliate system, all in one place:
+
+![SEdgeKey admin panel: dashboard](/projects/sedgekey/admin.png)
 
 ## Cost Comparison: Even the Storefront Is Free
 

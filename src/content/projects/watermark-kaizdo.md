@@ -5,6 +5,7 @@ pubDate: 2026-10-27
 updatedDate: 2026-10-27
 tags: ['直播', '水印', '防盗播', 'OBS', '在线工具']
 featured: false
+coverImage: '/projects/watermark-kaizdo/cover.png'
 website: 'https://watermark.kaizdo.com/'
 lang: 'zh'
 i18nKey: 'watermark-kaizdo'
@@ -69,6 +70,20 @@ draft: false
 - 最高 4K 画布，支持竖屏与任意尺寸；
 - 一键平铺铺满全屏，或贴满四角；
 - 横屏直播、竖屏带货、课程录屏，同一套编辑器全搞定。
+
+## 界面一览
+
+**网页编辑器**——文字/图片贴片、动态变量、21 种行为特效，实时预览所见即所得：
+
+![水印贴片网页编辑器](/projects/watermark-kaizdo/editor.png)
+
+**OBS 实际效果**——平铺水印铺满全屏，时间戳 + 场次 + 渠道变量构成溯源链：
+
+![OBS 直播画面中的平铺水印效果](/projects/watermark-kaizdo/obs.png)
+
+**控制台**——创建项目、复制渲染链接、导出配置快照，多项目统一管理：
+
+![水印工具控制台：项目管理](/projects/watermark-kaizdo/dashboard.png)
 
 ## 三步接入，五分钟上线
 

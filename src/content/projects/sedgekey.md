@@ -5,6 +5,7 @@ pubDate: 2026-10-27
 updatedDate: 2026-10-27
 tags: ['发卡系统', 'Cloudflare', '独立开发', '电子商务', '基础设施']
 featured: false
+coverImage: '/projects/sedgekey/cover.png'
 lang: 'zh'
 i18nKey: 'sedgekey'
 draft: false
@@ -69,6 +70,16 @@ SEdgeKey 是一套**可直接部署到 Cloudflare 的一体化全栈卡密商城
 ### 管理后台：安全是默认项
 
 管理员账号体系内置 **TOTP 双重认证**、**Turnstile 登录验证码**（可选）与操作日志。默认密码登录、暴力爆破这类风险，在系统层就被挡住了。
+
+## 界面一览
+
+**买家前台**——商品列表、规格选择、下单支付、订单查询，买家全流程自助：
+
+![SEdgeKey 买家前台：商品列表页](/projects/sedgekey/cover.png)
+
+**管理后台**——订单、商品、卡密库存、支付配置、推广分销，日常运营一个后台全搞定：
+
+![SEdgeKey 管理后台：仪表盘](/projects/sedgekey/admin.png)
 
 ## 成本对比：这次连"店"都是免费的
 
