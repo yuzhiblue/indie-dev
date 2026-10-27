@@ -4,7 +4,7 @@ description: '面向直播主与内容创作者的在线水印贴片工具：OBS
 pubDate: 2026-10-27
 updatedDate: 2026-10-27
 tags: ['直播', '水印', '防盗播', 'OBS', '在线工具']
-featured: false
+featured: true
 coverImage: '/projects/watermark-kaizdo/cover.png'
 website: 'https://watermark.kaizdo.com/'
 lang: 'zh'
