@@ -1,4 +1,4 @@
-# yuzhiblue 个人网站
+# 7TEC独立开发者工作室
 
 基于 [Astro](https://astro.build) 构建的个人作品集与博客站点，属于独立开发者 **yuzhiblue**，用于展示独立开发的产品、工具与开源项目，并记录技术笔记与产品思考。
 
@@ -7,44 +7,39 @@
 
 ## 技术栈
 
-- **Astro** `^7.2.4` —— 静态站点生成框架
-- **@astrojs/mdx** `^7.0.7` —— 支持以 MDX 编写内容
-- **@astrojs/sitemap** `^3.7.3` —— 自动生成站点地图
+- **Astro** `^7.3.2`（锁文件解析为 7.4.2）—— 静态站点生成框架
+- **@astrojs/mdx** —— 支持以 MDX 编写内容
+- **@astrojs/sitemap** —— 自动生成站点地图（博客/项目分页与标签归档页不纳入）
 - 内容以 Markdown 编写，配合 Astro Content Collections 进行类型校验
-- 代码高亮使用 Shiki（`github-dark` 主题）
-- 纯 CSS（组件样式作用域隔离），无额外 UI 框架，深色主题；全局设计令牌见 `src/styles/tokens.css`
+- 代码高亮使用 Shiki（`github-dark` 主题，浅色页面上的深色代码卡片）
+- 纯 CSS（组件样式作用域隔离），无额外 UI 框架；**Paper 暖纸色浅色主题**，全局设计令牌见 `src/styles/tokens.css`
+- SEO：canonical、Open Graph / Twitter 卡片、JSON-LD 结构化数据（WebSite / Person / BlogPosting / SoftwareApplication / CollectionPage）、项目多语言 `hreflang` + `x-default`、RSS、`robots.txt` 指向 sitemap
 
 ## 项目结构
 
 ```text
 /
-├── public/                 # 静态资源
-│   ├── favicon.svg
+├── public/                 # 静态资源（favicon、og-default、robots.txt、ads.txt 等）
 │   ├── images/blog/        # 博客文章配图
-│   └── projects/           # 项目封面（doutimer / obstimer / wxtimer 等子目录）
+│   └── projects/           # 项目封面与截图（doutimer / sedgekey / watermark-kaizdo 等子目录）
 ├── scripts/                # 内容治理与迁移脚本（见「内容治理脚本」一节）
-│   ├── migrate_7tec.py      # 一次性迁移：从 7tec.cn 抓取文章转 Markdown
-│   ├── classify-blog.mjs    # 按主题加权打分，下线非技术文章（写 draft: true）
-│   ├── apply-tags.mjs       # 重写文章的 tags 为按主题标签
-│   ├── apply-slugs.mjs      # 写入语义化 slug 并生成 redirects.mjs（旧链接 301）
-│   └── fix_image_links.py   # 一次性修复：图片链接改回本地相对路径
 ├── src/
-│   ├── components/         # 可复用组件
-│   │   ├── ProjectCard.astro
-│   │   ├── PostCard.astro
-│   │   └── Pagination.astro
+│   ├── components/         # 可复用组件（ProjectCard / PostCard / Pagination）
 │   ├── content/            # 内容集合（Markdown 源文件）
-│   │   ├── blog/           # 博客文章（283 篇，由迁移脚本生成）
-│   │   └── projects/       # 项目介绍（手动维护，含多语言 -<lang> 文件）
+│   │   ├── blog/           # 博客文章（206 篇，由迁移脚本生成）
+│   │   └── projects/       # 项目介绍（19 个文件 / 11 个项目，含多语言 -<lang> 文件）
 │   ├── data/
 │   │   └── redirects.mjs   # 旧博客 slug → 新 slug 的 301 重定向（apply-slugs.mjs 生成）
 │   ├── layouts/
-│   │   └── BaseLayout.astro  # 全局布局（导航、页脚、主题样式）
+│   │   └── BaseLayout.astro  # 全局布局（SEO meta、JSON-LD、导航、语言切换、页脚）
 │   ├── lib/
-│   │   └── projects-i18n.ts  # 项目多语言工具（去重、切换条、字典）
+│   │   ├── projects-i18n.ts  # 项目多语言工具（去重、切换条、语言字典）
+│   │   └── seo.ts            # 站点常量与 JSON-LD 结构化数据工厂
 │   ├── pages/              # 路由页面
-│   │   ├── index.astro       # 首页（作品、最新文章、关注入口）
+│   │   ├── index.astro       # 首页（精选项目 + 最新文章，宽幅布局）
 │   │   ├── about.astro       # 关于页
+│   │   ├── privacy.astro     # 隐私政策
+│   │   ├── rss.xml.ts        # RSS 订阅
 │   │   ├── blog/
 │   │   │   ├── index.astro     # 文章列表
 │   │   │   ├── [slug].astro     # 文章详情
@@ -52,12 +47,13 @@
 │   │   │   └── tag/[tag].astro  # 标签页
 │   │   └── projects/
 │   │       ├── index.astro     # 项目列表
-│   │       ├── [slug].astro     # 项目详情
+│   │       ├── [slug].astro     # 项目详情（含语言切换条）
 │   │       └── page/[page].astro# 项目分页
 │   ├── styles/
-│   │   └── tokens.css       # 全局设计令牌（颜色、间距、圆角）
+│   │   └── tokens.css       # 全局设计令牌（Paper 浅色主题，唯一来源）
 │   └── content.config.ts   # 内容集合 schema 定义
 ├── astro.config.mjs        # Astro 配置（集成、站点、构建选项、重定向）
+├── middleware.js           # 边缘中间件
 └── package.json
 ```
 
@@ -66,7 +62,7 @@
 内容通过 `src/content.config.ts` 中定义的两个集合进行约束：
 
 - **`blog`**：博客文章，字段含 `title`、`description`、`pubDate`、`updatedDate`、`tags`、`coverImage`、`slug`（可选，语义化链接）、`draft`。
-- **`projects`**：项目介绍，字段含 `title`、`description`、`pubDate`、`updatedDate`、`tags`、`featured`、`coverImage`，链接字段 `github`、`website`、`demo`、`download`、`purchase`，以及多语言字段 `lang`、`i18nKey`（详见「给项目添加多语言版本」一节）。
+- **`projects`**：项目介绍，字段含 `title`、`description`、`pubDate`、`updatedDate`、`tags`、`featured`、`coverImage`，链接字段 `github`、`website`、`demo`、`download`、`purchase`，结构化数据字段 `applicationCategory` / `operatingSystem`（影响项目页 JSON-LD，不填回落 Windows 工具默认值），以及多语言字段 `lang`、`i18nKey`（详见「给项目添加多语言版本」一节）。
 
 `draft: true` 的文章/项目不会被发布到线上。列表页会优先展示 `featured: true` 的项目。
 
@@ -130,13 +126,16 @@ draft: false
 | `npm run preview`   | 本地预览构建产物                              |
 | `npm run astro ...` | 运行 Astro CLI，如 `astro add`、`astro check` |
 
-> 环境要求：Node.js `>=22.12.0`。
+> 环境要求：Node.js `>=22.23.4`（astro 7.4.2 的硬性要求，低于此版本构建直接失败；本地开发机当前为 Node 24）。
 
-## 部署说明
+## 仓库与部署
 
+- **CNB**（`cnb.cool/yuzhiblue/indie-dev`，origin）：主仓库，推送到 main 触发 **EdgeOne Pages** 自动构建部署（日志特征：`StaticAssetsBuilder`、生成 `routes.json`）。
+- **GitHub**（`github.com/yuzhiblue/indie-dev`，github）：镜像仓库，需手动同步：`git push origin main && git push github main`。
+- **Node 版本约束**：EdgeOne 构建环境的 Node 版本在 EdgeOne 后台项目设置中选择；**升级 astro 等核心依赖前，先确认其 `engines` 要求 ≤ 部署环境 Node 版本**，否则构建期直接报 "Node.js is not supported by Astro"（2026-10-28 踩过：astro 7.4.2 要求 ≥22.23.4）。
+- **CNB 自动安全扫描**：会针对依赖漏洞自动提合并请求（vite / astro / zod / undici 等），合并前同样先核对 Node 版本约束。
 - `astro.config.mjs` 中 `site` 设为 `https://7tec.cn`，并使用 `base: './'` 的相对路径，使构建产物在 `file://` 直接打开时也能正确加载资源。
-- 构建脚本通过 `inlineStylesheets: 'always'` 将样式内联进 HTML，便于静态托管。
-- 部署时直接发布 `npm run build` 生成的 `./dist/` 目录即可。
+- 构建脚本通过 `inlineStylesheets: 'always'` 将样式内联进 HTML，便于静态托管；部署时直接发布 `npm run build` 生成的 `./dist/` 目录即可。
 
 ## 内容治理脚本
 
@@ -177,6 +176,27 @@ python scripts/migrate_7tec.py --start 1 --end 20   # 小范围测试
   python scripts/fix_image_links.py            # 执行改写
   python scripts/fix_image_links.py --dry-run  # 只报告，不写文件
   ```
+
+### 其余脚本速查
+
+| 脚本 | 用途 |
+| :--- | :--- |
+| `rename-blog-files.mjs` | 博客文件名批量改为汉字文章标题 |
+| `unify-slugs.mjs` | 统一各文章 frontmatter 的 slug 为简短英文 |
+| `set-draft.py` | 批量设置 / 取消文章的 `draft` 标记 |
+| `find-thin-content.py` | 找出内容单薄、待充实或下线的文章 |
+| `normalize-image-names.py` | 规范化 `public/images/blog/` 下的图片文件名 |
+| `optimize-images.py` | 压缩优化博客配图 |
+| `make-favicon.py` / `make-og-image.py` | 生成 favicon 与全站默认分享图（og-default） |
+| `verify-build.py` / `verify-live.py` | 构建产物与线上站点的自动校验 |
+| `test-middleware.mjs` | `middleware.js` 的本地测试 |
+
+## 许可证
+
+本仓库采用「代码与内容分离」的双许可安排：
+
+- **代码**（`src/`、`scripts/`、配置文件等）：[GPL-3.0](./LICENSE)。你可以自由使用、修改和分发，衍生作品必须同样以 GPL-3.0 开源。
+- **内容**（`src/content/` 下的全部文章，以及 `public/` 下的图片素材）：版权归 **yuzhiblue** 所有，保留所有权利。转载、引用请联系作者获得授权；文章是站点的 SEO 资产，请勿直接搬运。
 
 ## 了解更多
 
